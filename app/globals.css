@@ -1,26 +1,105 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  /* ── Refined white/beige palette ── */
+  --color-white:       #FFFFFF;
+  --color-ivory:       #F9F6F2;   /* warm off-white */
+  --color-ivory-dark:  #EFE8DD;   /* warm cream */
+  --color-bone:        #C8BFAF;   /* medium beige border */
+  --color-brand:       #C47828;   /* muted amber accent — use sparingly */
+  --color-brand-dark:  #A8621E;
+  --color-brown-deep:  #18100A;   /* near-black ink */
+  --color-brown:       #46362A;   /* main text */
+  --color-brown-light: #8A7B6A;   /* secondary text */
+
+  /* ── Fonts ── */
+  --font-display: var(--font-cormorant), 'Cormorant Garamond', Georgia, serif;
+  --font-serif:   var(--font-noto-serif), 'Noto Serif JP', serif;
+  --font-sans:    var(--font-noto-sans), 'Noto Sans JP', sans-serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ── Base ── */
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: #FFFFFF;
+  color: #46362A;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: #F9F6F2; }
+::-webkit-scrollbar-thumb { background: #C8BFAF; border-radius: 2px; }
+
+/* ── Section spacing ── */
+.section-py {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+}
+@media (min-width: 768px) {
+  .section-py {
+    padding-top: 9rem;
+    padding-bottom: 9rem;
+  }
+}
+
+/* ── Section label (MENU / CONCEPT etc.) ── */
+.label {
+  font-size: 0.6rem;
+  letter-spacing: 0.38em;
+  text-transform: uppercase;
+  color: #8A7B6A;
+  font-family: var(--font-noto-sans), sans-serif;
+}
+
+/* ── Thin decorative line ── */
+.rule {
+  width: 28px;
+  height: 1px;
+  background: #C8BFAF;
+}
+
+/* ── Section number display ── */
+.section-num {
+  font-family: var(--font-cormorant), 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(5rem, 10vw, 8rem);
+  line-height: 1;
+  color: #EFE8DD;
+  user-select: none;
+  letter-spacing: -0.02em;
+}
+
+/* ── Photo containers ── */
+.photo-area {
+  background-color: #EFE8DD;
+  position: relative;
+  overflow: hidden;
+}
+
+/* aspect-ratio variants for Next.js Image fill */
+.photo-portrait {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 3 / 4;
+}
+
+.photo-tall {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
+}
+
+.photo-landscape {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+}
+
+.photo-hero {
+  position: relative;
+  overflow: hidden;
 }
