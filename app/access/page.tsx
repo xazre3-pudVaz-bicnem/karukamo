@@ -104,7 +104,7 @@ export default function AccessPage() {
                   { dt: 'Address', dd: '茨城県ひたちなか市湊本町27-3', sub: '那珂湊エリア' },
                   { dt: 'Hours', dd: 'Instagramをご確認ください', sub: null },
                   { dt: 'Holiday', dd: 'Instagramをご確認ください', sub: '不定休' },
-                  { dt: 'Payment', dd: '現金', sub: '最新情報はInstagramにて' },
+                  { dt: 'Payment', dd: '店頭またはInstagramでご確認ください', sub: null },
                 ].map((row, i) => (
                   <div key={row.dt} className={`flex gap-8 py-5 ${i > 0 ? 'border-t border-bone/40' : ''}`}>
                     <dt className="w-16 flex-shrink-0 label pt-0.5">{row.dt}</dt>

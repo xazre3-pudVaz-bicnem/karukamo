@@ -1,7 +1,26 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
+import Link from 'next/link'
 import { AnimateIn } from '@/components/ui/AnimateIn'
 import { menuCategories } from '@/data/menu'
+
+const CATEGORY_LINKS: Record<string, string> = {
+  crepe:       'クレープについて詳しく見る',
+  sweets:      'アイス・スイーツについて詳しく見る',
+  taiyaki:     'スイーツ一覧を見る',
+  takoyaki:    'たこ焼きについて詳しく見る',
+  okonomiyaki: 'お好み焼きについて詳しく見る',
+  yakisoba:    '焼きそばについて詳しく見る',
+}
+
+const CATEGORY_HREFS: Record<string, string> = {
+  crepe:       '/crepe',
+  sweets:      '/sweets',
+  taiyaki:     '/sweets',
+  takoyaki:    '/takoyaki',
+  okonomiyaki: '/okonomiyaki',
+  yakisoba:    '/yakisoba',
+}
 
 const CATEGORY_IMAGES: Record<string, { src: string; alt: string }> = {
   crepe:       { src: '/crepe-closeup.png', alt: 'カルカモのクレープ' },
@@ -30,8 +49,8 @@ export default function MenuPage() {
             <h1 className="font-display font-light text-5xl md:text-7xl lg:text-8xl leading-none text-brown-deep mb-6">
               MENU
             </h1>
-            <div className="flex items-center gap-4">
-              <span className="rule" />
+            <div className="flex items-start gap-4 mb-4">
+              <span className="rule flex-shrink-0 mt-2" />
               <p className="font-serif text-brown-light text-xs leading-relaxed">
                 最新情報は
                 <a
@@ -45,6 +64,9 @@ export default function MenuPage() {
                 をご確認ください
               </p>
             </div>
+            <p className="font-serif text-brown-light text-xs leading-relaxed pl-0 md:pl-4">
+              メニュー内容・価格は変更となる場合があります。最新情報はInstagramまたは店頭にてご確認ください。
+            </p>
           </AnimateIn>
         </div>
       </section>
@@ -140,6 +162,18 @@ export default function MenuPage() {
                     </li>
                   ))}
                 </ul>
+                {CATEGORY_HREFS[cat.id] && (
+                  <div className="mt-8 pt-6 border-t border-bone/40">
+                    <Link
+                      href={CATEGORY_HREFS[cat.id]}
+                      className="inline-flex items-center gap-4 label text-brown-light hover:text-brown-deep transition-colors"
+                      style={{ letterSpacing: '0.25em' }}
+                    >
+                      <span className="block w-8 h-px bg-current" />
+                      {CATEGORY_LINKS[cat.id]}
+                    </Link>
+                  </div>
+                )}
               </AnimateIn>
             </div>
 

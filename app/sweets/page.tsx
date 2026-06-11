@@ -253,6 +253,18 @@ export default function SweetsPage() {
             description: 'カルカモの看板メニュー。もちもち生地に生クリームとフルーツをたっぷりと。',
           },
           {
+            href: '/menu',
+            label: 'メニュー一覧',
+            labelEn: 'Full Menu',
+            description: 'クレープ・アイス・たこ焼き・お好み焼き・焼きそばの全メニュー。',
+          },
+          {
+            href: '/about-nakaminato',
+            label: '那珂湊エリア情報',
+            labelEn: 'About Nakaminato',
+            description: '那珂湊の観光スポットやグルメ情報。食べ歩きの参考に。',
+          },
+          {
             href: '/takeout',
             label: 'テイクアウト特集',
             labelEn: 'Takeout',

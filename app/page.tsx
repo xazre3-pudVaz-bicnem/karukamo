@@ -27,7 +27,7 @@ export default function HomePage() {
           <AnimateIn delay={0.05}>
             <p className="label mb-10 md:mb-14">Nakaminato, Ibaraki</p>
 
-            <h1 className="font-display font-light text-[clamp(3.6rem,9vw,8.5rem)] leading-[0.9] tracking-[-0.01em] text-brown-deep mb-5 md:mb-7">
+            <h1 className="font-display font-light text-[clamp(2.6rem,9vw,8.5rem)] leading-[0.9] tracking-[-0.01em] text-brown-deep mb-5 md:mb-7">
               KARUKAMO
             </h1>
 
@@ -76,12 +76,16 @@ export default function HomePage() {
             <div className="max-w-xl pl-0 md:pl-4">
               <p className="font-serif text-brown text-sm md:text-base leading-loose mb-6">
                 茨城県ひたちなか市の港町、那珂湊。<br />
-                カルカモは、海辺の街に根ざした小さなテイクアウトスタンドです。
+                カルカモは、漁師町の一角に立つ小さなテイクアウトスタンドです。
               </p>
-              <p className="font-serif text-brown-light text-sm leading-loose">
-                クレープやスイーツ、食べ歩きグルメを通じて、<br />
-                ちょっとしたごほうびの時間をお届けしたい。<br />
-                そんな想いを大切にしながら、日々の営業を続けています。
+              <p className="font-serif text-brown-light text-sm leading-loose mb-5">
+                クレープを中心に、アイス・たこ焼き・お好み焼き・焼きそばまで。<br />
+                那珂湊の食べ歩きや観光の途中に、ひたちなか市での日々のおやつに。<br />
+                ひとつひとつ丁寧に作った一品が、<br />
+                小さなごほうびになりますように。
+              </p>
+              <p className="font-serif text-brown-light text-xs leading-loose">
+                ※ 最新メニュー・営業日はInstagramをご確認ください
               </p>
             </div>
           </AnimateIn>
@@ -120,6 +124,7 @@ export default function HomePage() {
 
             {/* Menu list */}
             <AnimateIn delay={0.1} className="md:pt-4">
+              <p className="label text-brand mb-2" style={{ fontSize: '9px' }}>看板メニュー · 食べ歩きスイーツ</p>
               <p className="font-serif font-bold text-brown-deep text-lg mb-1">{crepe.name}</p>
               <p className="text-brown-light text-xs mb-2 leading-relaxed">{crepe.description}</p>
               <p className="label text-brand mb-8">Instagramで最新フレーバーを公開中</p>
@@ -186,6 +191,7 @@ export default function HomePage() {
 
             {/* Menu list (left on this section) */}
             <AnimateIn className="md:pt-4">
+              <p className="label text-brand mb-2" style={{ fontSize: '9px' }}>那珂湊らしい名物スイーツ</p>
               <p className="font-serif font-bold text-brown-deep text-lg mb-1">{sweets.name}</p>
               <p className="text-brown-light text-xs mb-8 leading-relaxed">{sweets.description}</p>
               <ul>
@@ -281,9 +287,9 @@ export default function HomePage() {
               {foodItems.map((cat, ci) => (
                 <div key={cat.id} className={ci > 0 ? 'mt-10 pt-10 border-t border-bone/40' : ''}>
                   <div className="flex items-baseline gap-3 mb-5">
-                    <Link href={`/${cat.id}`} className="label hover:text-brown-deep transition-colors">{cat.nameEn}</Link>
-                    <span className="text-bone/60 label">—</span>
                     <p className="font-serif text-brown-deep text-sm">{cat.name}</p>
+                    <span className="text-bone/60 label">—</span>
+                    <Link href={`/${cat.id}`} className="label hover:text-brown-deep transition-colors">{cat.nameEn}</Link>
                   </div>
                   <ul>
                     {cat.items.map((item, i) => (
@@ -394,7 +400,7 @@ export default function HomePage() {
             </div>
           </div>
           <p className="font-serif text-ivory/50 text-sm mb-10">
-            営業日・最新メニュー・おすすめ情報を発信中
+            営業日・最新フレーバー・限定メニューはInstagramで随時更新
           </p>
           <a
             href="https://www.instagram.com/karukamo.2384/"

@@ -28,7 +28,7 @@ const notoSerifJP = Noto_Serif_JP({
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://karukamo.jp'),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? 'https://karukamo.jp'),
   title: {
     template: '%s | カルカモ',
     default: 'カルカモ | 那珂湊のクレープ&テイクアウトスタンド',
