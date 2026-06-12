@@ -20,10 +20,10 @@ export default function HomePage() {
   return (
     <>
       {/* ━━━━ Hero ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
-      <section className="min-h-screen flex items-stretch pt-16">
+      <section className="flex flex-col md:flex-row md:min-h-screen items-stretch pt-16">
 
-        {/* Left — text */}
-        <div className="flex-1 flex flex-col justify-center px-8 sm:px-12 md:px-16 lg:px-24 py-20 md:py-0">
+        {/* Top/Left — text */}
+        <div className="flex-1 flex flex-col justify-center px-8 sm:px-12 md:px-16 lg:px-24 py-16 md:py-0">
           <AnimateIn delay={0.05}>
             <p className="label mb-10 md:mb-14">Nakaminato, Ibaraki</p>
 
@@ -47,11 +47,22 @@ export default function HomePage() {
           </AnimateIn>
         </div>
 
-        {/* Right — hero image */}
+        {/* Mobile — portrait image below text */}
+        <div className="md:hidden relative overflow-hidden aspect-[3/4]">
+          <Image
+            src="/hero-menu.png"
+            alt="カルカモのクレープ・たこ焼き・お好み焼き・焼きそば・アイスなどのテイクアウトメニュー"
+            fill
+            className="object-cover object-center"
+            priority
+          />
+        </div>
+
+        {/* Desktop — right side image */}
         <div className="hidden md:block w-[42%] lg:w-[46%] photo-hero">
           <Image
-            src="/hero-brand.png"
-            alt="カルカモのクレープ・たこ焼き・お好み焼き"
+            src="/hero-menu.png"
+            alt="カルカモのクレープ・たこ焼き・お好み焼き・焼きそば・アイスなどのテイクアウトメニュー"
             fill
             className="object-cover object-center"
             priority
