@@ -103,3 +103,112 @@ body {
   position: relative;
   overflow: hidden;
 }
+
+/* ── WordPress post content ── */
+.wp-content {
+  font-family: var(--font-noto-serif), 'Noto Serif JP', serif;
+  font-size: 0.875rem;
+  color: #46362A;
+  line-height: 2;
+}
+
+.wp-content h2 {
+  font-family: var(--font-cormorant), 'Cormorant Garamond', Georgia, serif;
+  font-weight: 300;
+  font-size: clamp(1.5rem, 3.5vw, 2.25rem);
+  color: #18100A;
+  line-height: 1.25;
+  margin-top: 3.5rem;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.01em;
+}
+
+.wp-content h3 {
+  font-family: var(--font-noto-serif), 'Noto Serif JP', serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #18100A;
+  line-height: 1.6;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.wp-content p {
+  margin-bottom: 1.5rem;
+}
+
+.wp-content a {
+  color: #C47828;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: #C47828;
+}
+
+.wp-content a:hover {
+  color: #A8621E;
+}
+
+.wp-content img {
+  width: 100%;
+  height: auto;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.wp-content figure {
+  margin: 2rem 0;
+}
+
+.wp-content figcaption {
+  font-family: var(--font-noto-sans), sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  color: #8A7B6A;
+  text-align: center;
+  margin-top: 0.5rem;
+}
+
+.wp-content ul,
+.wp-content ol {
+  padding-left: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.wp-content li {
+  margin-bottom: 0.5rem;
+  line-height: 2;
+}
+
+.wp-content blockquote {
+  border-left: 2px solid #C8BFAF;
+  padding-left: 1.5rem;
+  margin-left: 0;
+  margin-bottom: 1.5rem;
+  color: #8A7B6A;
+  font-style: italic;
+}
+
+.wp-content hr {
+  border: none;
+  border-top: 1px solid #C8BFAF;
+  margin: 3rem 0;
+}
+
+.wp-content strong {
+  font-weight: 700;
+  color: #18100A;
+}
+
+.wp-content .wp-block-image {
+  margin: 2rem 0;
+}
+
+.wp-content .wp-caption-text,
+.wp-content .wp-element-caption {
+  font-family: var(--font-noto-sans), sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  color: #8A7B6A;
+  text-align: center;
+  margin-top: 0.5rem;
+}

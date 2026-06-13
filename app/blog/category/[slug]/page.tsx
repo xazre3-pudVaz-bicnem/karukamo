@@ -1,10 +1,13 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
+import { notFound } from 'next/navigation'
 import { AnimateIn } from '@/components/ui/AnimateIn'
 import { Breadcrumb } from '@/components/ui/Breadcrumb'
 import {
-  getPosts,
+  getAllCategories,
+  getCategoryBySlug,
+  getPostsByCategory,
   getFeaturedImageUrl,
   getFeaturedImageAlt,
   getPostCategories,
@@ -14,33 +17,54 @@ import {
 
 export const revalidate = 3600
 
-export const metadata: Metadata = {
-  title: 'ブログ | カルカモ — ひたちなか市・那珂湊のグルメ情報',
-  description:
-    'カルカモのブログ。ひたちなか市・那珂湊のグルメ情報、クレープ・スイーツ・テイクアウト情報、那珂湊観光ガイドなど。お役立ち情報を発信中。',
-  keywords: [
-    'カルカモ ブログ', 'ひたちなか市 グルメ', '那珂湊 グルメ',
-    '那珂湊 観光', 'ひたちなか市 テイクアウト', '那珂湊 クレープ',
-  ],
-  openGraph: {
-    title: 'ブログ | カルカモ',
-    description: 'ひたちなか市・那珂湊のグルメ・観光情報を発信するカルカモのブログ。',
-    url: 'https://karukamo.jp/blog',
-    locale: 'ja_JP',
-    type: 'website',
-  },
-  twitter: { card: 'summary_large_image' },
-  alternates: { canonical: 'https://karukamo.jp/blog' },
+export async function generateStaticParams() {
+  const categories = await getAllCategories()
+  return categories.map((cat) => ({ slug: cat.slug }))
 }
 
-export default async function BlogPage({
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>
+}): Promise<Metadata> {
+  const { slug } = await params
+  const category = await getCategoryBySlug(slug)
+  if (!category) return {}
+
+  const title = `${category.name} | ブログ | カルカモ`
+  const description = `カルカモのブログ — ${category.name}カテゴリの記事一覧。ひたちなか市・那珂湊のグルメ・観光情報。`
+  const canonical = `https://karukamo.jp/blog/category/${slug}`
+
+  return {
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      url: canonical,
+      locale: 'ja_JP',
+      type: 'website',
+    },
+    twitter: { card: 'summary_large_image' },
+    alternates: { canonical },
+  }
+}
+
+export default async function BlogCategoryPage({
+  params,
   searchParams,
 }: {
+  params: Promise<{ slug: string }>
   searchParams: Promise<{ page?: string }>
 }) {
+  const { slug } = await params
   const { page: pageParam } = await searchParams
   const currentPage = Math.max(1, parseInt(pageParam ?? '1', 10))
-  const { posts, totalPages } = await getPosts(currentPage, 12)
+
+  const category = await getCategoryBySlug(slug)
+  if (!category) notFound()
+
+  const { posts, totalPages } = await getPostsByCategory(category.id, currentPage, 12)
 
   return (
     <>
@@ -48,15 +72,21 @@ export default async function BlogPage({
       <section className="pt-32 pb-16 md:pt-40 md:pb-20 bg-white border-b border-bone/40">
         <div className="max-w-screen-xl mx-auto px-8 sm:px-12 md:px-16">
           <AnimateIn>
-            <Breadcrumb items={[{ label: 'Home', href: '/' }, { label: 'Blog' }]} />
+            <Breadcrumb
+              items={[
+                { label: 'Home', href: '/' },
+                { label: 'Blog', href: '/blog' },
+                { label: category.name },
+              ]}
+            />
             <div className="mt-6">
-              <p className="label mb-4">Information & Stories</p>
+              <p className="label text-brand mb-4">Category</p>
               <h1 className="font-display font-light text-5xl md:text-7xl lg:text-8xl leading-none text-brown-deep mb-6">
-                BLOG
+                {category.name}
               </h1>
               <div className="flex items-center gap-4">
                 <span className="rule flex-shrink-0" />
-                <p className="label">ひたちなか市・那珂湊のグルメ・観光情報</p>
+                <p className="label">{category.name} — カルカモのブログ</p>
               </div>
             </div>
           </AnimateIn>
@@ -69,8 +99,16 @@ export default async function BlogPage({
           {posts.length === 0 ? (
             <AnimateIn>
               <p className="font-serif text-brown-light text-sm">
-                記事はまだありません。
+                このカテゴリの記事はまだありません。
               </p>
+              <Link
+                href="/blog"
+                className="mt-8 inline-flex items-center gap-3 label text-brown hover:text-brown-deep transition-colors"
+                style={{ letterSpacing: '0.25em' }}
+              >
+                <span className="block w-6 h-px bg-current" />
+                ブログ一覧へ
+              </Link>
             </AnimateIn>
           ) : (
             <>
@@ -145,7 +183,11 @@ export default async function BlogPage({
                 >
                   {currentPage > 1 && (
                     <Link
-                      href={currentPage === 2 ? '/blog' : `/blog?page=${currentPage - 1}`}
+                      href={
+                        currentPage === 2
+                          ? `/blog/category/${slug}`
+                          : `/blog/category/${slug}?page=${currentPage - 1}`
+                      }
                       className="inline-flex items-center gap-3 label text-brown hover:text-brown-deep transition-colors"
                       style={{ letterSpacing: '0.25em' }}
                     >
@@ -160,7 +202,7 @@ export default async function BlogPage({
                   </span>
                   {currentPage < totalPages && (
                     <Link
-                      href={`/blog?page=${currentPage + 1}`}
+                      href={`/blog/category/${slug}?page=${currentPage + 1}`}
                       className="inline-flex items-center gap-3 label text-brown hover:text-brown-deep transition-colors"
                       style={{ letterSpacing: '0.25em' }}
                     >
@@ -175,27 +217,19 @@ export default async function BlogPage({
         </div>
       </section>
 
-      {/* ━━━━ Instagram CTA ━━━━━━━━━━━━━━━━━━━━━━ */}
+      {/* ━━━━ Back to Blog ━━━━━━━━━━━━━━━━━━━━━━━ */}
       <section className="py-20 md:py-28 bg-brown-deep">
         <AnimateIn className="text-center">
-          <p className="label text-ivory/30 mb-4">最新情報</p>
-          <p className="font-display font-light text-3xl md:text-5xl text-ivory mb-8 leading-none">
-            INSTAGRAM
-          </p>
-          <p className="font-serif text-ivory/50 text-sm mb-10">
-            営業日・最新メニュー・おすすめ情報を毎日発信中
-          </p>
-          <a
-            href="https://www.instagram.com/karukamo.2384/"
-            target="_blank"
-            rel="noopener noreferrer"
+          <p className="label text-ivory/30 mb-8">Blog</p>
+          <Link
+            href="/blog"
             className="inline-flex items-center gap-5 label text-ivory/60 hover:text-ivory transition-colors"
             style={{ letterSpacing: '0.3em' }}
           >
             <span className="block w-10 h-px bg-current" />
-            @karukamo.2384
+            ブログ一覧へ戻る
             <span className="block w-10 h-px bg-current" />
-          </a>
+          </Link>
         </AnimateIn>
       </section>
     </>

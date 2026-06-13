@@ -3,6 +3,16 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { AnimateIn } from '@/components/ui/AnimateIn'
 import { menuCategories } from '@/data/menu'
+import {
+  getPosts,
+  getFeaturedImageUrl,
+  getFeaturedImageAlt,
+  getPostCategories,
+  formatDate,
+  stripHtml,
+} from '@/lib/wordpress'
+
+export const revalidate = 3600
 
 export const metadata: Metadata = {
   title: 'カルカモ | 那珂湊のクレープ&テイクアウトスタンド',
@@ -16,7 +26,9 @@ const sweets = menuCategories.find((c) => c.id === 'sweets')!
 const taiyaki = menuCategories.find((c) => c.id === 'taiyaki')!
 const foodItems = menuCategories.filter((c) => ['takoyaki', 'okonomiyaki', 'yakisoba'].includes(c.id))
 
-export default function HomePage() {
+export default async function HomePage() {
+  const { posts } = await getPosts(1, 3)
+
   return (
     <>
       {/* ━━━━ Hero ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
@@ -398,11 +410,94 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ━━━━ 06 Instagram ━━━━━━━━━━━━━━━━━━━━━━━ */}
+      {/* ━━━━ 06 Blog ━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+      <section className="section-py bg-white border-t border-bone/40">
+        <div className="max-w-screen-xl mx-auto px-8 sm:px-12 md:px-16">
+          <AnimateIn className="mb-12 md:mb-16">
+            <div className="flex items-end gap-5 md:gap-8 mb-8">
+              <span className="section-num select-none">06</span>
+              <div className="pb-2">
+                <p className="label mb-2">Information & Stories</p>
+                <h2 className="font-display font-light text-4xl md:text-6xl leading-none text-brown-deep">
+                  BLOG
+                </h2>
+              </div>
+            </div>
+            <div className="flex items-center gap-4">
+              <span className="rule flex-shrink-0" />
+              <p className="label">ひたちなか市・那珂湊のグルメ・観光情報</p>
+            </div>
+          </AnimateIn>
+
+          {posts.length > 0 && (
+            <ul className="grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-bone/30 mb-12 md:mb-16">
+              {posts.map((post) => {
+                const imageUrl = getFeaturedImageUrl(post)
+                const imageAlt = getFeaturedImageAlt(post)
+                const categories = getPostCategories(post)
+                return (
+                  <li key={post.id} className="bg-white">
+                    <Link
+                      href={`/blog/${post.slug}`}
+                      className="block group hover:bg-ivory transition-colors h-full"
+                    >
+                      <div className="photo-landscape overflow-hidden">
+                        {imageUrl ? (
+                          <Image
+                            src={imageUrl}
+                            alt={imageAlt}
+                            fill
+                            className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                          />
+                        ) : (
+                          <div className="absolute inset-0 bg-ivory-dark" />
+                        )}
+                      </div>
+                      <div className="p-6 md:p-7">
+                        <div className="flex items-center gap-3 mb-3">
+                          {categories[0] && (
+                            <span className="label text-brand" style={{ fontSize: '9px' }}>
+                              {categories[0].name}
+                            </span>
+                          )}
+                          <span className="rule flex-shrink-0" />
+                          <time className="label" style={{ fontSize: '9px' }} dateTime={post.date}>
+                            {formatDate(post.date)}
+                          </time>
+                        </div>
+                        <h3 className="font-serif text-brown-deep text-sm leading-relaxed mb-3">
+                          {post.title.rendered}
+                        </h3>
+                        <p className="text-brown-light text-xs leading-loose line-clamp-2">
+                          {stripHtml(post.excerpt.rendered)}
+                        </p>
+                      </div>
+                    </Link>
+                  </li>
+                )
+              })}
+            </ul>
+          )}
+
+          <AnimateIn>
+            <Link
+              href="/blog"
+              className="inline-flex items-center gap-4 label text-brown hover:text-brown-deep transition-colors"
+              style={{ letterSpacing: '0.25em' }}
+            >
+              <span className="block w-8 h-px bg-current" />
+              記事をすべて見る
+            </Link>
+          </AnimateIn>
+        </div>
+      </section>
+
+      {/* ━━━━ 07 Instagram ━━━━━━━━━━━━━━━━━━━━━━━ */}
       <section className="py-20 md:py-28 bg-brown-deep border-t border-brown">
         <AnimateIn className="text-center">
           <div className="flex items-end justify-center gap-5 md:gap-8 mb-12">
-            <span className="font-display text-[4rem] md:text-[6rem] leading-none text-ivory/10 select-none">06</span>
+            <span className="font-display text-[4rem] md:text-[6rem] leading-none text-ivory/10 select-none">07</span>
             <div className="pb-1">
               <p className="label text-ivory/30 mb-2">Follow</p>
               <h2 className="font-display font-light text-4xl md:text-6xl leading-none text-ivory">
