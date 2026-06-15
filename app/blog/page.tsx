@@ -1,16 +1,7 @@
 import type { Metadata } from 'next'
-import Image from 'next/image'
-import Link from 'next/link'
 import { AnimateIn } from '@/components/ui/AnimateIn'
 import { Breadcrumb } from '@/components/ui/Breadcrumb'
-import {
-  getPosts,
-  getFeaturedImageUrl,
-  getFeaturedImageAlt,
-  getPostCategories,
-  formatDate,
-  stripHtml,
-} from '@/lib/wordpress'
+import { BlogPostsList } from '@/components/sections/BlogPostsList'
 
 export const dynamic = 'force-dynamic'
 export const revalidate = 0
@@ -41,7 +32,6 @@ export default async function BlogPage({
 }) {
   const { page: pageParam } = await searchParams
   const currentPage = Math.max(1, parseInt(pageParam ?? '1', 10))
-  const { posts, totalPages } = await getPosts(currentPage, 12, 0)
 
   return (
     <>
@@ -64,125 +54,10 @@ export default async function BlogPage({
         </div>
       </section>
 
-      {/* ━━━━ Posts Grid ━━━━━━━━━━━━━━━━━━━━━━━━ */}
+      {/* ━━━━ Posts — client-side fetch ━━━━━━━━━━━━ */}
       <section className="section-py bg-ivory border-b border-bone/40">
         <div className="max-w-screen-xl mx-auto px-8 sm:px-12 md:px-16">
-          {posts.length === 0 ? (
-            <AnimateIn>
-              <p className="font-serif text-brown-light text-sm mb-6">
-                現在、記事の取得に時間がかかっています。しばらくしてからページを更新してください。
-              </p>
-              <a
-                href="https://www.instagram.com/karukamo.2384/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-3 label text-brown hover:text-brown-deep transition-colors"
-                style={{ letterSpacing: '0.25em' }}
-              >
-                <span className="block w-6 h-px bg-current" />
-                Instagram で最新情報を見る
-              </a>
-            </AnimateIn>
-          ) : (
-            <>
-              <ul className="grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-bone/30">
-                {posts.map((post) => {
-                  const imageUrl = getFeaturedImageUrl(post)
-                  const imageAlt = getFeaturedImageAlt(post)
-                  const categories = getPostCategories(post)
-                  return (
-                    <li key={post.id} className="bg-ivory">
-                      <Link
-                        href={`/blog/${post.slug}`}
-                        className="block group hover:bg-white transition-colors h-full"
-                      >
-                        <div className="photo-landscape overflow-hidden">
-                          {imageUrl ? (
-                            <Image
-                              src={imageUrl}
-                              alt={imageAlt}
-                              fill
-                              className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
-                              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                            />
-                          ) : (
-                            <div className="absolute inset-0 bg-ivory-dark" />
-                          )}
-                        </div>
-                        <div className="p-6 md:p-7">
-                          <div className="flex items-center gap-3 mb-4">
-                            {categories[0] && (
-                              <span
-                                className="label text-brand"
-                                style={{ fontSize: '9px' }}
-                              >
-                                {categories[0].name}
-                              </span>
-                            )}
-                            <span className="rule flex-shrink-0" />
-                            <time
-                              className="label"
-                              style={{ fontSize: '9px' }}
-                              dateTime={post.date}
-                            >
-                              {formatDate(post.date)}
-                            </time>
-                          </div>
-                          <h2 className="font-serif text-brown-deep text-sm leading-relaxed mb-3">
-                            {post.title.rendered}
-                          </h2>
-                          <p className="text-brown-light text-xs leading-loose mb-5 line-clamp-3">
-                            {stripHtml(post.excerpt.rendered)}
-                          </p>
-                          <span
-                            className="inline-flex items-center gap-2 label text-brown-light group-hover:text-brown transition-colors"
-                            style={{ fontSize: '9px' }}
-                          >
-                            <span className="block w-4 h-px bg-current" />
-                            続きを読む
-                          </span>
-                        </div>
-                      </Link>
-                    </li>
-                  )
-                })}
-              </ul>
-
-              {/* Pagination */}
-              {totalPages > 1 && (
-                <nav
-                  aria-label="ページネーション"
-                  className="mt-16 flex items-center justify-center gap-8"
-                >
-                  {currentPage > 1 && (
-                    <Link
-                      href={currentPage === 2 ? '/blog' : `/blog?page=${currentPage - 1}`}
-                      className="inline-flex items-center gap-3 label text-brown hover:text-brown-deep transition-colors"
-                      style={{ letterSpacing: '0.25em' }}
-                    >
-                      <span className="block w-8 h-px bg-current" />
-                      Prev
-                    </Link>
-                  )}
-                  <span className="font-display font-light text-brown-light text-xl leading-none">
-                    {currentPage}
-                    <span className="mx-2 text-bone">/</span>
-                    {totalPages}
-                  </span>
-                  {currentPage < totalPages && (
-                    <Link
-                      href={`/blog?page=${currentPage + 1}`}
-                      className="inline-flex items-center gap-3 label text-brown hover:text-brown-deep transition-colors"
-                      style={{ letterSpacing: '0.25em' }}
-                    >
-                      Next
-                      <span className="block w-8 h-px bg-current" />
-                    </Link>
-                  )}
-                </nav>
-              )}
-            </>
-          )}
+          <BlogPostsList page={currentPage} />
         </div>
       </section>
 
