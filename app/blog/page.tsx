@@ -13,6 +13,7 @@ import {
 } from '@/lib/wordpress'
 
 export const dynamic = 'force-dynamic'
+export const revalidate = 0
 
 export const metadata: Metadata = {
   title: 'ブログ | カルカモ — ひたちなか市・那珂湊のグルメ情報',
@@ -68,9 +69,19 @@ export default async function BlogPage({
         <div className="max-w-screen-xl mx-auto px-8 sm:px-12 md:px-16">
           {posts.length === 0 ? (
             <AnimateIn>
-              <p className="font-serif text-brown-light text-sm">
-                記事はまだありません。
+              <p className="font-serif text-brown-light text-sm mb-6">
+                現在、記事の取得に時間がかかっています。しばらくしてからページを更新してください。
               </p>
+              <a
+                href="https://www.instagram.com/karukamo.2384/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-3 label text-brown hover:text-brown-deep transition-colors"
+                style={{ letterSpacing: '0.25em' }}
+              >
+                <span className="block w-6 h-px bg-current" />
+                Instagram で最新情報を見る
+              </a>
             </AnimateIn>
           ) : (
             <>
