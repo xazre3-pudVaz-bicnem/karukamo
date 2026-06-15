@@ -12,7 +12,7 @@ import {
   stripHtml,
 } from '@/lib/wordpress'
 
-export const revalidate = 3600
+export const dynamic = 'force-dynamic'
 
 export const metadata: Metadata = {
   title: 'ブログ | カルカモ — ひたちなか市・那珂湊のグルメ情報',
@@ -40,7 +40,7 @@ export default async function BlogPage({
 }) {
   const { page: pageParam } = await searchParams
   const currentPage = Math.max(1, parseInt(pageParam ?? '1', 10))
-  const { posts, totalPages } = await getPosts(currentPage, 12)
+  const { posts, totalPages } = await getPosts(currentPage, 12, 0)
 
   return (
     <>

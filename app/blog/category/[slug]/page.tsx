@@ -64,7 +64,7 @@ export default async function BlogCategoryPage({
   const category = await getCategoryBySlug(slug)
   if (!category) notFound()
 
-  const { posts, totalPages } = await getPostsByCategory(category.id, currentPage, 12)
+  const { posts, totalPages } = await getPostsByCategory(category.id, currentPage, 12, 0)
 
   return (
     <>

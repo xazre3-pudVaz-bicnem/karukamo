@@ -31,18 +31,27 @@ export type WpCategory = {
 export async function getPosts(
   page = 1,
   perPage = 12,
+  revalidateSeconds = 3600,
 ): Promise<{ posts: WpPost[]; total: number; totalPages: number }> {
+  const fetchOptions: RequestInit =
+    revalidateSeconds === 0
+      ? { cache: 'no-store' }
+      : { next: { revalidate: revalidateSeconds } }
   try {
     const res = await fetch(
-      `${WP_API}/posts?_embed&per_page=${perPage}&page=${page}&orderby=date&order=desc`,
-      { next: { revalidate: 3600 } },
+      `${WP_API}/posts?_embed&per_page=${perPage}&page=${page}&orderby=date&order=desc&status=publish`,
+      fetchOptions,
     )
-    if (!res.ok) return { posts: [], total: 0, totalPages: 0 }
+    if (!res.ok) {
+      console.error(`[WP] getPosts failed: ${res.status} ${res.statusText}`)
+      return { posts: [], total: 0, totalPages: 0 }
+    }
     const posts: WpPost[] = await res.json()
     const total = parseInt(res.headers.get('X-WP-Total') ?? '0', 10)
     const totalPages = parseInt(res.headers.get('X-WP-TotalPages') ?? '0', 10)
     return { posts, total, totalPages }
-  } catch {
+  } catch (err) {
+    console.error('[WP] getPosts error:', err)
     return { posts: [], total: 0, totalPages: 0 }
   }
 }
@@ -50,13 +59,17 @@ export async function getPosts(
 export async function getPostBySlug(slug: string): Promise<WpPost | null> {
   try {
     const res = await fetch(
-      `${WP_API}/posts?slug=${encodeURIComponent(slug)}&_embed`,
+      `${WP_API}/posts?slug=${encodeURIComponent(slug)}&_embed&status=publish`,
       { next: { revalidate: 3600 } },
     )
-    if (!res.ok) return null
+    if (!res.ok) {
+      console.error(`[WP] getPostBySlug failed: ${res.status} ${res.statusText}`)
+      return null
+    }
     const posts: WpPost[] = await res.json()
     return posts[0] ?? null
-  } catch {
+  } catch (err) {
+    console.error('[WP] getPostBySlug error:', err)
     return null
   }
 }
@@ -65,12 +78,16 @@ export async function getRelatedPosts(postId: number, categoryIds: number[]): Pr
   try {
     const categories = categoryIds.join(',')
     const url = categories
-      ? `${WP_API}/posts?_embed&per_page=3&exclude=${postId}&categories=${categories}`
-      : `${WP_API}/posts?_embed&per_page=3&exclude=${postId}`
+      ? `${WP_API}/posts?_embed&per_page=3&exclude=${postId}&categories=${categories}&status=publish`
+      : `${WP_API}/posts?_embed&per_page=3&exclude=${postId}&status=publish`
     const res = await fetch(url, { next: { revalidate: 3600 } })
-    if (!res.ok) return []
+    if (!res.ok) {
+      console.error(`[WP] getRelatedPosts failed: ${res.status} ${res.statusText}`)
+      return []
+    }
     return res.json()
-  } catch {
+  } catch (err) {
+    console.error('[WP] getRelatedPosts error:', err)
     return []
   }
 }
@@ -78,13 +95,17 @@ export async function getRelatedPosts(postId: number, categoryIds: number[]): Pr
 export async function getAllPostSlugs(): Promise<string[]> {
   try {
     const res = await fetch(
-      `${WP_API}/posts?per_page=100&_fields=slug&orderby=date&order=desc`,
+      `${WP_API}/posts?per_page=100&_fields=slug&orderby=date&order=desc&status=publish`,
       { next: { revalidate: 3600 } },
     )
-    if (!res.ok) return []
+    if (!res.ok) {
+      console.error(`[WP] getAllPostSlugs failed: ${res.status} ${res.statusText}`)
+      return []
+    }
     const posts: Array<{ slug: string }> = await res.json()
     return posts.map((p) => p.slug)
-  } catch {
+  } catch (err) {
+    console.error('[WP] getAllPostSlugs error:', err)
     return []
   }
 }
@@ -152,18 +173,27 @@ export async function getPostsByCategory(
   categoryId: number,
   page = 1,
   perPage = 12,
+  revalidateSeconds = 3600,
 ): Promise<{ posts: WpPost[]; total: number; totalPages: number }> {
+  const fetchOptions: RequestInit =
+    revalidateSeconds === 0
+      ? { cache: 'no-store' }
+      : { next: { revalidate: revalidateSeconds } }
   try {
     const res = await fetch(
-      `${WP_API}/posts?_embed&categories=${categoryId}&per_page=${perPage}&page=${page}&orderby=date&order=desc`,
-      { next: { revalidate: 3600 } },
+      `${WP_API}/posts?_embed&categories=${categoryId}&per_page=${perPage}&page=${page}&orderby=date&order=desc&status=publish`,
+      fetchOptions,
     )
-    if (!res.ok) return { posts: [], total: 0, totalPages: 0 }
+    if (!res.ok) {
+      console.error(`[WP] getPostsByCategory failed: ${res.status} ${res.statusText}`)
+      return { posts: [], total: 0, totalPages: 0 }
+    }
     const posts: WpPost[] = await res.json()
     const total = parseInt(res.headers.get('X-WP-Total') ?? '0', 10)
     const totalPages = parseInt(res.headers.get('X-WP-TotalPages') ?? '0', 10)
     return { posts, total, totalPages }
-  } catch {
+  } catch (err) {
+    console.error('[WP] getPostsByCategory error:', err)
     return { posts: [], total: 0, totalPages: 0 }
   }
 }
