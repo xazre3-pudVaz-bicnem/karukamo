@@ -7,7 +7,7 @@ export function MobileBottomNav() {
   const pathname = usePathname()
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 z-50 md:hidden bg-white border-t border-bone/50">
+    <nav className="fixed bottom-0 left-0 right-0 z-50 md:hidden border-t border-bone/50" style={{ backgroundColor: '#FAF3E4' }}>
       <div className="flex">
         <a
           href="https://www.instagram.com/karukamo.2384/"

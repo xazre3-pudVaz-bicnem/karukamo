@@ -7,16 +7,16 @@ export const dynamic = 'force-dynamic'
 export const revalidate = 0
 
 export const metadata: Metadata = {
-  title: 'ブログ | カルカモ — ひたちなか市・那珂湊のグルメ情報',
+  title: 'お知らせ・カルカモ日記 | カルカモ',
   description:
-    'カルカモのブログ。ひたちなか市・那珂湊のグルメ情報、クレープ・スイーツ・テイクアウト情報、那珂湊観光ガイドなど。お役立ち情報を発信中。',
+    'カルカモのお知らせ・日記。那珂湊の焼きそばをはじめ、新メニュー情報・季節のたより・那珂湊の日常を発信中。',
   keywords: [
-    'カルカモ ブログ', 'ひたちなか市 グルメ', '那珂湊 グルメ',
-    '那珂湊 観光', 'ひたちなか市 テイクアウト', '那珂湊 クレープ',
+    'カルカモ お知らせ', 'ひたちなか市 焼きそば', '那珂湊 焼きそば',
+    '那珂湊 観光', 'ひたちなか市 テイクアウト', '那珂湊 グルメ',
   ],
   openGraph: {
-    title: 'ブログ | カルカモ',
-    description: 'ひたちなか市・那珂湊のグルメ・観光情報を発信するカルカモのブログ。',
+    title: 'お知らせ・カルカモ日記 | カルカモ',
+    description: '那珂湊のカルカモから。新メニュー・営業情報・季節のたよりをお届けします。',
     url: 'https://karukamo.jp/blog',
     locale: 'ja_JP',
     type: 'website',
@@ -36,18 +36,21 @@ export default async function BlogPage({
   return (
     <>
       {/* ━━━━ Page Header ━━━━━━━━━━━━━━━━━━━━━━━━ */}
-      <section className="pt-32 pb-16 md:pt-40 md:pb-20 bg-white border-b border-bone/40">
+      <section className="pt-32 pb-16 md:pt-40 md:pb-20 border-b border-bone/40" style={{ backgroundColor: '#FAF3E4' }}>
         <div className="max-w-screen-xl mx-auto px-8 sm:px-12 md:px-16">
           <AnimateIn>
-            <Breadcrumb items={[{ label: 'Home', href: '/' }, { label: 'Blog' }]} />
+            <Breadcrumb items={[{ label: 'Home', href: '/' }, { label: 'お知らせ' }]} />
             <div className="mt-6">
-              <p className="label mb-4">Information & Stories</p>
-              <h1 className="font-display font-light text-5xl md:text-7xl lg:text-8xl leading-none text-brown-deep mb-6">
-                BLOG
+              <div className="flex items-center gap-3 mb-4">
+                <span className="block w-8 h-[2px] bg-brand flex-shrink-0" />
+                <p className="label text-brand">Information · お知らせ</p>
+              </div>
+              <h1 className="font-serif font-bold text-4xl md:text-6xl leading-tight text-brown-deep mb-6">
+                お知らせ・カルカモ日記
               </h1>
               <div className="flex items-center gap-4">
                 <span className="rule flex-shrink-0" />
-                <p className="label">ひたちなか市・那珂湊のグルメ・観光情報</p>
+                <p className="label">那珂湊の焼きそば屋から、日々のたより</p>
               </div>
             </div>
           </AnimateIn>

@@ -9,11 +9,20 @@ export const revalidate = 3600
 export const metadata: Metadata = {
   title: 'カルカモ | 那珂湊の焼きそば&食べ歩きスタンド',
   description:
-    '茨城県ひたちなか市・那珂湊の焼きそば＆テイクアウトスタンド「カルカモ」。美明豚焼きそば・クレープ・たこ焼き・お好み焼きなど。おさかな市場から歩いて5分。',
+    '茨城県ひたちなか市・那珂湊の焼きそば＆テイクアウトスタンド「カルカモ」。美明豚焼きそば・たこ焼き・お好み焼き・クレープなど。おさかな市場から歩いて5分。',
   alternates: { canonical: 'https://karukamo.jp' },
 }
 
 const yakisoba = menuCategories.find((c) => c.id === 'yakisoba')!
+
+const MENU_IMAGES: Record<string, string> = {
+  yakisoba:    '/LINE_ALBUM_焼きそば_260616_1.jpg',
+  takoyaki:    '/takoyaki.png',
+  okonomiyaki: '/LINE_ALBUM_お好み焼き_260616_1.jpg',
+  crepe:       '/LINE_ALBUM_クレープ_260616_1.png',
+  taiyaki:     '/food-spread.png',
+  sweets:      '/LINE_ALBUM_アイス_260616_1.jpg',
+}
 
 export default function HomePage() {
   return (
@@ -22,17 +31,26 @@ export default function HomePage() {
       <section className="flex flex-col md:flex-row md:min-h-screen items-stretch pt-16">
 
         {/* Left — text */}
-        <div className="flex-1 flex flex-col justify-center px-8 sm:px-12 md:px-16 lg:px-24 py-16 md:py-0" style={{ backgroundColor: '#FAF3E4' }}>
+        <div
+          className="flex-1 flex flex-col justify-center px-8 sm:px-12 md:px-16 lg:px-24 py-12 md:py-0"
+          style={{ backgroundColor: '#FAF3E4' }}
+        >
           <AnimateIn delay={0.05}>
-            <p className="label mb-8">那珂湊 · Nakaminato, Ibaraki</p>
+            <span className="kd-badge mb-7">那珂湊名物</span>
 
-            <h1 className="font-serif text-[clamp(1.75rem,4.5vw,3.5rem)] leading-snug text-brown-deep mb-5">
+            <h1 className="font-serif font-bold text-[clamp(1.8rem,4.8vw,3.5rem)] leading-snug text-brown-deep mb-5">
               那珂湊で楽しむ<br />
               焼きそばと食べ歩きの店
             </h1>
 
-            <p className="font-serif text-brown text-base md:text-lg leading-loose mb-10">
-              おさかな市場から歩いて5分
+            <div className="flex items-center gap-3 mb-4">
+              <span className="block w-6 h-px bg-brand flex-shrink-0" />
+              <p className="font-serif text-brown text-sm">那珂湊おさかな市場から歩いて5分</p>
+            </div>
+
+            <p className="font-sans text-brown-light text-xs leading-loose mb-10 max-w-xs" style={{ letterSpacing: '0.03em' }}>
+              焼きそば・たこ焼き・お好み焼き・クレープまで楽しめる<br />
+              ひたちなか市のテイクアウトスタンドです
             </p>
 
             <div className="flex items-center gap-4 mb-12">
@@ -62,8 +80,8 @@ export default function HomePage() {
           </AnimateIn>
         </div>
 
-        {/* Mobile — image below text */}
-        <div className="md:hidden relative overflow-hidden aspect-[3/4]">
+        {/* Mobile — landscape image (compact height on small screens) */}
+        <div className="md:hidden relative overflow-hidden" style={{ aspectRatio: '4/3' }}>
           <Image
             src="/LINE_ALBUM_焼きそば_260616_1.jpg"
             alt="カルカモの焼きそば — 美明豚焼きそば"
@@ -89,16 +107,14 @@ export default function HomePage() {
       <section className="section-py bg-ivory border-t border-bone/40">
         <div className="max-w-screen-xl mx-auto px-8 sm:px-12 md:px-16">
 
-          <AnimateIn className="mb-14 md:mb-20">
-            <div className="flex items-end gap-5 md:gap-8">
-              <span className="section-num">01</span>
-              <div className="pb-2">
-                <p className="label mb-2">看板メニュー · Signature</p>
-                <h2 className="font-serif text-4xl md:text-6xl leading-tight text-brown-deep">
-                  那珂湊焼きそば
-                </h2>
-              </div>
+          <AnimateIn className="mb-10 md:mb-14">
+            <div className="flex items-center gap-3 mb-3">
+              <span className="block w-8 h-[2px] bg-brand flex-shrink-0" />
+              <p className="label text-brand">看板メニュー · Signature</p>
             </div>
+            <h2 className="font-serif font-bold text-3xl md:text-5xl text-brown-deep leading-tight">
+              那珂湊焼きそば
+            </h2>
           </AnimateIn>
 
           <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-start">
@@ -115,7 +131,6 @@ export default function HomePage() {
             </AnimateIn>
 
             <AnimateIn delay={0.1} className="md:pt-4">
-              <p className="label text-brand mb-3" style={{ fontSize: '9px' }}>那珂湊 · ひたちなか市</p>
               <p className="font-serif text-brown text-sm md:text-base leading-loose mb-8">
                 茨城県産ブランド豚「美明豚」を使ったボリューム満点の焼きそば。<br />
                 イカや季節の具材を合わせた一品も。<br />
@@ -124,10 +139,16 @@ export default function HomePage() {
 
               <ul>
                 {yakisoba.items.map((item, i) => (
-                  <li key={item.name} className={`py-5 flex justify-between gap-6 items-start ${i > 0 ? 'border-t border-bone/40' : ''}`}>
+                  <li
+                    key={item.name}
+                    className={`py-5 flex justify-between gap-6 items-start ${i > 0 ? 'border-t border-bone/40' : ''}`}
+                  >
                     <div>
                       {item.tag && (
-                        <span className="label text-brand border border-brand/30 px-2 py-0.5 mb-2 inline-block" style={{ fontSize: '9px' }}>
+                        <span
+                          className="label text-brand border border-brand/30 px-2 py-0.5 mb-2 inline-block"
+                          style={{ fontSize: '9px' }}
+                        >
                           {item.tag}
                         </span>
                       )}
@@ -156,32 +177,39 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ━━━━ 02 Menu ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+      {/* ━━━━ 02 Menu — with food photos ━━━━━━━━━━━━ */}
       <section className="section-py border-t border-bone/40" style={{ backgroundColor: '#FAF3E4' }}>
         <div className="max-w-screen-xl mx-auto px-8 sm:px-12 md:px-16">
 
-          <AnimateIn className="mb-14 md:mb-20">
-            <div className="flex items-end gap-5 md:gap-8">
-              <span className="section-num opacity-60">02</span>
-              <div className="pb-2">
-                <p className="label mb-2">All Items</p>
-                <h2 className="font-serif text-4xl md:text-6xl leading-tight text-brown-deep">
-                  メニュー
-                </h2>
-              </div>
+          <AnimateIn className="mb-10 md:mb-14">
+            <div className="flex items-center gap-3 mb-3">
+              <span className="block w-8 h-[2px] bg-brand flex-shrink-0" />
+              <p className="label text-brand">All Items · メニュー</p>
             </div>
+            <h2 className="font-serif font-bold text-3xl md:text-5xl text-brown-deep leading-tight">
+              メニュー一覧
+            </h2>
           </AnimateIn>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-px bg-bone/30 mb-12">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-px bg-bone/30 mb-10">
             {menuCategories.map((cat) => (
               <AnimateIn key={cat.id}>
                 <Link
                   href={`/menu#${cat.id}`}
-                  className="bg-white group block p-6 md:p-8 hover:bg-ivory transition-colors h-full"
+                  className="bg-white group block hover:opacity-90 transition-opacity h-full"
                 >
-                  <p className="label mb-2 group-hover:text-brand transition-colors">{cat.nameEn}</p>
-                  <p className="font-serif text-brown-deep text-base md:text-lg mb-2">{cat.name}</p>
-                  <p className="text-brown-light text-xs leading-relaxed line-clamp-2">{cat.description}</p>
+                  <div className="relative overflow-hidden" style={{ aspectRatio: '4/3' }}>
+                    <Image
+                      src={MENU_IMAGES[cat.id] ?? '/food-spread.png'}
+                      alt={`カルカモの${cat.name}`}
+                      fill
+                      className="object-cover object-center group-hover:scale-105 transition-transform duration-700"
+                    />
+                  </div>
+                  <div className="p-4 md:p-5">
+                    <p className="font-serif text-brown-deep text-sm mb-0.5">{cat.name}</p>
+                    <p className="text-brown-light text-xs line-clamp-1">{cat.description}</p>
+                  </div>
                 </Link>
               </AnimateIn>
             ))}
@@ -206,16 +234,16 @@ export default function HomePage() {
           <div className="grid md:grid-cols-2 gap-12 md:gap-20 items-center">
 
             <AnimateIn>
-              <div className="flex items-end gap-5 mb-10">
-                <span className="section-num opacity-60">03</span>
-                <div className="pb-2">
-                  <p className="label mb-2">About</p>
-                  <h2 className="font-serif text-3xl md:text-5xl leading-tight text-brown-deep">
-                    カルカモについて
-                  </h2>
+              <div className="mb-8">
+                <div className="flex items-center gap-3 mb-3">
+                  <span className="block w-8 h-[2px] bg-brand flex-shrink-0" />
+                  <p className="label text-brand">About · カルカモについて</p>
                 </div>
+                <h2 className="font-serif font-bold text-3xl md:text-5xl text-brown-deep leading-tight">
+                  那珂湊の<br />食べ歩きスタンド
+                </h2>
               </div>
-              <p className="font-serif text-brown text-sm md:text-base leading-loose mb-6">
+              <p className="font-serif text-brown text-sm md:text-base leading-loose mb-5">
                 茨城県ひたちなか市の港町、那珂湊。<br />
                 おさかな市場のすぐ近くに立つ、小さな食べ歩きスタンドです。
               </p>
@@ -248,19 +276,17 @@ export default function HomePage() {
       <section className="section-py border-t border-bone/40" style={{ backgroundColor: '#FAF3E4' }}>
         <div className="max-w-screen-xl mx-auto px-8 sm:px-12 md:px-16">
 
-          <AnimateIn className="mb-14 md:mb-20">
-            <div className="flex items-end gap-5 md:gap-8">
-              <span className="section-num opacity-60">04</span>
-              <div className="pb-2">
-                <p className="label mb-2">Our Promise</p>
-                <h2 className="font-serif text-3xl md:text-5xl leading-tight text-brown-deep">
-                  カルカモの3つのこだわり
-                </h2>
-              </div>
+          <AnimateIn className="mb-10 md:mb-14">
+            <div className="flex items-center gap-3 mb-3">
+              <span className="block w-8 h-[2px] bg-brand flex-shrink-0" />
+              <p className="label text-brand">Our Promise · こだわり</p>
             </div>
+            <h2 className="font-serif font-bold text-3xl md:text-5xl text-brown-deep leading-tight">
+              カルカモの3つのこだわり
+            </h2>
           </AnimateIn>
 
-          <div className="grid md:grid-cols-3 gap-8 md:gap-12">
+          <div className="grid md:grid-cols-3 gap-6 md:gap-10">
             {[
               {
                 num: '01',
@@ -279,10 +305,14 @@ export default function HomePage() {
               },
             ].map((item) => (
               <AnimateIn key={item.num}>
-                <div className="border-t-2 border-brand pt-6">
-                  <span className="font-display text-5xl leading-none block mb-5" style={{ color: '#E0CBA8' }}>{item.num}</span>
-                  <h3 className="font-serif text-brown-deep text-base md:text-lg mb-4 leading-snug">{item.title}</h3>
-                  <p className="font-serif text-brown-light text-sm leading-loose">{item.body}</p>
+                <div className="border-t-2 border-brand pt-6 pb-2">
+                  <span className="font-display text-5xl leading-none block mb-5" style={{ color: '#E0CBA8' }}>
+                    {item.num}
+                  </span>
+                  <h3 className="font-serif font-bold text-brown-deep text-sm md:text-base mb-3 leading-snug">
+                    {item.title}
+                  </h3>
+                  <p className="font-serif text-brown-light text-xs md:text-sm leading-loose">{item.body}</p>
                 </div>
               </AnimateIn>
             ))}
@@ -294,25 +324,23 @@ export default function HomePage() {
       <section className="section-py bg-ivory border-t border-bone/40">
         <div className="max-w-screen-xl mx-auto px-8 sm:px-12 md:px-16">
 
-          <AnimateIn className="mb-14 md:mb-20">
-            <div className="flex items-end gap-5 md:gap-8">
-              <span className="section-num opacity-60">05</span>
-              <div className="pb-2">
-                <p className="label mb-2">How to Find Us</p>
-                <h2 className="font-serif text-4xl md:text-6xl leading-tight text-brown-deep">
-                  アクセス
-                </h2>
-              </div>
+          <AnimateIn className="mb-10 md:mb-14">
+            <div className="flex items-center gap-3 mb-3">
+              <span className="block w-8 h-[2px] bg-brand flex-shrink-0" />
+              <p className="label text-brand">Access · アクセス</p>
             </div>
+            <h2 className="font-serif font-bold text-3xl md:text-5xl text-brown-deep leading-tight">
+              アクセス
+            </h2>
           </AnimateIn>
 
           <div className="grid md:grid-cols-2 gap-10 md:gap-16">
             <AnimateIn>
-              <dl className="space-y-0">
+              <dl className="space-y-0 mb-8">
                 {[
                   { dt: 'Store', dd: 'カルカモ' },
                   { dt: 'Address', dd: '茨城県ひたちなか市湊本町27-3' },
-                  { dt: 'Area', dd: '那珂湊 · おさかな市場から徒歩5分' },
+                  { dt: 'Area', dd: '那珂湊おさかな市場から徒歩5分' },
                   { dt: 'Hours', dd: 'Instagram をご確認ください' },
                 ].map((row, i) => (
                   <div key={row.dt} className={`flex gap-8 py-5 ${i > 0 ? 'border-t border-bone/40' : ''}`}>
@@ -322,7 +350,7 @@ export default function HomePage() {
                 ))}
               </dl>
 
-              <div className="mt-10 flex flex-col gap-4">
+              <div className="flex flex-col gap-4">
                 <a
                   href="https://maps.google.com/?q=茨城県ひたちなか市湊本町27-3"
                   target="_blank"
@@ -366,8 +394,13 @@ export default function HomePage() {
         <div className="max-w-screen-xl mx-auto px-8 sm:px-12 md:px-16">
           <AnimateIn className="flex items-center justify-between gap-8">
             <div>
-              <p className="label mb-3">Information</p>
-              <h2 className="font-serif text-2xl md:text-3xl text-brown-deep">ブログ・お知らせ</h2>
+              <div className="flex items-center gap-3 mb-3">
+                <span className="block w-6 h-[2px] bg-brand flex-shrink-0" />
+                <p className="label text-brand">Information</p>
+              </div>
+              <h2 className="font-serif font-bold text-2xl md:text-3xl text-brown-deep">
+                お知らせ・カルカモ日記
+              </h2>
             </div>
             <Link
               href="/blog"
@@ -384,15 +417,14 @@ export default function HomePage() {
       {/* ━━━━ 07 Instagram ━━━━━━━━━━━━━━━━━━━━━━━━ */}
       <section className="py-20 md:py-28 bg-brown-deep border-t border-brown">
         <AnimateIn className="text-center">
-          <div className="flex items-end justify-center gap-5 md:gap-8 mb-12">
-            <span className="font-display text-[4rem] md:text-[6rem] leading-none text-ivory/10 select-none">07</span>
-            <div className="pb-1">
-              <p className="label text-ivory/30 mb-2">Follow Us</p>
-              <h2 className="font-display font-light text-4xl md:text-6xl leading-none text-ivory">
-                INSTAGRAM
-              </h2>
-            </div>
+          <div className="flex items-center justify-center gap-4 mb-6">
+            <span className="block w-10 h-px bg-ivory/20" />
+            <p className="label text-ivory/30">Follow Us</p>
+            <span className="block w-10 h-px bg-ivory/20" />
           </div>
+          <h2 className="font-serif font-bold text-2xl md:text-4xl text-ivory mb-4">
+            Instagram で最新情報を
+          </h2>
           <p className="font-serif text-ivory/50 text-sm mb-10">
             営業日・最新メニュー・おすすめ情報を毎日発信中
           </p>

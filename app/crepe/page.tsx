@@ -73,13 +73,13 @@ export default function CrepePage() {
               ]}
             />
             <div className="mt-6">
-              <p className="label mb-4">Crepe & Takeout Stand</p>
+              <p className="label mb-4">Sweets · Dessert</p>
               <h1 className="font-display font-light text-5xl md:text-7xl lg:text-8xl leading-none text-brown-deep mb-6">
                 CREPE
               </h1>
               <div className="flex items-center gap-4">
                 <span className="rule flex-shrink-0" />
-                <p className="label">ひたちなか市・那珂湊のクレープ専門スタンド</p>
+                <p className="label">ひたちなか市・那珂湊のスイーツ食べ歩き</p>
               </div>
             </div>
           </AnimateIn>
@@ -91,13 +91,14 @@ export default function CrepePage() {
         <div className="max-w-screen-xl mx-auto px-8 sm:px-12 md:px-16">
           <div className="grid md:grid-cols-2 gap-12 md:gap-20 items-center">
             <AnimateIn>
-              <p className="label mb-4 text-brand">Main Product</p>
+              <p className="label mb-4 text-brand">Sweets · デザート</p>
               <h2 className="font-display font-light text-4xl md:text-5xl text-brown-deep leading-none mb-8">
                 カルカモのクレープ
               </h2>
               <p className="font-serif text-brown text-sm leading-loose mb-5">
-                那珂湊の港町に息づく小さなスタンド、カルカモ。その看板メニューがクレープです。
-                薄く焼き上げたもちもちの生地に、たっぷりの生クリームとみずみずしいフルーツをくるりと包み込む。
+                那珂湊の港町に息づく小さなスタンド、カルカモ。
+                薄く焼き上げたもちもちの生地に、たっぷりの生クリームとみずみずしいフルーツをくるりと包み込む、
+                食べ歩きにぴったりのスイーツメニューです。
                 一口ほおばった瞬間に広がる、やさしくて豊かな甘さ。
               </p>
               <p className="font-serif text-brown text-sm leading-loose mb-5">

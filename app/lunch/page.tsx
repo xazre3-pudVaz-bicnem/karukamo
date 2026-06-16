@@ -80,8 +80,7 @@ export default function LunchPage() {
               </h2>
               <p className="font-serif text-brown text-sm leading-loose mb-5">
                 ひたちなか市・那珂湊でランチをお探しの方へ、テイクアウト専門スタンド「カルカモ」のグルメをご紹介します。
-                スイーツだけのイメージがあるかもしれませんが、
-                お好み焼き・焼きそば・たこ焼きといった食事系メニューも充実しており、
+                焼きそば・お好み焼き・たこ焼きといった食事系メニューが充実しており、
                 ランチとして十分なボリュームと満足感を提供しています。
               </p>
               <p className="font-serif text-brown text-sm leading-loose mb-5">
@@ -121,20 +120,20 @@ export default function LunchPage() {
           <div className="grid md:grid-cols-3 gap-px bg-bone/30">
             {[
               {
-                href: '/okonomiyaki',
-                en: 'Okonomiyaki',
-                name: 'お好み焼き',
-                price: '¥500〜',
-                desc: 'ふんわり生地に具材たっぷりのお好み焼き。豚玉・イカ玉・ツナマヨ・明太もちチーズの4種類から選べます。ランチとして食べ応えのある一品。',
-                img: '/okonomiyaki.png',
-              },
-              {
                 href: '/yakisoba',
                 en: 'Yakisoba',
                 name: '焼きそば',
                 price: '¥500〜',
                 desc: '地元ブランド「美明豚」使用の焼きそば。ガッツリ食べたい日のランチに最適。からしマヨがけや、ふわふわ卵を乗せたオム焼きそばも人気。',
-                img: '/yakisoba.png',
+                img: '/LINE_ALBUM_焼きそば_260616_2.jpg',
+              },
+              {
+                href: '/okonomiyaki',
+                en: 'Okonomiyaki',
+                name: 'お好み焼き',
+                price: '¥500〜',
+                desc: 'ふんわり生地に具材たっぷりのお好み焼き。豚玉・イカ玉・ツナマヨ・明太もちチーズの4種類から選べます。ランチとして食べ応えのある一品。',
+                img: '/LINE_ALBUM_お好み焼き_260616_1.jpg',
               },
               {
                 href: '/takoyaki',
@@ -273,7 +272,7 @@ export default function LunchPage() {
                 {[
                   { dt: 'Store', dd: 'カルカモ' },
                   { dt: 'Address', dd: '茨城県ひたちなか市湊本町27-3' },
-                  { dt: 'Area', dd: '那珂湊エリア' },
+                  { dt: 'Area', dd: '那珂湊おさかな市場から徒歩5分' },
                   { dt: 'Hours', dd: 'Instagramをご確認ください' },
                 ].map((row, i) => (
                   <div key={row.dt} className={`flex gap-8 py-5 ${i > 0 ? 'border-t border-bone/40' : ''}`}>

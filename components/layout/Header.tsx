@@ -79,9 +79,10 @@ export function Header() {
 
       {/* Mobile overlay */}
       <div
-        className={`fixed inset-0 z-40 bg-white transition-opacity duration-300 ${
+        className={`fixed inset-0 z-40 transition-opacity duration-300 ${
           open ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
         }`}
+        style={{ backgroundColor: '#FAF3E4' }}
       >
         <div className="flex flex-col items-center justify-center h-full gap-1 pt-16">
           {[{ href: '/', label: 'Top' }, ...navItems].map((item) => (

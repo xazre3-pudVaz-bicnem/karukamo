@@ -3,7 +3,7 @@
 @theme {
   /* ── Warm local shop palette ── */
   --color-paper:       #FAF3E4;   /* main background — warm paper cream */
-  --color-white:       #FFFFFF;   /* true white for header / cards */
+  --color-white:       #FFFFFF;   /* true white for header */
   --color-ivory:       #EEE2C6;   /* warm cream — alternate sections */
   --color-ivory-dark:  #E0CBA8;   /* warm beige */
   --color-bone:        #B09265;   /* warm sand-brown border */
@@ -24,8 +24,11 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Paper texture via dot pattern */
 body {
   background-color: #FAF3E4;
+  background-image: radial-gradient(circle, rgba(176, 146, 101, 0.14) 1px, transparent 1px);
+  background-size: 22px 22px;
   color: #46362A;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -38,13 +41,13 @@ body {
 
 /* ── Section spacing ── */
 .section-py {
-  padding-top: 6rem;
-  padding-bottom: 6rem;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
 }
 @media (min-width: 768px) {
   .section-py {
-    padding-top: 9rem;
-    padding-bottom: 9rem;
+    padding-top: 8rem;
+    padding-bottom: 8rem;
   }
 }
 
@@ -64,7 +67,7 @@ body {
   background: #B09265;
 }
 
-/* ── Section number display ── */
+/* ── Section number display (keep for legacy usage) ── */
 .section-num {
   font-family: var(--font-cormorant), 'Cormorant Garamond', Georgia, serif;
   font-size: clamp(5rem, 10vw, 8rem);
@@ -72,6 +75,19 @@ body {
   color: #E0CBA8;
   user-select: none;
   letter-spacing: -0.02em;
+}
+
+/* ── Warm badge/stamp style ── */
+.kd-badge {
+  display: inline-block;
+  border: 2px solid #C8400A;
+  color: #C8400A;
+  padding: 2px 10px;
+  font-family: var(--font-noto-sans), sans-serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  transform: rotate(-1deg);
 }
 
 /* ── Photo containers ── */

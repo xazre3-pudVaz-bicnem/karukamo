@@ -7,9 +7,9 @@ import { RelatedPages } from '@/components/ui/RelatedPages'
 import { menuCategories } from '@/data/menu'
 
 export const metadata: Metadata = {
-  title: 'ひたちなか市・那珂湊でテイクアウトならカルカモ｜クレープ・たこ焼き・お好み焼き',
+  title: 'ひたちなか市・那珂湊のテイクアウトならカルカモ｜焼きそば・たこ焼き・お好み焼き',
   description:
-    'ひたちなか市・那珂湊でテイクアウトを楽しむならカルカモ。クレープ・アイス・たこ焼き・お好み焼き・焼きそばが揃う食べ歩きグルメスタンド。那珂湊観光・ドライブ・ランチにも最適。営業日はInstagramをご確認ください。',
+    'ひたちなか市・那珂湊でテイクアウトを楽しむならカルカモ。焼きそば・たこ焼き・お好み焼き・クレープ・アイスが揃う食べ歩きグルメスタンド。那珂湊観光・ドライブ・ランチにも最適。営業日はInstagramをご確認ください。',
   keywords: [
     'ひたちなか市 テイクアウト', '那珂湊 テイクアウト', 'カルカモ テイクアウト',
     'ひたちなか市 食べ歩き', '那珂湊 食べ歩き', '茨城 テイクアウト グルメ',
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     title: 'ひたちなか市・那珂湊のテイクアウト特集 | カルカモ',
-    description: 'クレープ・アイス・たこ焼き・お好み焼き・焼きそばが揃う食べ歩きグルメスタンド。那珂湊観光に。',
+    description: '焼きそば・たこ焼き・お好み焼き・クレープ・アイスが揃う食べ歩きグルメスタンド。那珂湊観光に。',
     url: 'https://karukamo.jp/takeout',
     images: [{ url: '/og-image.jpg', width: 1200, height: 630 }],
     locale: 'ja_JP',
@@ -40,7 +40,7 @@ const structuredData = [
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
     name: 'カルカモ',
-    description: 'ひたちなか市・那珂湊のクレープ＆テイクアウトスタンド',
+    description: 'ひたちなか市・那珂湊の焼きそば＆テイクアウトスタンド',
     address: {
       '@type': 'PostalAddress',
       streetAddress: '湊本町27-3',
@@ -48,7 +48,7 @@ const structuredData = [
       addressRegion: '茨城県',
       addressCountry: 'JP',
     },
-    servesCuisine: ['クレープ', 'アイスクリーム', 'たこ焼き', 'お好み焼き', '焼きそば'],
+    servesCuisine: ['焼きそば', 'たこ焼き', 'お好み焼き', 'クレープ', 'アイスクリーム'],
     hasMenu: 'https://karukamo.jp/menu',
     url: 'https://karukamo.jp',
     sameAs: ['https://www.instagram.com/karukamo.2384/'],
@@ -103,8 +103,8 @@ export default function TakeoutPage() {
               </h2>
               <p className="font-serif text-brown text-sm leading-loose mb-5">
                 カルカモは、茨城県ひたちなか市湊本町に立つテイクアウト専門のグルメスタンドです。
-                クレープ・アイスクリーム・たこ焼き・お好み焼き・焼きそばと、
-                スイーツから食事系まで幅広いメニューが揃っているのが最大の特徴。
+                焼きそば・たこ焼き・お好み焼き・クレープ・アイスクリームと、
+                食事系からスイーツまで幅広いメニューが揃っているのが最大の特徴。
               </p>
               <p className="font-serif text-brown text-sm leading-loose mb-5">
                 那珂湊おさかな市場周辺の食べ歩きエリアに立地しており、
@@ -144,18 +144,11 @@ export default function TakeoutPage() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-bone/30">
             {[
               {
-                href: '/crepe',
-                en: 'Crepe',
-                name: 'クレープ',
-                desc: 'もちもち生地に生クリームとフルーツ。カルカモの看板メニュー。季節限定フレーバーも人気。',
-                img: '/crepe-stand.png',
-              },
-              {
-                href: '/sweets',
-                en: 'Sweets',
-                name: 'アイス・スイーツ',
-                desc: '名物ふぐもなかアイスをはじめ、バニラ・抹茶・ラムネなど豊富なアイス。たい焼きも。',
-                img: '/softcream.png',
+                href: '/yakisoba',
+                en: 'Yakisoba',
+                name: '焼きそば',
+                desc: '地元ブランド「美明豚」使用。美明豚焼きそば・イカ焼きそば・オム焼きそばなど。',
+                img: '/LINE_ALBUM_焼きそば_260616_1.jpg',
               },
               {
                 href: '/takoyaki',
@@ -169,14 +162,21 @@ export default function TakeoutPage() {
                 en: 'Okonomiyaki',
                 name: 'お好み焼き',
                 desc: 'ふんわり生地に具材たっぷり。豚玉・イカ玉・明太もちチーズなど4種類。',
-                img: '/okonomiyaki.png',
+                img: '/LINE_ALBUM_お好み焼き_260616_1.jpg',
               },
               {
-                href: '/yakisoba',
-                en: 'Yakisoba',
-                name: '焼きそば',
-                desc: '地元ブランド「美明豚」使用。美明豚焼きそば・イカ焼きそば・オム焼きそばなど。',
-                img: '/yakisoba.png',
+                href: '/crepe',
+                en: 'Crepe',
+                name: 'クレープ',
+                desc: 'もちもち生地に生クリームとフルーツ。季節限定フレーバーも人気。',
+                img: '/LINE_ALBUM_クレープ_260616_1.png',
+              },
+              {
+                href: '/sweets',
+                en: 'Sweets',
+                name: 'アイス・スイーツ',
+                desc: '名物ふぐもなかアイスをはじめ、バニラ・抹茶・ラムネなど豊富なアイス。たい焼きも。',
+                img: '/LINE_ALBUM_アイス_260616_1.jpg',
               },
             ].map((item) => (
               <AnimateIn key={item.href} className="bg-white">
@@ -318,7 +318,7 @@ export default function TakeoutPage() {
               {[
                 { dt: 'Store', dd: 'カルカモ' },
                 { dt: 'Address', dd: '茨城県ひたちなか市湊本町27-3' },
-                { dt: 'Area', dd: '那珂湊エリア' },
+                { dt: 'Area', dd: '那珂湊おさかな市場から徒歩5分' },
                 { dt: 'Hours', dd: 'Instagramをご確認ください' },
               ].map((row, i) => (
                 <div key={row.dt} className={`flex gap-8 py-5 ${i > 0 ? 'border-t border-bone/40' : ''}`}>
