@@ -34,12 +34,17 @@ body {
 ::-webkit-scrollbar-thumb { background: #B09265; border-radius: 2px; }
 
 /* ── Hero entrance animations (CSS-only, no JS needed) ── */
-@keyframes heroFadeInScale {
-  from { opacity: 0; transform: scale(0.93); }
-  to   { opacity: 1; transform: scale(1); }
+
+/* Background image: slow zoom-out for cinematic feel */
+@keyframes heroBgZoom {
+  from { transform: scale(1.18); }
+  to   { transform: scale(1.03); }
 }
+.hero-bg { animation: heroBgZoom 3.2s cubic-bezier(0.22, 1, 0.36, 1) both; }
+
+/* Big text sweep up */
 @keyframes heroFadeInUp {
-  from { opacity: 0; transform: translateY(22px); }
+  from { opacity: 0; transform: translateY(80px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 @keyframes heroFadeIn {
@@ -47,12 +52,10 @@ body {
   to   { opacity: 1; }
 }
 
-.hero-photo      { animation: heroFadeInScale 1s cubic-bezier(0.22,1,0.36,1) both; }
-.hero-ring       { animation: heroFadeIn 0.9s ease both; animation-delay: 0.35s; }
-.hero-catchphrase { animation: heroFadeInUp 0.8s cubic-bezier(0.22,1,0.36,1) both; animation-delay: 0.2s; }
-.hero-left-vert  { animation: heroFadeIn 0.8s ease both; animation-delay: 0.65s; }
-.hero-right-vert { animation: heroFadeIn 0.8s ease both; animation-delay: 0.8s; }
-.hero-scroll     { animation: heroFadeIn 0.8s ease both; animation-delay: 1.4s; }
+.hero-catchphrase { animation: heroFadeInUp 1.1s cubic-bezier(0.22, 1, 0.36, 1) both; animation-delay: 0.45s; }
+.hero-left-vert   { animation: heroFadeIn  1s ease both; animation-delay: 0.95s; }
+.hero-right-vert  { animation: heroFadeIn  1s ease both; animation-delay: 1.15s; }
+.hero-scroll      { animation: heroFadeIn  1s ease both; animation-delay: 1.6s; }
 
 /* scroll line pulse */
 @keyframes scrollPulse {

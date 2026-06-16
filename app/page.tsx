@@ -86,124 +86,91 @@ export default function HomePage() {
   return (
     <>
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-          HERO — 参考サイト構成：丸型写真・縦書き・マーキー
+          HERO — 全面写真背景・ド迫力テキスト
       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
-      <section
-        className="relative overflow-hidden"
-        style={{ height: '100svh', paddingTop: '64px' }}
-      >
-        {/* Background ivory circle decoration */}
-        <div className="absolute -top-24 -right-24 w-[460px] h-[460px] rounded-full bg-ivory/55 pointer-events-none" aria-hidden="true" />
-        <div className="absolute bottom-20 -left-16 w-48 h-48 rounded-full bg-brand/5 pointer-events-none" aria-hidden="true" />
+      <section className="relative overflow-hidden" style={{ height: '100svh' }}>
 
-        {/* ── Left vertical text ── */}
-        <div className="absolute left-3 md:left-7 top-0 bottom-12 flex flex-col justify-center items-center pointer-events-none hero-left-vert">
-          <div className="flex flex-col items-center gap-2.5">
-            {['や', 'き', 'そ', 'ば'].map((c, i) => (
-              <span key={i} className="font-serif text-[12px] md:text-sm text-brand font-bold"
-                style={{ letterSpacing: 0 }}>{c}</span>
-            ))}
-            <div className="w-px h-5 bg-bone/40 my-1" />
-            {['た', 'こ'].map((c, i) => (
-              <span key={i} className="font-serif text-[10px] text-brown/30">{c}</span>
-            ))}
-            <div className="w-px h-4 bg-bone/30 my-1" />
-            {['お', 'こ', 'の', 'み'].map((c, i) => (
-              <span key={i} className="font-serif text-[10px] text-brown/25">{c}</span>
-            ))}
-          </div>
+        {/* ── Full-bleed background image with cinematic zoom ── */}
+        <div className="hero-bg absolute inset-0">
+          <Image
+            src="/LINE_ALBUM_焼きそば_260616_1.jpg"
+            alt="那珂湊の美明豚焼きそば — カルカモ"
+            fill
+            className="object-cover object-center"
+            priority
+          />
         </div>
 
-        {/* ── Main content ── */}
+        {/* ── Gradient overlay ── */}
         <div
-          className="relative flex flex-col md:flex-row items-center justify-center gap-6 md:gap-10 lg:gap-16 px-10 md:px-14"
-          style={{ height: 'calc(100svh - 64px - 48px)' }}
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background:
+              'linear-gradient(to bottom, rgba(10,6,2,0.62) 0%, rgba(10,6,2,0.12) 42%, rgba(10,6,2,0.75) 100%)',
+          }}
+        />
+
+        {/* ── Left vertical text ── */}
+        <div
+          className="absolute hero-left-vert pointer-events-none flex flex-col items-center justify-center gap-2"
+          style={{ left: '1rem', top: '72px', bottom: '48px' }}
         >
-          {/* Catchphrase — mobile: top / desktop: left */}
-          <div className="hero-catchphrase text-center md:text-left flex-shrink-0 md:max-w-[260px] lg:max-w-xs">
-            <p className="label text-brand mb-3" style={{ letterSpacing: '0.35em' }}>
-              那珂湊 · Nakaminato
-            </p>
-            <h1
-              className="font-serif font-bold leading-snug text-brown-deep mb-4 md:mb-6"
-              style={{ fontSize: 'clamp(1.45rem, 4.5vw, 2.7rem)' }}
-            >
-              那珂湊で楽しむ<br />
-              焼きそばと<br />
-              食べ歩きの店
-            </h1>
-            <div className="hidden md:flex items-center gap-3">
-              <span className="block w-5 h-px bg-brand flex-shrink-0" />
-              <p className="font-serif text-brown text-sm">おさかな市場から歩いて5分</p>
-            </div>
-          </div>
+          {['や', 'き', 'そ', 'ば'].map((c, i) => (
+            <span key={i} className="font-serif text-sm text-white font-bold" style={{ letterSpacing: 0 }}>{c}</span>
+          ))}
+          <div className="w-px h-5 bg-white/15 my-1" />
+          {['た', 'こ'].map((c, i) => (
+            <span key={i} className="font-serif text-xs text-white/35">{c}</span>
+          ))}
+          <div className="w-px h-4 bg-white/10 my-1" />
+          {['お', 'こ', 'の', 'み'].map((c, i) => (
+            <span key={i} className="font-serif text-xs text-white/20">{c}</span>
+          ))}
+        </div>
 
-          {/* ── Oval / circle yakisoba photo ── */}
-          <div
-            className="hero-photo relative flex-shrink-0"
-            style={{ width: 'clamp(220px, 58vw, 400px)', height: 'clamp(270px, 72vw, 500px)' }}
+        {/* ── Center content ── */}
+        <div
+          className="absolute inset-x-0 flex flex-col items-center justify-center text-center px-16 md:px-24"
+          style={{ top: '64px', bottom: '48px' }}
+        >
+          <p
+            className="hero-catchphrase label text-white/45 mb-5"
+            style={{ letterSpacing: '0.45em', fontSize: '0.6rem' }}
           >
-            {/* Steam animation above photo */}
-            <div className="absolute -top-9 left-1/2 -translate-x-1/2 pointer-events-none">
-              <SteamSVG />
-            </div>
+            那珂湊 · Nakaminato · Ibaraki
+          </p>
 
-            {/* Decorative outer ring (delayed fade-in) */}
-            <div
-              className="hero-ring absolute border-2 border-brand/20 pointer-events-none"
-              style={{
-                inset: '-10px',
-                borderRadius: '50%',
-              }}
-            />
+          <h1
+            className="hero-catchphrase font-serif font-bold text-white"
+            style={{
+              fontSize: 'clamp(2.8rem, 10vw, 7.5rem)',
+              lineHeight: 1.1,
+              textShadow: '0 6px 40px rgba(0,0,0,0.55)',
+              animationDelay: '0.55s',
+            }}
+          >
+            那珂湊で楽しむ<br />
+            焼きそばと<br />
+            食べ歩きの店
+          </h1>
 
-            {/* Oval image container */}
-            <div
-              className="relative w-full h-full overflow-hidden"
-              style={{ borderRadius: '50%' }}
-            >
-              <Image
-                src="/LINE_ALBUM_焼きそば_260616_1.jpg"
-                alt="那珂湊の美明豚焼きそば — カルカモ"
-                fill
-                className="object-cover object-center"
-                style={{ transform: 'scale(1.08)' }}
-                priority
-              />
-            </div>
-
-            {/* Small "那珂湊名物" stamp badge */}
-            <div
-              className="absolute -bottom-2 -right-2 md:bottom-2 md:right-0 bg-brand text-white font-sans text-[9px] px-2.5 py-1.5"
-              style={{ letterSpacing: '0.2em', transform: 'rotate(2deg)' }}
-            >
-              那珂湊名物
-            </div>
-          </div>
-
-          {/* Mobile subtitle below photo */}
-          <div className="md:hidden hero-catchphrase">
-            <div className="flex items-center gap-2.5 justify-center">
-              <span className="block w-4 h-px bg-brand" />
-              <p className="font-serif text-brown text-xs">おさかな市場から歩いて5分</p>
-              <span className="block w-4 h-px bg-brand" />
-            </div>
+          <div
+            className="hero-scroll flex flex-col items-center mt-10 md:mt-16"
+            style={{ animationDelay: '1.6s' }}
+          >
+            <span className="label text-white/25" style={{ fontSize: '8px', letterSpacing: '0.4em' }}>SCROLL</span>
+            <div className="w-px h-10 bg-white/20 mt-2 scroll-line" />
           </div>
         </div>
 
         {/* ── Right vertical text ── */}
-        <div className="absolute right-3 md:right-7 top-0 bottom-12 flex flex-col justify-center items-center pointer-events-none hero-right-vert">
-          <div className="flex flex-col items-center gap-2">
-            {['茨', '城', '·', '那', '珂', '湊'].map((c, i) => (
-              <span key={i} className="font-serif text-[10px] md:text-xs text-brown/35">{c}</span>
-            ))}
-          </div>
-        </div>
-
-        {/* ── Scroll indicator ── */}
-        <div className="absolute bottom-14 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 hero-scroll pointer-events-none">
-          <span className="label text-brown/25" style={{ fontSize: '8px', letterSpacing: '0.35em' }}>SCROLL</span>
-          <div className="w-px h-7 bg-brown/20 scroll-line" />
+        <div
+          className="absolute hero-right-vert pointer-events-none flex flex-col items-center justify-center gap-2"
+          style={{ right: '1rem', top: '72px', bottom: '48px' }}
+        >
+          {['茨', '城', '·', '那', '珂', '湊'].map((c, i) => (
+            <span key={i} className="font-serif text-xs text-white/25">{c}</span>
+          ))}
         </div>
 
         {/* ── Orange marquee strip ── */}
