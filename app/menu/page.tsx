@@ -23,18 +23,18 @@ const CATEGORY_HREFS: Record<string, string> = {
 }
 
 const CATEGORY_IMAGES: Record<string, { src: string; alt: string }> = {
-  crepe:       { src: '/crepe-closeup.png', alt: 'カルカモのクレープ' },
-  sweets:      { src: '/softcream.png',     alt: 'カルカモのソフトクリーム' },
-  taiyaki:     { src: '/food-spread.png',   alt: 'カルカモのメニュー全体' },
-  takoyaki:    { src: '/takoyaki.png',      alt: 'カルカモのたこ焼き' },
-  okonomiyaki: { src: '/okonomiyaki.png',   alt: 'カルカモのお好み焼き' },
-  yakisoba:    { src: '/yakisoba.png',       alt: 'カルカモの焼きそば' },
+  yakisoba:    { src: '/LINE_ALBUM_焼きそば_260616_1.jpg',    alt: 'カルカモの美明豚焼きそば' },
+  takoyaki:    { src: '/takoyaki.png',                        alt: 'カルカモのたこ焼き' },
+  okonomiyaki: { src: '/LINE_ALBUM_お好み焼き_260616_1.jpg',  alt: 'カルカモのお好み焼き' },
+  crepe:       { src: '/LINE_ALBUM_クレープ_260616_1.png',    alt: 'カルカモのクレープ' },
+  taiyaki:     { src: '/food-spread.png',                     alt: 'カルカモのメニュー全体' },
+  sweets:      { src: '/LINE_ALBUM_アイス_260616_1.jpg',      alt: 'カルカモのアイス' },
 }
 
 export const metadata: Metadata = {
-  title: 'Menu | カルカモ — 那珂湊のクレープ&テイクアウト',
+  title: 'Menu | カルカモ — 那珂湊の焼きそば&テイクアウト',
   description:
-    'カルカモのメニュー一覧。クレープ・スイーツ・たい焼き・たこ焼き・お好み焼き・焼きそば。茨城県ひたちなか市那珂湊のテイクアウトスタンド。',
+    'カルカモのメニュー一覧。美明豚焼きそば・たこ焼き・お好み焼き・クレープ・アイス・たい焼き。茨城県ひたちなか市那珂湊のテイクアウトスタンド。',
   alternates: { canonical: 'https://karukamo.jp/menu' },
 }
 

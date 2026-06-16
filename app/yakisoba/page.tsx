@@ -62,23 +62,23 @@ export default function YakisobaPage() {
       />
 
       {/* ━━━━ Page Header ━━━━━━━━━━━━━━━━━━━━━━━━ */}
-      <section className="pt-32 pb-16 md:pt-40 md:pb-20 bg-white border-b border-bone/40">
+      <section className="pt-32 pb-16 md:pt-40 md:pb-20 border-b border-bone/40" style={{ backgroundColor: '#FAF3E4' }}>
         <div className="max-w-screen-xl mx-auto px-8 sm:px-12 md:px-16">
           <AnimateIn>
             <Breadcrumb
               items={[
                 { label: 'Home', href: '/' },
-                { label: 'Yakisoba' },
+                { label: '焼きそば' },
               ]}
             />
             <div className="mt-6">
-              <p className="label mb-4">Savory Food</p>
-              <h1 className="font-display font-light text-5xl md:text-7xl lg:text-8xl leading-none text-brown-deep mb-6">
-                YAKISOBA
+              <p className="label mb-4">那珂湊の看板メニュー · Signature</p>
+              <h1 className="font-serif text-4xl md:text-6xl lg:text-7xl leading-tight text-brown-deep mb-6">
+                那珂湊焼きそば
               </h1>
               <div className="flex items-center gap-4">
                 <span className="rule flex-shrink-0" />
-                <p className="label">焼きそば — 美明豚使用 | ひたちなか市・那珂湊</p>
+                <p className="label">美明豚使用 · ひたちなか市・那珂湊</p>
               </div>
             </div>
           </AnimateIn>
@@ -114,7 +114,7 @@ export default function YakisobaPage() {
             <AnimateIn delay={0.1}>
               <div className="photo-portrait">
                 <Image
-                  src="/yakisoba.png"
+                  src="/LINE_ALBUM_焼きそば_260616_3.jpg"
                   alt="カルカモの焼きそば — 美明豚使用 | ひたちなか市・那珂湊"
                   fill
                   className="object-cover object-center"
@@ -126,7 +126,7 @@ export default function YakisobaPage() {
       </section>
 
       {/* ━━━━ Bimei Pork ━━━━━━━━━━━━━━━━━━━━━━━━ */}
-      <section className="section-py bg-white border-b border-bone/40">
+      <section className="section-py border-b border-bone/40" style={{ backgroundColor: '#FAF3E4' }}>
         <div className="max-w-screen-xl mx-auto px-8 sm:px-12 md:px-16">
           <AnimateIn className="mb-12 md:mb-16">
             <p className="label mb-4">Local Brand</p>

@@ -20,7 +20,7 @@ export function Footer() {
               <span className="font-display text-base tracking-[0.18em] text-ivory/80 uppercase">Karukamo</span>
             </div>
             <p className="text-xs leading-loose">
-              Crepe &amp; Takeout Stand<br />
+              焼きそば&amp;食べ歩きの店<br />
               那珂湊、ひたちなか市
             </p>
             <a
@@ -59,11 +59,11 @@ export function Footer() {
             <p className="label text-ivory/30">Menu</p>
             <ul className="space-y-3">
               {[
-                { href: '/crepe', label: 'クレープ' },
-                { href: '/sweets', label: 'アイス・スイーツ' },
+                { href: '/yakisoba', label: '焼きそば' },
                 { href: '/takoyaki', label: 'たこ焼き' },
                 { href: '/okonomiyaki', label: 'お好み焼き' },
-                { href: '/yakisoba', label: '焼きそば' },
+                { href: '/crepe', label: 'クレープ' },
+                { href: '/sweets', label: 'アイス・スイーツ' },
               ].map((link) => (
                 <li key={link.href}>
                   <Link href={link.href} className="text-xs hover:text-ivory/80 transition-colors">

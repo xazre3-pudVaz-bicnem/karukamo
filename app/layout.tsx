@@ -31,17 +31,17 @@ export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? 'https://karukamo.jp'),
   title: {
     template: '%s | カルカモ',
-    default: 'カルカモ | 那珂湊のクレープ&テイクアウトスタンド',
+    default: 'カルカモ | 那珂湊の焼きそば&食べ歩きスタンド',
   },
   description:
-    'ひたちなか市・那珂湊のクレープ＆テイクアウトスタンド「カルカモ」。クレープ・アイス・たこ焼き・お好み焼き・焼きそばなど。',
+    'ひたちなか市・那珂湊の焼きそば＆テイクアウトスタンド「カルカモ」。美明豚焼きそば・クレープ・たこ焼き・お好み焼きなど。おさかな市場から歩いて5分。',
   keywords: [
-    'カルカモ', 'ひたちなか市', '那珂湊', 'クレープ', 'テイクアウト',
-    'たこ焼き', 'お好み焼き', 'アイス', 'たい焼き',
+    'カルカモ', '那珂湊 焼きそば', 'ひたちなか市 焼きそば', '美明豚 焼きそば',
+    '那珂湊', 'ひたちなか市', 'テイクアウト', 'たこ焼き', 'お好み焼き', 'クレープ',
   ],
   openGraph: {
-    title: 'カルカモ | 那珂湊のクレープ&テイクアウトスタンド',
-    description: 'ひたちなか市・那珂湊のクレープ＆テイクアウトスタンド。',
+    title: 'カルカモ | 那珂湊の焼きそば&食べ歩きスタンド',
+    description: 'ひたちなか市・那珂湊の焼きそば＆テイクアウトスタンド。おさかな市場から歩いて5分。',
     url: 'https://karukamo.jp',
     siteName: 'カルカモ',
     locale: 'ja_JP',
@@ -57,7 +57,7 @@ const structuredData = [
     '@type': ['FoodEstablishment', 'LocalBusiness'],
     '@id': 'https://karukamo.jp/#business',
     name: 'カルカモ',
-    description: 'ひたちなか市・那珂湊のクレープ＆テイクアウトスタンド。クレープ・アイス・たこ焼き・お好み焼き・焼きそばが揃う食べ歩きグルメスタンド。',
+    description: 'ひたちなか市・那珂湊の焼きそば＆テイクアウトスタンド。美明豚焼きそば・クレープ・たこ焼き・お好み焼きなど。那珂湊おさかな市場から徒歩5分の食べ歩きグルメスタンド。',
     address: {
       '@type': 'PostalAddress',
       streetAddress: '湊本町27-3',
@@ -74,14 +74,14 @@ const structuredData = [
     hasMap: 'https://maps.google.com/?q=茨城県ひたちなか市湊本町27-3',
     url: 'https://karukamo.jp',
     sameAs: ['https://www.instagram.com/karukamo.2384/'],
-    servesCuisine: ['クレープ', 'アイスクリーム', 'たい焼き', 'たこ焼き', 'お好み焼き', '焼きそば'],
+    servesCuisine: ['焼きそば', 'たこ焼き', 'お好み焼き', 'クレープ', 'たい焼き', 'アイスクリーム'],
     priceRange: '¥',
     hasMenu: 'https://karukamo.jp/menu',
     areaServed: [
       { '@type': 'City', name: 'ひたちなか市' },
       { '@type': 'Place', name: '那珂湊' },
     ],
-    keywords: 'ひたちなか市 テイクアウト, 那珂湊 クレープ, 那珂湊 テイクアウト, ひたちなか市 クレープ',
+    keywords: '那珂湊 焼きそば, ひたちなか市 焼きそば, 美明豚 焼きそば, 那珂湊 テイクアウト, ひたちなか市 テイクアウト',
   },
   {
     '@context': 'https://schema.org',
@@ -98,7 +98,7 @@ const structuredData = [
     '@id': 'https://karukamo.jp/#website',
     url: 'https://karukamo.jp',
     name: 'カルカモ',
-    description: 'ひたちなか市・那珂湊のクレープ＆テイクアウトスタンド',
+    description: 'ひたちなか市・那珂湊の焼きそば＆テイクアウトスタンド',
     inLanguage: 'ja',
   },
 ]
@@ -115,7 +115,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           />
         ))}
       </head>
-      <body className="font-sans bg-white">
+      <body className="font-sans">
         <Header />
         <main>{children}</main>
         <Footer />
