@@ -9,7 +9,7 @@ export const revalidate = 3600
 export const metadata: Metadata = {
   title: 'カルカモ | 那珂湊の焼きそば&食べ歩きスタンド',
   description:
-    '茨城県ひたちなか市・那珂湊の焼きそば＆テイクアウトスタンド「カルカモ」。美明豚焼きそば・たこ焼き・お好み焼き・クレープなど。おさかな市場から歩いて5分。',
+    '茨城県ひたちなか市・那珂湊の焼きそば＆テイクアウトスタンド「カルカモ」。美明豚焼きそば・たこ焼き・お好み焼き・クレープ・たい焼き・アイスなど。おさかな市場から歩いて5分。',
   alternates: { canonical: 'https://karukamo.jp' },
 }
 
@@ -20,94 +20,270 @@ const MENU_IMAGES: Record<string, string> = {
   takoyaki:    '/takoyaki.png',
   okonomiyaki: '/LINE_ALBUM_お好み焼き_260616_1.jpg',
   crepe:       '/LINE_ALBUM_クレープ_260616_1.png',
-  taiyaki:     '/food-spread.png',
+  taiyaki:     '/LINE_ALBUM_たい焼き_260616_1.jpg',
   sweets:      '/LINE_ALBUM_アイス_260616_1.jpg',
+}
+
+const MENU_HREFS: Record<string, string> = {
+  yakisoba: '/yakisoba', takoyaki: '/takoyaki', okonomiyaki: '/okonomiyaki',
+  crepe: '/crepe', taiyaki: '/sweets', sweets: '/sweets',
+}
+
+/* ── Marquee strip items ── */
+const MARQUEE_ITEMS = ['焼きそば', 'たこ焼き', 'お好み焼き', 'クレープ', 'たい焼き', 'アイス', '那珂湊', '食べ歩き']
+
+function MarqueeStrip() {
+  return (
+    <div className="absolute bottom-0 left-0 right-0 h-12 bg-brand overflow-hidden flex items-center" aria-hidden="true">
+      <div className="marquee-track flex items-center whitespace-nowrap select-none">
+        {[0, 1].map((n) => (
+          <span key={n} className="flex items-center">
+            {MARQUEE_ITEMS.map((item) => (
+              <span key={item} className="inline-flex items-center">
+                <span className="text-white font-sans text-xs px-5 md:px-7" style={{ letterSpacing: '0.2em' }}>{item}</span>
+                <span className="text-white/35 text-[10px]">·</span>
+              </span>
+            ))}
+          </span>
+        ))}
+      </div>
+    </div>
+  )
+}
+
+/* ── Steam SVG ── */
+function SteamSVG({ className = '' }: { className?: string }) {
+  return (
+    <svg width="72" height="48" viewBox="0 0 72 48" fill="none" className={className} aria-hidden="true">
+      <path d="M16 46 C13 34 20 22 15 12 C11 3 17 0 16 0"
+        stroke="#C8400A" strokeWidth="1.8" strokeLinecap="round" fill="none"
+        className="steam-wisp" style={{ animationDelay: '0s' }} />
+      <path d="M36 46 C33 32 40 20 35 10 C31 1 37 0 36 0"
+        stroke="#C8400A" strokeWidth="1.8" strokeLinecap="round" fill="none"
+        className="steam-wisp" style={{ animationDelay: '0.7s' }} />
+      <path d="M56 46 C53 34 60 22 55 12 C51 3 57 0 56 0"
+        stroke="#C8400A" strokeWidth="1.8" strokeLinecap="round" fill="none"
+        className="steam-wisp" style={{ animationDelay: '1.4s' }} />
+    </svg>
+  )
+}
+
+/* ── Duck mascot SVG ── */
+function DuckSVG({ className = '' }: { className?: string }) {
+  return (
+    <svg width="64" height="50" viewBox="0 0 64 50" fill="none" className={className} aria-hidden="true">
+      <ellipse cx="26" cy="34" rx="20" ry="13" fill="#46362A" fillOpacity="0.75" />
+      <path d="M42 27 Q47 18 45 11" stroke="#46362A" strokeWidth="7" strokeLinecap="round" />
+      <circle cx="45" cy="9" r="8" fill="#46362A" fillOpacity="0.75" />
+      <path d="M51 8 L61 10 L51 13 Z" fill="#C8400A" />
+      <circle cx="48" cy="6" r="1.8" fill="white" />
+      <path d="M9 33 Q26 22 42 29" stroke="#FAF3E4" strokeWidth="1.5" fill="none" strokeOpacity="0.3" />
+    </svg>
+  )
 }
 
 export default function HomePage() {
   return (
     <>
-      {/* ━━━━ Hero ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
-      <section className="flex flex-col md:flex-row md:min-h-screen items-stretch pt-16">
+      {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+          HERO — 参考サイト構成：丸型写真・縦書き・マーキー
+      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+      <section
+        className="relative overflow-hidden"
+        style={{ height: '100svh', paddingTop: '64px' }}
+      >
+        {/* Background ivory circle decoration */}
+        <div className="absolute -top-24 -right-24 w-[460px] h-[460px] rounded-full bg-ivory/55 pointer-events-none" aria-hidden="true" />
+        <div className="absolute bottom-20 -left-16 w-48 h-48 rounded-full bg-brand/5 pointer-events-none" aria-hidden="true" />
 
-        {/* Left — text */}
+        {/* ── Left vertical text ── */}
+        <div className="absolute left-3 md:left-7 top-0 bottom-12 flex flex-col justify-center items-center pointer-events-none hero-left-vert">
+          <div className="flex flex-col items-center gap-2.5">
+            {['や', 'き', 'そ', 'ば'].map((c, i) => (
+              <span key={i} className="font-serif text-[12px] md:text-sm text-brand font-bold"
+                style={{ letterSpacing: 0 }}>{c}</span>
+            ))}
+            <div className="w-px h-5 bg-bone/40 my-1" />
+            {['た', 'こ'].map((c, i) => (
+              <span key={i} className="font-serif text-[10px] text-brown/30">{c}</span>
+            ))}
+            <div className="w-px h-4 bg-bone/30 my-1" />
+            {['お', 'こ', 'の', 'み'].map((c, i) => (
+              <span key={i} className="font-serif text-[10px] text-brown/25">{c}</span>
+            ))}
+          </div>
+        </div>
+
+        {/* ── Main content ── */}
         <div
-          className="flex-1 flex flex-col justify-center px-8 sm:px-12 md:px-16 lg:px-24 py-12 md:py-0"
-          style={{ backgroundColor: '#FAF3E4' }}
+          className="relative flex flex-col md:flex-row items-center justify-center gap-6 md:gap-10 lg:gap-16 px-10 md:px-14"
+          style={{ height: 'calc(100svh - 64px - 48px)' }}
         >
-          <AnimateIn delay={0.05}>
-            <span className="kd-badge mb-7">那珂湊名物</span>
-
-            <h1 className="font-serif font-bold text-[clamp(1.8rem,4.8vw,3.5rem)] leading-snug text-brown-deep mb-5">
-              那珂湊で楽しむ<br />
-              焼きそばと食べ歩きの店
-            </h1>
-
-            <div className="flex items-center gap-3 mb-4">
-              <span className="block w-6 h-px bg-brand flex-shrink-0" />
-              <p className="font-serif text-brown text-sm">那珂湊おさかな市場から歩いて5分</p>
-            </div>
-
-            <p className="font-sans text-brown-light text-xs leading-loose mb-10 max-w-xs" style={{ letterSpacing: '0.03em' }}>
-              焼きそば・たこ焼き・お好み焼き・クレープまで楽しめる<br />
-              ひたちなか市のテイクアウトスタンドです
+          {/* Catchphrase — mobile: top / desktop: left */}
+          <div className="hero-catchphrase text-center md:text-left flex-shrink-0 md:max-w-[260px] lg:max-w-xs">
+            <p className="label text-brand mb-3" style={{ letterSpacing: '0.35em' }}>
+              那珂湊 · Nakaminato
             </p>
+            <h1
+              className="font-serif font-bold leading-snug text-brown-deep mb-4 md:mb-6"
+              style={{ fontSize: 'clamp(1.45rem, 4.5vw, 2.7rem)' }}
+            >
+              那珂湊で楽しむ<br />
+              焼きそばと<br />
+              食べ歩きの店
+            </h1>
+            <div className="hidden md:flex items-center gap-3">
+              <span className="block w-5 h-px bg-brand flex-shrink-0" />
+              <p className="font-serif text-brown text-sm">おさかな市場から歩いて5分</p>
+            </div>
+          </div>
 
-            <div className="flex items-center gap-4 mb-12">
-              <span className="rule flex-shrink-0" />
-              <p className="label">ひたちなか市湊本町27-3</p>
+          {/* ── Oval / circle yakisoba photo ── */}
+          <div
+            className="hero-photo relative flex-shrink-0"
+            style={{ width: 'clamp(220px, 58vw, 400px)', height: 'clamp(270px, 72vw, 500px)' }}
+          >
+            {/* Steam animation above photo */}
+            <div className="absolute -top-9 left-1/2 -translate-x-1/2 pointer-events-none">
+              <SteamSVG />
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-5 items-start">
-              <Link
-                href="/menu"
-                className="inline-block bg-brand text-white px-7 py-3 label hover:bg-brand-dark transition-colors"
-                style={{ letterSpacing: '0.2em' }}
-              >
-                メニューを見る
-              </Link>
-              <a
-                href="https://maps.google.com/?q=茨城県ひたちなか市湊本町27-3"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-4 label text-brown hover:text-brown-deep transition-colors"
-                style={{ letterSpacing: '0.25em' }}
-              >
-                <span className="block w-8 h-px bg-current" />
-                アクセスを見る
-              </a>
+            {/* Decorative outer ring (delayed fade-in) */}
+            <div
+              className="hero-ring absolute border-2 border-brand/20 pointer-events-none"
+              style={{
+                inset: '-10px',
+                borderRadius: '50%',
+              }}
+            />
+
+            {/* Oval image container */}
+            <div
+              className="relative w-full h-full overflow-hidden"
+              style={{ borderRadius: '50%' }}
+            >
+              <Image
+                src="/LINE_ALBUM_焼きそば_260616_1.jpg"
+                alt="那珂湊の美明豚焼きそば — カルカモ"
+                fill
+                className="object-cover object-center"
+                style={{ transform: 'scale(1.08)' }}
+                priority
+              />
             </div>
-          </AnimateIn>
+
+            {/* Small "那珂湊名物" stamp badge */}
+            <div
+              className="absolute -bottom-2 -right-2 md:bottom-2 md:right-0 bg-brand text-white font-sans text-[9px] px-2.5 py-1.5"
+              style={{ letterSpacing: '0.2em', transform: 'rotate(2deg)' }}
+            >
+              那珂湊名物
+            </div>
+          </div>
+
+          {/* Mobile subtitle below photo */}
+          <div className="md:hidden hero-catchphrase">
+            <div className="flex items-center gap-2.5 justify-center">
+              <span className="block w-4 h-px bg-brand" />
+              <p className="font-serif text-brown text-xs">おさかな市場から歩いて5分</p>
+              <span className="block w-4 h-px bg-brand" />
+            </div>
+          </div>
         </div>
 
-        {/* Mobile — landscape image (compact height on small screens) */}
-        <div className="md:hidden relative overflow-hidden" style={{ aspectRatio: '4/3' }}>
-          <Image
-            src="/LINE_ALBUM_焼きそば_260616_1.jpg"
-            alt="カルカモの焼きそば — 美明豚焼きそば"
-            fill
-            className="object-cover object-center"
-            priority
-          />
+        {/* ── Right vertical text ── */}
+        <div className="absolute right-3 md:right-7 top-0 bottom-12 flex flex-col justify-center items-center pointer-events-none hero-right-vert">
+          <div className="flex flex-col items-center gap-2">
+            {['茨', '城', '·', '那', '珂', '湊'].map((c, i) => (
+              <span key={i} className="font-serif text-[10px] md:text-xs text-brown/35">{c}</span>
+            ))}
+          </div>
         </div>
 
-        {/* Desktop — right side image */}
-        <div className="hidden md:block w-[48%] photo-hero">
-          <Image
-            src="/LINE_ALBUM_焼きそば_260616_1.jpg"
-            alt="カルカモの焼きそば — 美明豚焼きそば"
-            fill
-            className="object-cover object-center"
-            priority
-          />
+        {/* ── Scroll indicator ── */}
+        <div className="absolute bottom-14 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 hero-scroll pointer-events-none">
+          <span className="label text-brown/25" style={{ fontSize: '8px', letterSpacing: '0.35em' }}>SCROLL</span>
+          <div className="w-px h-7 bg-brown/20 scroll-line" />
         </div>
+
+        {/* ── Orange marquee strip ── */}
+        <MarqueeStrip />
       </section>
 
-      {/* ━━━━ 01 焼きそば ━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+      {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+          INTRO — カルカモ紹介
+      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
       <section className="section-py bg-ivory border-t border-bone/40">
         <div className="max-w-screen-xl mx-auto px-8 sm:px-12 md:px-16">
 
-          <AnimateIn className="mb-10 md:mb-14">
+          <AnimateIn direction="up" className="flex items-center gap-4 mb-10 md:mb-14">
+            <DuckSVG className="flex-shrink-0" />
+            <div>
+              <p className="label text-brown-light mb-1">那珂湊のテイクアウトスタンド</p>
+              <h2 className="font-serif font-bold text-2xl md:text-4xl text-brown-deep leading-snug">
+                カルカモについて
+              </h2>
+            </div>
+          </AnimateIn>
+
+          <div className="grid md:grid-cols-2 gap-12 md:gap-20 items-start">
+
+            <AnimateIn direction="up" delay={0.1}>
+              {/* Highlight badge */}
+              <div
+                className="inline-block bg-brand text-white font-serif text-sm font-bold px-4 py-2 mb-6"
+                style={{ borderRadius: '2px', transform: 'rotate(-0.5deg)' }}
+              >
+                おさかな市場から歩いて5分
+              </div>
+
+              <p className="font-serif text-brown text-sm md:text-base leading-loose mb-5">
+                那珂湊おさかな市場のすぐそばに立つ、小さなテイクアウトスタンドです。
+                焼きそばをはじめ、たこ焼き・お好み焼き・クレープ・たい焼き・アイスクリームまで、
+                食事からスイーツまで幅広いメニューが揃っています。
+              </p>
+              <p className="font-serif text-brown-light text-sm leading-loose mb-8">
+                注文を受けてから丁寧に仕上げる焼きたての味が自慢。
+                那珂湊観光や市場散策のついでに立ち寄れる場所として、
+                観光客の方にも地元の方にも気軽にご利用いただけます。
+              </p>
+
+              {/* Quick facts */}
+              <div className="grid grid-cols-3 gap-3">
+                {[
+                  { num: '那珂湊', sub: 'おさかな市場そば' },
+                  { num: '焼きたて', sub: '注文後に仕上げる' },
+                  { num: '6品目', sub: 'のメニュー展開' },
+                ].map((fact) => (
+                  <div key={fact.num} className="text-center py-4 border border-bone/60 bg-white/50">
+                    <p className="font-serif font-bold text-brown-deep text-xs md:text-sm mb-1">{fact.num}</p>
+                    <p className="label text-brown-light" style={{ fontSize: '8px' }}>{fact.sub}</p>
+                  </div>
+                ))}
+              </div>
+            </AnimateIn>
+
+            <AnimateIn direction="up" delay={0.2}>
+              <div className="photo-portrait">
+                <Image
+                  src="/food-spread.png"
+                  alt="カルカモのメニュー"
+                  fill
+                  className="object-cover object-center"
+                />
+              </div>
+            </AnimateIn>
+          </div>
+        </div>
+      </section>
+
+      {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+          YAKISOBA — メインプロダクト
+      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+      <section className="section-py border-t border-bone/40" style={{ backgroundColor: '#FAF3E4' }}>
+        <div className="max-w-screen-xl mx-auto px-8 sm:px-12 md:px-16">
+
+          <AnimateIn direction="up" className="mb-10 md:mb-14">
             <div className="flex items-center gap-3 mb-3">
               <span className="block w-8 h-[2px] bg-brand flex-shrink-0" />
               <p className="label text-brand">看板メニュー · Signature</p>
@@ -119,36 +295,46 @@ export default function HomePage() {
 
           <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-start">
 
-            <AnimateIn>
-              <div className="photo-portrait">
-                <Image
-                  src="/LINE_ALBUM_焼きそば_260616_2.jpg"
-                  alt="美明豚焼きそば"
-                  fill
-                  className="object-cover object-center"
-                />
+            {/* Photo with steam */}
+            <AnimateIn direction="up">
+              <div className="relative">
+                <div className="absolute -top-8 left-8 pointer-events-none z-10">
+                  <SteamSVG />
+                </div>
+                <div className="photo-portrait">
+                  <Image
+                    src="/LINE_ALBUM_焼きそば_260616_2.jpg"
+                    alt="美明豚焼きそば — カルカモ"
+                    fill
+                    className="object-cover object-center"
+                  />
+                </div>
               </div>
             </AnimateIn>
 
-            <AnimateIn delay={0.1} className="md:pt-4">
+            <AnimateIn direction="up" delay={0.1} className="md:pt-4">
+              {/* 美明豚 badge */}
+              <div className="inline-block border border-brand/40 text-brand px-3 py-1.5 mb-5"
+                style={{ fontSize: '9px', letterSpacing: '0.25em', fontFamily: 'var(--font-noto-sans)' }}>
+                茨城県産 · 美明豚使用
+              </div>
+
               <p className="font-serif text-brown text-sm md:text-base leading-loose mb-8">
-                茨城県産ブランド豚「美明豚」を使ったボリューム満点の焼きそば。<br />
-                イカや季節の具材を合わせた一品も。<br />
+                カルカモの看板メニューは焼きそばです。<br />
+                茨城県産ブランド豚「美明豚（びめいとん）」を使ったボリューム満点の一品。
                 注文を受けてから丁寧に焼き上げる、作りたての熱々をどうぞ。
               </p>
 
-              <ul>
+              <ul className="mb-8">
                 {yakisoba.items.map((item, i) => (
                   <li
                     key={item.name}
-                    className={`py-5 flex justify-between gap-6 items-start ${i > 0 ? 'border-t border-bone/40' : ''}`}
+                    className={`py-4 flex justify-between gap-4 items-start ${i > 0 ? 'border-t border-bone/40' : ''}`}
                   >
                     <div>
                       {item.tag && (
-                        <span
-                          className="label text-brand border border-brand/30 px-2 py-0.5 mb-2 inline-block"
-                          style={{ fontSize: '9px' }}
-                        >
+                        <span className="label text-brand border border-brand/30 px-2 py-0.5 mb-2 inline-block"
+                          style={{ fontSize: '9px' }}>
                           {item.tag}
                         </span>
                       )}
@@ -162,26 +348,26 @@ export default function HomePage() {
                 ))}
               </ul>
 
-              <div className="mt-10 pt-8 border-t border-bone/40">
-                <Link
-                  href="/yakisoba"
-                  className="inline-flex items-center gap-4 label text-brand hover:text-brand-dark transition-colors"
-                  style={{ letterSpacing: '0.25em' }}
-                >
-                  <span className="block w-8 h-px bg-current" />
-                  焼きそばのこだわりを見る
-                </Link>
-              </div>
+              <Link
+                href="/yakisoba"
+                className="inline-flex items-center gap-3 label text-brand hover:text-brand-dark transition-colors"
+                style={{ letterSpacing: '0.25em' }}
+              >
+                <span className="block w-6 h-px bg-current" />
+                焼きそばのこだわりを見る
+              </Link>
             </AnimateIn>
           </div>
         </div>
       </section>
 
-      {/* ━━━━ 02 Menu — with food photos ━━━━━━━━━━━━ */}
-      <section className="section-py border-t border-bone/40" style={{ backgroundColor: '#FAF3E4' }}>
+      {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+          MENU LINEUP — 全6カテゴリ
+      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+      <section className="section-py bg-ivory border-t border-bone/40">
         <div className="max-w-screen-xl mx-auto px-8 sm:px-12 md:px-16">
 
-          <AnimateIn className="mb-10 md:mb-14">
+          <AnimateIn direction="up" className="mb-10 md:mb-14">
             <div className="flex items-center gap-3 mb-3">
               <span className="block w-8 h-[2px] bg-brand flex-shrink-0" />
               <p className="label text-brand">All Items · メニュー</p>
@@ -192,10 +378,10 @@ export default function HomePage() {
           </AnimateIn>
 
           <div className="grid grid-cols-2 md:grid-cols-3 gap-px bg-bone/30 mb-10">
-            {menuCategories.map((cat) => (
-              <AnimateIn key={cat.id}>
+            {menuCategories.map((cat, i) => (
+              <AnimateIn key={cat.id} direction="up" delay={i * 0.05}>
                 <Link
-                  href={`/menu#${cat.id}`}
+                  href={MENU_HREFS[cat.id] ?? '/menu'}
                   className="bg-white group block hover:opacity-90 transition-opacity h-full"
                 >
                   <div className="relative overflow-hidden" style={{ aspectRatio: '4/3' }}>
@@ -215,68 +401,26 @@ export default function HomePage() {
             ))}
           </div>
 
-          <AnimateIn>
+          <AnimateIn direction="up">
             <Link
               href="/menu"
-              className="inline-flex items-center gap-4 label text-brown hover:text-brown-deep transition-colors"
+              className="inline-flex items-center gap-3 label text-brown hover:text-brown-deep transition-colors"
               style={{ letterSpacing: '0.25em' }}
             >
-              <span className="block w-8 h-px bg-current" />
+              <span className="block w-6 h-px bg-current" />
               全メニューを見る
             </Link>
           </AnimateIn>
         </div>
       </section>
 
-      {/* ━━━━ 03 About ━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
-      <section className="section-py bg-ivory border-t border-bone/40">
-        <div className="max-w-screen-xl mx-auto px-8 sm:px-12 md:px-16">
-          <div className="grid md:grid-cols-2 gap-12 md:gap-20 items-center">
-
-            <AnimateIn>
-              <div className="mb-8">
-                <div className="flex items-center gap-3 mb-3">
-                  <span className="block w-8 h-[2px] bg-brand flex-shrink-0" />
-                  <p className="label text-brand">About · カルカモについて</p>
-                </div>
-                <h2 className="font-serif font-bold text-3xl md:text-5xl text-brown-deep leading-tight">
-                  那珂湊の<br />食べ歩きスタンド
-                </h2>
-              </div>
-              <p className="font-serif text-brown text-sm md:text-base leading-loose mb-5">
-                茨城県ひたちなか市の港町、那珂湊。<br />
-                おさかな市場のすぐ近くに立つ、小さな食べ歩きスタンドです。
-              </p>
-              <p className="font-serif text-brown-light text-sm leading-loose mb-8">
-                焼きそば・クレープ・たこ焼き・お好み焼き・アイスなど、<br />
-                手軽に楽しめる一品を丁寧に作っています。<br />
-                那珂湊観光のついでに、地元の方の日常の一枚に。
-              </p>
-              <div className="flex items-center gap-4">
-                <span className="rule flex-shrink-0" />
-                <p className="label">那珂湊おさかな市場から歩いて5分</p>
-              </div>
-            </AnimateIn>
-
-            <AnimateIn delay={0.1}>
-              <div className="photo-portrait">
-                <Image
-                  src="/food-spread.png"
-                  alt="カルカモのメニュー"
-                  fill
-                  className="object-cover object-center"
-                />
-              </div>
-            </AnimateIn>
-          </div>
-        </div>
-      </section>
-
-      {/* ━━━━ 04 こだわり ━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+      {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+          THREE PROMISES — こだわり3つ
+      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
       <section className="section-py border-t border-bone/40" style={{ backgroundColor: '#FAF3E4' }}>
         <div className="max-w-screen-xl mx-auto px-8 sm:px-12 md:px-16">
 
-          <AnimateIn className="mb-10 md:mb-14">
+          <AnimateIn direction="up" className="mb-10 md:mb-14">
             <div className="flex items-center gap-3 mb-3">
               <span className="block w-8 h-[2px] bg-brand flex-shrink-0" />
               <p className="label text-brand">Our Promise · こだわり</p>
@@ -290,29 +434,50 @@ export default function HomePage() {
             {[
               {
                 num: '01',
-                title: '地元の食材を大切に',
-                body: '焼きそばには茨城県産ブランド豚「美明豚」を使用。地域の恵みを活かした、那珂湊ならではの味わいです。',
+                title: '焼きたてをお届けする',
+                body: 'ご注文をいただいてから一つひとつ丁寧に仕上げます。できたての熱々・ふわふわの状態でお渡しするのがカルカモのこだわりです。',
+                icon: (
+                  <svg width="36" height="36" viewBox="0 0 36 36" fill="none" aria-hidden="true">
+                    <circle cx="18" cy="20" r="12" fill="#C8400A" fillOpacity="0.12" />
+                    <path d="M11 24 Q14 14 18 8 Q22 14 25 24" stroke="#C8400A" strokeWidth="1.5" strokeLinecap="round" fill="none" />
+                    <path d="M14 24 Q17 18 18 14" stroke="#C8400A" strokeWidth="1" strokeLinecap="round" fill="none" />
+                  </svg>
+                ),
               },
               {
                 num: '02',
-                title: '注文を受けてから作る',
-                body: 'ご注文が入ってから一つひとつ丁寧に焼き上げます。出来立て・熱々の状態でお渡しします。',
+                title: '地元の食材を使う',
+                body: '焼きそばには茨城県産ブランド豚「美明豚」を使用。地域の恵みを活かしながら、那珂湊ならではの味わいをご提供します。',
+                icon: (
+                  <svg width="36" height="36" viewBox="0 0 36 36" fill="none" aria-hidden="true">
+                    <circle cx="18" cy="18" r="12" fill="#C8400A" fillOpacity="0.12" />
+                    <ellipse cx="18" cy="22" rx="9" ry="6" fill="#C8400A" fillOpacity="0.4" />
+                    <path d="M12 18 Q18 12 24 18" stroke="#C8400A" strokeWidth="1.5" strokeLinecap="round" fill="none" />
+                  </svg>
+                ),
               },
               {
                 num: '03',
-                title: '食べ歩きの楽しさを',
-                body: '那珂湊おさかな市場のすぐそば。市場観光のついでに気軽に立ち寄れる、地元に根ざしたスタンドです。',
+                title: '市場散策のついでに寄れる',
+                body: '那珂湊おさかな市場から歩いて5分。観光のついでに気軽に立ち寄れる立地と、手軽に食べ歩きができる商品展開が自慢です。',
+                icon: (
+                  <svg width="36" height="36" viewBox="0 0 36 36" fill="none" aria-hidden="true">
+                    <circle cx="18" cy="18" r="12" fill="#C8400A" fillOpacity="0.12" />
+                    <circle cx="18" cy="16" r="5" stroke="#C8400A" strokeWidth="1.5" fill="none" />
+                    <path d="M18 21 L18 28" stroke="#C8400A" strokeWidth="1.5" strokeLinecap="round" />
+                    <path d="M14 26 Q18 28 22 26" stroke="#C8400A" strokeWidth="1.5" strokeLinecap="round" fill="none" />
+                  </svg>
+                ),
               },
             ].map((item) => (
-              <AnimateIn key={item.num}>
-                <div className="border-t-2 border-brand pt-6 pb-2">
-                  <span className="font-display text-5xl leading-none block mb-5" style={{ color: '#E0CBA8' }}>
-                    {item.num}
-                  </span>
-                  <h3 className="font-serif font-bold text-brown-deep text-sm md:text-base mb-3 leading-snug">
-                    {item.title}
-                  </h3>
-                  <p className="font-serif text-brown-light text-xs md:text-sm leading-loose">{item.body}</p>
+              <AnimateIn key={item.num} direction="up">
+                <div className="border-t-[3px] border-brand pt-6 pb-2">
+                  <div className="flex items-center gap-4 mb-4">
+                    {item.icon}
+                    <span className="font-display text-3xl leading-none" style={{ color: '#E0CBA8' }}>{item.num}</span>
+                  </div>
+                  <h3 className="font-serif font-bold text-brown-deep text-base mb-3 leading-snug">{item.title}</h3>
+                  <p className="font-serif text-brown-light text-sm leading-loose">{item.body}</p>
                 </div>
               </AnimateIn>
             ))}
@@ -320,11 +485,67 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ━━━━ 05 Access ━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+      {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+          SCENE — 利用シーン (dark)
+      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+      <section className="section-py bg-brown-deep border-t border-brown">
+        <div className="max-w-screen-xl mx-auto px-8 sm:px-12 md:px-16">
+
+          <AnimateIn direction="up" className="mb-10 md:mb-14">
+            <div className="flex items-center gap-3 mb-3">
+              <span className="block w-8 h-[2px] bg-brand flex-shrink-0" />
+              <p className="label text-ivory/40">Scene · こんなシーンに</p>
+            </div>
+            <h2 className="font-serif font-bold text-3xl md:text-5xl text-ivory leading-tight">
+              こんな時に寄ってください
+            </h2>
+          </AnimateIn>
+
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-px bg-white/10">
+            {[
+              {
+                title: 'おさかな市場の帰りに',
+                body: '市場でお買い物を楽しんだ後は、カルカモに立ち寄って焼きそばやたこ焼きを。港町散策をさらに楽しく。',
+              },
+              {
+                title: 'ランチは焼きそばで',
+                body: 'ボリューム満点の美明豚焼きそばやお好み焼きで、しっかりランチ。お食事系メニューが充実しています。',
+              },
+              {
+                title: 'おやつにクレープ・たい焼き',
+                body: 'ちょっと甘いものが食べたい時は、クレープやたい焼き・アイスクリームを。食後のデザートにも。',
+              },
+              {
+                title: '家族みんなで食べ歩き',
+                body: '子どもから大人まで楽しめるメニューが揃っています。それぞれ好きなものを選んで食べ歩きを楽しんで。',
+              },
+              {
+                title: '那珂湊観光の途中に',
+                body: 'ひたちなか市・那珂湊エリアの観光ルートに組み込みやすい立地。旅の記念になる一品をどうぞ。',
+              },
+              {
+                title: '地元のちょっとした買い物に',
+                body: 'テイクアウト専門なので、気軽に立ち寄れます。お散歩ついでや、ちょっとしたおやつに。',
+              },
+            ].map((scene) => (
+              <AnimateIn key={scene.title} direction="up">
+                <div className="bg-white/5 p-6 md:p-8 h-full">
+                  <h3 className="font-serif font-bold text-ivory text-sm mb-3 leading-snug">{scene.title}</h3>
+                  <p className="font-serif text-ivory/50 text-xs leading-loose">{scene.body}</p>
+                </div>
+              </AnimateIn>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+          ACCESS — アクセス
+      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
       <section className="section-py bg-ivory border-t border-bone/40">
         <div className="max-w-screen-xl mx-auto px-8 sm:px-12 md:px-16">
 
-          <AnimateIn className="mb-10 md:mb-14">
+          <AnimateIn direction="up" className="mb-10 md:mb-14">
             <div className="flex items-center gap-3 mb-3">
               <span className="block w-8 h-[2px] bg-brand flex-shrink-0" />
               <p className="label text-brand">Access · アクセス</p>
@@ -335,17 +556,17 @@ export default function HomePage() {
           </AnimateIn>
 
           <div className="grid md:grid-cols-2 gap-10 md:gap-16">
-            <AnimateIn>
-              <dl className="space-y-0 mb-8">
+            <AnimateIn direction="up">
+              <dl className="mb-8">
                 {[
-                  { dt: 'Store', dd: 'カルカモ' },
-                  { dt: 'Address', dd: '茨城県ひたちなか市湊本町27-3' },
-                  { dt: 'Area', dd: '那珂湊おさかな市場から徒歩5分' },
-                  { dt: 'Hours', dd: 'Instagram をご確認ください' },
+                  { dt: 'お店', dd: 'カルカモ' },
+                  { dt: '住所', dd: '茨城県ひたちなか市湊本町27-3' },
+                  { dt: '目印', dd: '那珂湊おさかな市場から徒歩5分' },
+                  { dt: '営業日', dd: 'Instagram をご確認ください' },
                 ].map((row, i) => (
-                  <div key={row.dt} className={`flex gap-8 py-5 ${i > 0 ? 'border-t border-bone/40' : ''}`}>
-                    <dt className="w-16 flex-shrink-0 label pt-0.5">{row.dt}</dt>
-                    <dd className="font-serif text-brown text-sm">{row.dd}</dd>
+                  <div key={row.dt} className={`flex gap-6 py-4 ${i > 0 ? 'border-t border-bone/40' : ''}`}>
+                    <dt className="w-14 flex-shrink-0 label pt-0.5">{row.dt}</dt>
+                    <dd className="font-serif text-brown text-sm leading-relaxed">{row.dd}</dd>
                   </div>
                 ))}
               </dl>
@@ -355,24 +576,24 @@ export default function HomePage() {
                   href="https://maps.google.com/?q=茨城県ひたちなか市湊本町27-3"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-4 label text-brand hover:text-brand-dark transition-colors"
+                  className="inline-flex items-center gap-3 label text-brand hover:text-brand-dark transition-colors"
                   style={{ letterSpacing: '0.25em' }}
                 >
-                  <span className="block w-8 h-px bg-current" />
+                  <span className="block w-6 h-px bg-current" />
                   Google Maps で開く
                 </a>
                 <Link
                   href="/access"
-                  className="inline-flex items-center gap-4 label text-brown-light hover:text-brown-deep transition-colors"
+                  className="inline-flex items-center gap-3 label text-brown-light hover:text-brown-deep transition-colors"
                   style={{ letterSpacing: '0.25em' }}
                 >
-                  <span className="block w-8 h-px bg-current" />
+                  <span className="block w-6 h-px bg-current" />
                   詳しいアクセス
                 </Link>
               </div>
             </AnimateIn>
 
-            <AnimateIn delay={0.1}>
+            <AnimateIn direction="up" delay={0.1}>
               <div className="aspect-square overflow-hidden border border-bone/40">
                 <iframe
                   src="https://maps.google.com/maps?q=茨城県ひたちなか市湊本町27-3&output=embed&hl=ja"
@@ -389,10 +610,12 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ━━━━ 06 Blog ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+      {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+          BLOG — お知らせ
+      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
       <section className="py-16 md:py-20 border-t border-bone/40" style={{ backgroundColor: '#FAF3E4' }}>
         <div className="max-w-screen-xl mx-auto px-8 sm:px-12 md:px-16">
-          <AnimateIn className="flex items-center justify-between gap-8">
+          <AnimateIn direction="up" className="flex items-center justify-between gap-8">
             <div>
               <div className="flex items-center gap-3 mb-3">
                 <span className="block w-6 h-[2px] bg-brand flex-shrink-0" />
@@ -404,19 +627,21 @@ export default function HomePage() {
             </div>
             <Link
               href="/blog"
-              className="inline-flex items-center gap-4 label text-brown hover:text-brown-deep transition-colors shrink-0"
+              className="inline-flex items-center gap-3 label text-brown hover:text-brown-deep transition-colors shrink-0"
               style={{ letterSpacing: '0.25em' }}
             >
-              <span className="block w-8 h-px bg-current" />
+              <span className="block w-6 h-px bg-current" />
               一覧を見る
             </Link>
           </AnimateIn>
         </div>
       </section>
 
-      {/* ━━━━ 07 Instagram ━━━━━━━━━━━━━━━━━━━━━━━━ */}
+      {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+          INSTAGRAM — フォロー導線
+      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
       <section className="py-20 md:py-28 bg-brown-deep border-t border-brown">
-        <AnimateIn className="text-center">
+        <AnimateIn direction="up" className="text-center px-6">
           <div className="flex items-center justify-center gap-4 mb-6">
             <span className="block w-10 h-px bg-ivory/20" />
             <p className="label text-ivory/30">Follow Us</p>

@@ -1,43 +1,90 @@
 @import "tailwindcss";
 
 @theme {
-  /* ── Warm local shop palette ── */
-  --color-paper:       #FAF3E4;   /* main background — warm paper cream */
-  --color-white:       #FFFFFF;   /* true white for header */
-  --color-ivory:       #EEE2C6;   /* warm cream — alternate sections */
-  --color-ivory-dark:  #E0CBA8;   /* warm beige */
-  --color-bone:        #B09265;   /* warm sand-brown border */
-  --color-brand:       #C8400A;   /* warm orange — CTA / accents */
+  --color-paper:       #FAF3E4;
+  --color-white:       #FFFFFF;
+  --color-ivory:       #EEE2C6;
+  --color-ivory-dark:  #E0CBA8;
+  --color-bone:        #B09265;
+  --color-brand:       #C8400A;
   --color-brand-dark:  #A83208;
-  --color-brown-deep:  #18100A;   /* near-black ink */
-  --color-brown:       #46362A;   /* main text */
-  --color-brown-light: #8A7B6A;   /* secondary text */
+  --color-brown-deep:  #18100A;
+  --color-brown:       #46362A;
+  --color-brown-light: #8A7B6A;
 
-  /* ── Fonts ── */
   --font-display: var(--font-cormorant), 'Cormorant Garamond', Georgia, serif;
   --font-serif:   var(--font-noto-serif), 'Noto Serif JP', serif;
   --font-sans:    var(--font-noto-sans), 'Noto Sans JP', sans-serif;
 }
 
-/* ── Base ── */
-html {
-  scroll-behavior: smooth;
-}
+/* ── Reset & Base ── */
+html { scroll-behavior: smooth; }
 
-/* Paper texture via dot pattern */
 body {
   background-color: #FAF3E4;
-  background-image: radial-gradient(circle, rgba(176, 146, 101, 0.14) 1px, transparent 1px);
+  background-image: radial-gradient(circle, rgba(176, 146, 101, 0.12) 1px, transparent 1px);
   background-size: 22px 22px;
   color: #46362A;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* ── Scrollbar ── */
 ::-webkit-scrollbar { width: 4px; }
 ::-webkit-scrollbar-track { background: #EEE2C6; }
 ::-webkit-scrollbar-thumb { background: #B09265; border-radius: 2px; }
+
+/* ── Hero entrance animations (CSS-only, no JS needed) ── */
+@keyframes heroFadeInScale {
+  from { opacity: 0; transform: scale(0.93); }
+  to   { opacity: 1; transform: scale(1); }
+}
+@keyframes heroFadeInUp {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes heroFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.hero-photo      { animation: heroFadeInScale 1s cubic-bezier(0.22,1,0.36,1) both; }
+.hero-ring       { animation: heroFadeIn 0.9s ease both; animation-delay: 0.35s; }
+.hero-catchphrase { animation: heroFadeInUp 0.8s cubic-bezier(0.22,1,0.36,1) both; animation-delay: 0.2s; }
+.hero-left-vert  { animation: heroFadeIn 0.8s ease both; animation-delay: 0.65s; }
+.hero-right-vert { animation: heroFadeIn 0.8s ease both; animation-delay: 0.8s; }
+.hero-scroll     { animation: heroFadeIn 0.8s ease both; animation-delay: 1.4s; }
+
+/* scroll line pulse */
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.2; transform: scaleY(1) translateY(0); }
+  50%       { opacity: 0.6; transform: scaleY(0.6) translateY(0); }
+}
+.scroll-line {
+  animation: scrollPulse 1.8s ease-in-out infinite;
+  transform-origin: top;
+}
+
+/* ── Marquee ── */
+@keyframes marquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.marquee-track {
+  animation: marquee 28s linear infinite;
+  width: max-content;
+}
+
+/* ── Steam animation ── */
+@keyframes steamRise {
+  0%   { opacity: 0;   transform: translateY(0)    scaleX(1); }
+  20%  { opacity: 0.5; }
+  75%  { opacity: 0.1; transform: translateY(-22px) scaleX(1.2); }
+  100% { opacity: 0;   transform: translateY(-32px) scaleX(0.85); }
+}
+.steam-wisp {
+  animation: steamRise 3s ease-in-out infinite;
+  transform-origin: bottom center;
+}
 
 /* ── Section spacing ── */
 .section-py {
@@ -45,13 +92,10 @@ body {
   padding-bottom: 4rem;
 }
 @media (min-width: 768px) {
-  .section-py {
-    padding-top: 8rem;
-    padding-bottom: 8rem;
-  }
+  .section-py { padding-top: 8rem; padding-bottom: 8rem; }
 }
 
-/* ── Section label (MENU / CONCEPT etc.) ── */
+/* ── Typography utils ── */
 .label {
   font-size: 0.6rem;
   letter-spacing: 0.38em;
@@ -59,25 +103,9 @@ body {
   color: #8A7B6A;
   font-family: var(--font-noto-sans), sans-serif;
 }
+.rule { width: 28px; height: 1px; background: #B09265; }
 
-/* ── Thin decorative line ── */
-.rule {
-  width: 28px;
-  height: 1px;
-  background: #B09265;
-}
-
-/* ── Section number display (keep for legacy usage) ── */
-.section-num {
-  font-family: var(--font-cormorant), 'Cormorant Garamond', Georgia, serif;
-  font-size: clamp(5rem, 10vw, 8rem);
-  line-height: 1;
-  color: #E0CBA8;
-  user-select: none;
-  letter-spacing: -0.02em;
-}
-
-/* ── Warm badge/stamp style ── */
+/* ── Badge stamp ── */
 .kd-badge {
   display: inline-block;
   border: 2px solid #C8400A;
@@ -91,46 +119,30 @@ body {
 }
 
 /* ── Photo containers ── */
-.photo-area {
-  background-color: #E0CBA8;
-  position: relative;
-  overflow: hidden;
+.photo-portrait  { position: relative; overflow: hidden; aspect-ratio: 3 / 4; }
+.photo-tall      { position: relative; overflow: hidden; aspect-ratio: 4 / 5; }
+.photo-landscape { position: relative; overflow: hidden; aspect-ratio: 4 / 3; }
+.photo-hero      { position: relative; overflow: hidden; }
+
+/* ── Section headings ── */
+.section-num {
+  font-family: var(--font-cormorant), serif;
+  font-size: clamp(5rem, 10vw, 8rem);
+  line-height: 1;
+  color: #E0CBA8;
+  user-select: none;
+  letter-spacing: -0.02em;
 }
 
-/* aspect-ratio variants for Next.js Image fill */
-.photo-portrait {
-  position: relative;
-  overflow: hidden;
-  aspect-ratio: 3 / 4;
-}
-
-.photo-tall {
-  position: relative;
-  overflow: hidden;
-  aspect-ratio: 4 / 5;
-}
-
-.photo-landscape {
-  position: relative;
-  overflow: hidden;
-  aspect-ratio: 4 / 3;
-}
-
-.photo-hero {
-  position: relative;
-  overflow: hidden;
-}
-
-/* ── WordPress post content ── */
+/* ── WordPress blog content ── */
 .wp-content {
-  font-family: var(--font-noto-serif), 'Noto Serif JP', serif;
+  font-family: var(--font-noto-serif), serif;
   font-size: 0.875rem;
   color: #46362A;
   line-height: 2;
 }
-
 .wp-content h2 {
-  font-family: var(--font-noto-serif), 'Noto Serif JP', serif;
+  font-family: var(--font-noto-serif), serif;
   font-weight: 700;
   font-size: clamp(1.25rem, 3vw, 1.75rem);
   color: #18100A;
@@ -138,9 +150,8 @@ body {
   margin-top: 3.5rem;
   margin-bottom: 1.5rem;
 }
-
 .wp-content h3 {
-  font-family: var(--font-noto-serif), 'Noto Serif JP', serif;
+  font-family: var(--font-noto-serif), serif;
   font-size: 1rem;
   font-weight: 700;
   color: #18100A;
@@ -148,53 +159,13 @@ body {
   margin-top: 2.5rem;
   margin-bottom: 1rem;
 }
-
-.wp-content p {
-  margin-bottom: 1.5rem;
-}
-
-.wp-content a {
-  color: #C8400A;
-  text-decoration: underline;
-  text-underline-offset: 3px;
-  text-decoration-color: #C8400A;
-}
-
-.wp-content a:hover {
-  color: #A83208;
-}
-
-.wp-content img {
-  width: 100%;
-  height: auto;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
-}
-
-.wp-content figure {
-  margin: 2rem 0;
-}
-
-.wp-content figcaption {
-  font-family: var(--font-noto-sans), sans-serif;
-  font-size: 0.7rem;
-  letter-spacing: 0.08em;
-  color: #8A7B6A;
-  text-align: center;
-  margin-top: 0.5rem;
-}
-
+.wp-content p  { margin-bottom: 1.5rem; }
+.wp-content a  { color: #C8400A; text-decoration: underline; text-underline-offset: 3px; }
+.wp-content a:hover { color: #A83208; }
+.wp-content img { width: 100%; height: auto; margin: 2rem 0; }
 .wp-content ul,
-.wp-content ol {
-  padding-left: 1.5rem;
-  margin-bottom: 1.5rem;
-}
-
-.wp-content li {
-  margin-bottom: 0.5rem;
-  line-height: 2;
-}
-
+.wp-content ol  { padding-left: 1.5rem; margin-bottom: 1.5rem; }
+.wp-content li  { margin-bottom: 0.5rem; line-height: 2; }
 .wp-content blockquote {
   border-left: 2px solid #B09265;
   padding-left: 1.5rem;
@@ -203,22 +174,9 @@ body {
   color: #8A7B6A;
   font-style: italic;
 }
-
-.wp-content hr {
-  border: none;
-  border-top: 1px solid #B09265;
-  margin: 3rem 0;
-}
-
-.wp-content strong {
-  font-weight: 700;
-  color: #18100A;
-}
-
-.wp-content .wp-block-image {
-  margin: 2rem 0;
-}
-
+.wp-content hr     { border: none; border-top: 1px solid #B09265; margin: 3rem 0; }
+.wp-content strong { font-weight: 700; color: #18100A; }
+.wp-content .wp-block-image { margin: 2rem 0; }
 .wp-content .wp-caption-text,
 .wp-content .wp-element-caption {
   font-family: var(--font-noto-sans), sans-serif;
