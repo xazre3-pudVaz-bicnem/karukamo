@@ -58,7 +58,7 @@ export function LoadingScreen() {
                 transition={{ duration: 2.5, repeat: Infinity, ease: 'easeInOut', delay: 0.85 }}
               >
                 <Image
-                  src="/logo.jpg"
+                  src="/logo.png"
                   alt="カルカモ マスコット"
                   width={164}
                   height={164}

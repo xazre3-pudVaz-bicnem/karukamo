@@ -90,7 +90,7 @@ const structuredData = [
     '@id': 'https://karukamo.jp/#organization',
     name: 'カルカモ',
     url: 'https://karukamo.jp',
-    logo: 'https://karukamo.jp/logo.jpg',
+    logo: 'https://karukamo.jp/logo.png',
     sameAs: ['https://www.instagram.com/karukamo.2384/'],
   },
   {

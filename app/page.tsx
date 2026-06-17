@@ -397,7 +397,7 @@ export default function HomePage() {
         <div className="max-w-screen-xl mx-auto px-8 sm:px-12 md:px-16 relative">
 
           <AnimateIn direction="up" className="flex items-center gap-4 mb-10 md:mb-14">
-            <Image src="/logo.jpg" alt="カルカモ マスコット" width={72} height={72} className="rounded-xl flex-shrink-0" />
+            <Image src="/logo.png" alt="カルカモ マスコット" width={72} height={72} className="rounded-xl flex-shrink-0" />
             <div>
               <p className="label text-brown-light mb-1">那珂湊のテイクアウトスタンド</p>
               <h2 className="font-serif font-bold text-2xl md:text-4xl text-brown-deep leading-snug">
@@ -469,7 +469,7 @@ export default function HomePage() {
                   <SteamSVG className="opacity-55" />
                 </div>
                 <div className="photo-portrait">
-                  <Image src="/LINE_ALBUM_焼きそば_260616_2.jpg" alt="美明豚焼きそば — カルカモ"
+                  <Image src="/LINE_ALBUM_焼きそば_260616_4.jpg" alt="美明豚焼きそば — カルカモ"
                     fill className="object-cover object-center" />
                 </div>
               </div>
@@ -541,9 +541,12 @@ export default function HomePage() {
               <span className="block w-8 h-[2px] bg-brand flex-shrink-0" />
               <p className="label text-brand">All Items · メニュー</p>
             </div>
-            <h2 className="font-serif font-bold text-3xl md:text-5xl text-brown-deep leading-tight">
-              メニュー一覧
-            </h2>
+            <div className="flex items-end gap-5">
+              <h2 className="font-serif font-bold text-3xl md:text-5xl text-brown-deep leading-tight">
+                メニュー一覧
+              </h2>
+              <Image src="/logo.png" alt="" width={48} height={48} className="rounded-xl mb-1 opacity-80 flex-shrink-0" aria-hidden="true" />
+            </div>
           </AnimateIn>
 
           <div className="grid grid-cols-2 md:grid-cols-3 gap-px bg-bone/30 mb-10">
@@ -597,9 +600,14 @@ export default function HomePage() {
               <span className="block w-8 h-[2px] bg-brand flex-shrink-0" />
               <p className="label text-brand">Our Promise · こだわり</p>
             </div>
-            <h2 className="font-serif font-bold text-3xl md:text-5xl text-brown-deep leading-tight">
-              カルカモの3つのこだわり
-            </h2>
+            <div className="flex items-center gap-6">
+              <h2 className="font-serif font-bold text-3xl md:text-5xl text-brown-deep leading-tight">
+                カルカモの3つのこだわり
+              </h2>
+              <div className="hidden md:block relative flex-shrink-0" style={{ transform: 'rotate(6deg)' }}>
+                <Image src="/logo.png" alt="" width={56} height={56} className="rounded-2xl opacity-70" aria-hidden="true" />
+              </div>
+            </div>
           </AnimateIn>
 
           <div className="grid md:grid-cols-3 gap-6 md:gap-10">
@@ -727,9 +735,12 @@ export default function HomePage() {
               <span className="block w-8 h-[2px] bg-brand flex-shrink-0" />
               <p className="label text-brand">Access · アクセス</p>
             </div>
-            <h2 className="font-serif font-bold text-3xl md:text-5xl text-brown-deep leading-tight">
-              アクセス
-            </h2>
+            <div className="flex items-end gap-4">
+              <h2 className="font-serif font-bold text-3xl md:text-5xl text-brown-deep leading-tight">
+                アクセス
+              </h2>
+              <Image src="/logo.png" alt="" width={44} height={44} className="rounded-xl mb-1 opacity-75 flex-shrink-0" aria-hidden="true" />
+            </div>
           </AnimateIn>
 
           <div className="grid md:grid-cols-2 gap-10 md:gap-16">
@@ -828,9 +839,13 @@ export default function HomePage() {
             <p className="label text-ivory/30">Follow Us</p>
             <span className="block w-10 h-px bg-ivory/20" />
           </div>
-          <h2 className="font-serif font-bold text-2xl md:text-4xl text-ivory mb-4">
-            Instagram で最新情報を
-          </h2>
+          <div className="flex items-center justify-center gap-5 mb-4">
+            <Image src="/logo.png" alt="" width={52} height={52} className="rounded-2xl opacity-55 flex-shrink-0" style={{ filter: 'brightness(1.4)' }} aria-hidden="true" />
+            <h2 className="font-serif font-bold text-2xl md:text-4xl text-ivory">
+              Instagram で最新情報を
+            </h2>
+            <Image src="/logo.png" alt="" width={52} height={52} className="rounded-2xl opacity-55 flex-shrink-0" style={{ filter: 'brightness(1.4)' }} aria-hidden="true" />
+          </div>
           <p className="font-serif text-ivory/50 text-sm mb-10">
             営業日・最新メニュー・おすすめ情報を毎日発信中
           </p>
