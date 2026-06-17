@@ -468,9 +468,9 @@ export default function HomePage() {
                 <div className="absolute -top-10 left-2 pointer-events-none select-none z-10" aria-hidden="true">
                   <SteamSVG className="opacity-55" />
                 </div>
-                <div className="relative overflow-hidden" style={{ aspectRatio: '1/1' }}>
-                  <Image src="/LINE_ALBUM_焼きそば_260616_3.jpg" alt="美明豚焼きそば — カルカモ"
-                    fill className="object-cover" style={{ objectPosition: '50% 40%' }} />
+                <div className="relative overflow-hidden" style={{ aspectRatio: '4/3' }}>
+                  <Image src="/yakisoba-main.png" alt="美明豚焼きそば — カルカモ"
+                    fill className="object-cover object-center" />
                 </div>
               </div>
             </AnimateIn>
