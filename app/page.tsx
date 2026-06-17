@@ -270,12 +270,12 @@ export default function HomePage() {
       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
       <section className="relative overflow-hidden" style={{ height: '100svh' }}>
 
-        {/* Hero image — full-bleed, fade-in reveal */}
+        {/* Hero image — full-bleed */}
         <Image
           src="/hero-yakisoba-full.png"
           alt="那珂湊の焼きそば — カルカモ"
           fill
-          className="object-cover hero-image-reveal"
+          className="object-cover"
           style={{ objectPosition: 'center 60%' }}
           priority
         />
