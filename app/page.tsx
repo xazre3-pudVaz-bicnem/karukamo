@@ -268,26 +268,28 @@ export default function HomePage() {
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
           HERO
       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
-      <section className="relative overflow-hidden" style={{ height: '100svh' }}>
+      <section className="relative" style={{ backgroundColor: '#FAF3E4' }}>
 
-        {/* Hero image — full-bleed */}
-        <Image
-          src="/hero-yakisoba-full.png"
-          alt="那珂湊の焼きそば — カルカモ"
-          fill
-          className="object-cover"
-          style={{ objectPosition: 'center 60%' }}
-          priority
-        />
-
-        {/* Scroll indicator */}
-        <div className="absolute bottom-10 inset-x-0 flex flex-col items-center gap-2 hero-scroll pointer-events-none"
-          style={{ animationDelay: '1.0s' }}>
-          <span className="label text-white/40" style={{ fontSize: '8px', letterSpacing: '0.4em' }}>SCROLL</span>
-          <div className="w-px h-8 bg-white/30 scroll-line" />
+        {/* Hero image — full-width, auto-height, no cropping */}
+        <div className="relative">
+          <Image
+            src="/hero-yakisoba-full.png"
+            alt="那珂湊の焼きそば — カルカモ"
+            width={1672}
+            height={941}
+            sizes="100vw"
+            className="w-full h-auto block"
+            priority
+          />
+          <MascotFloat />
         </div>
 
-        <MascotFloat />
+        {/* Scroll indicator */}
+        <div className="flex flex-col items-center gap-2 py-5 hero-scroll" style={{ animationDelay: '1.0s' }}>
+          <span className="label text-bone/70" style={{ fontSize: '8px', letterSpacing: '0.4em' }}>SCROLL</span>
+          <div className="w-px h-8 bg-bone/30 scroll-line" />
+        </div>
+
       </section>
 
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
