@@ -182,11 +182,6 @@ body {
 }
 .float-sway { animation: floatSway 6s ease-in-out infinite; }
 
-/* ── Logo mascot background blend ── */
-.logo-blend       { mix-blend-mode: multiply; }
-.logo-blend-light { mix-blend-mode: multiply; }
-.logo-blend-dark  { mix-blend-mode: screen;   }
-
 /* ── WordPress blog content ── */
 .wp-content {
   font-family: var(--font-noto-serif), serif;
