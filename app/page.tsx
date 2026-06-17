@@ -446,31 +446,9 @@ export default function HomePage() {
 
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
           YAKISOBA — メインプロダクト
-          Decoration: 18 steam wisps horizon + 12 cooking sparks
       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
-      <section className="section-py border-t border-bone/40 relative overflow-hidden" style={{ backgroundColor: '#FAF3E4' }}>
-
-        {/* Steam horizon — 焼きそばの湯気をセクション全体に広げる */}
-        <div className="absolute top-0 inset-x-0 pointer-events-none select-none" style={{ height: '72px' }} aria-hidden="true">
-          <div className="flex justify-around items-end h-full">
-            {YAKI_WISPS.map((w, i) => (
-              <SteamWisp key={i} delay={w.d}
-                color={i % 3 === 0 ? '#C8400A' : i % 3 === 1 ? '#B09265' : '#8A7B6A'} />
-            ))}
-          </div>
-        </div>
-
-        {/* Cooking sparks — 鉄板の焼け散るイメージ */}
-        <div className="absolute bottom-16 inset-x-0 overflow-hidden pointer-events-none select-none" style={{ height: '72px' }} aria-hidden="true">
-          {YAKI_SPARKS.map((s, i) => (
-            <div key={i} className="absolute spark"
-              style={{ left: s.l, bottom: '0', animationDelay: `${s.d}s`, animationDuration: `${s.dur}s` }}>
-              <div style={{ width: '5px', height: '5px', borderRadius: '50%', backgroundColor: s.c }} />
-            </div>
-          ))}
-        </div>
-
-        <div className="max-w-screen-xl mx-auto px-8 sm:px-12 md:px-16 relative">
+      <section className="section-py border-t border-bone/40" style={{ backgroundColor: '#FAF3E4' }}>
+        <div className="max-w-screen-xl mx-auto px-8 sm:px-12 md:px-16">
 
           <AnimateIn direction="up" className="mb-10 md:mb-14">
             <div className="flex items-center gap-3 mb-3">
@@ -483,13 +461,12 @@ export default function HomePage() {
           </AnimateIn>
 
           <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-start">
+
+            {/* 左カラム — 写真 + 蒸気演出 */}
             <AnimateIn direction="up">
               <div className="relative">
-                {/* Extra steam above the photo */}
-                <div className="absolute -top-10 left-0 right-0 flex justify-around pointer-events-none z-10">
-                  {[0, 0.5, 1.0, 1.5, 2.0, 2.5].map((d, i) => (
-                    <SteamWisp key={i} delay={d} color={i % 2 === 0 ? '#C8400A' : '#B09265'} />
-                  ))}
+                <div className="absolute -top-10 left-2 pointer-events-none select-none z-10" aria-hidden="true">
+                  <SteamSVG className="opacity-55" />
                 </div>
                 <div className="photo-portrait">
                   <Image src="/LINE_ALBUM_焼きそば_260616_2.jpg" alt="美明豚焼きそば — カルカモ"
@@ -498,16 +475,19 @@ export default function HomePage() {
               </div>
             </AnimateIn>
 
+            {/* 右カラム — バッジ・説明・メニューリスト */}
             <AnimateIn direction="up" delay={0.1} className="md:pt-4">
-              <div className="inline-block border border-brand/40 text-brand px-3 py-1.5 mb-5"
+              <div className="inline-block border border-brand/40 text-brand px-3 py-1.5 mb-6"
                 style={{ fontSize: '9px', letterSpacing: '0.25em', fontFamily: 'var(--font-noto-sans)' }}>
                 茨城県産 · 美明豚使用
               </div>
+
               <p className="font-serif text-brown text-sm md:text-base leading-loose mb-8">
                 カルカモの看板メニューは焼きそばです。<br />
                 茨城県産ブランド豚「美明豚（びめいとん）」を使ったボリューム満点の一品。
                 注文を受けてから丁寧に焼き上げる、作りたての熱々をどうぞ。
               </p>
+
               <ul className="mb-8">
                 {yakisoba.items.map((item, i) => (
                   <li key={item.name}
@@ -526,6 +506,7 @@ export default function HomePage() {
                   </li>
                 ))}
               </ul>
+
               <Link href="/yakisoba"
                 className="inline-flex items-center gap-3 label text-brand hover:text-brand-dark transition-colors"
                 style={{ letterSpacing: '0.25em' }}>
