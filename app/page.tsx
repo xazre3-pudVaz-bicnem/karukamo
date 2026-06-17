@@ -268,7 +268,7 @@ export default function HomePage() {
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
           HERO
       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
-      <section className="relative" style={{ backgroundColor: '#FAF3E4' }}>
+      <section className="relative pt-16 md:pt-[72px]" style={{ backgroundColor: '#FAF3E4' }}>
 
         {/* Hero image — full-width, auto-height, no cropping */}
         <div className="relative">
@@ -317,7 +317,7 @@ export default function HomePage() {
         <div className="max-w-screen-xl mx-auto px-8 sm:px-12 md:px-16 relative">
 
           <AnimateIn direction="up" className="flex items-center gap-4 mb-10 md:mb-14">
-            <Image src="/logo.png" alt="カルカモ マスコット" width={72} height={72} className="rounded-xl flex-shrink-0" />
+            <Image src="/logo.jpg" alt="カルカモ マスコット" width={72} height={72} className="rounded-xl flex-shrink-0" />
             <div>
               <p className="label text-brown-light mb-1">那珂湊のテイクアウトスタンド</p>
               <h2 className="font-serif font-bold text-2xl md:text-4xl text-brown-deep leading-snug">
@@ -465,7 +465,7 @@ export default function HomePage() {
               <h2 className="font-serif font-bold text-3xl md:text-5xl text-brown-deep leading-tight">
                 メニュー一覧
               </h2>
-              <Image src="/logo.png" alt="" width={48} height={48} className="rounded-xl mb-1 opacity-80 flex-shrink-0" aria-hidden="true" />
+              <Image src="/logo.jpg" alt="" width={48} height={48} className="rounded-xl mb-1 opacity-80 flex-shrink-0" aria-hidden="true" />
             </div>
           </AnimateIn>
 
@@ -525,7 +525,7 @@ export default function HomePage() {
                 カルカモの3つのこだわり
               </h2>
               <div className="hidden md:block relative flex-shrink-0" style={{ transform: 'rotate(6deg)' }}>
-                <Image src="/logo.png" alt="" width={56} height={56} className="rounded-2xl opacity-70" aria-hidden="true" />
+                <Image src="/logo.jpg" alt="" width={56} height={56} className="rounded-2xl opacity-70" aria-hidden="true" />
               </div>
             </div>
           </AnimateIn>
@@ -659,7 +659,7 @@ export default function HomePage() {
               <h2 className="font-serif font-bold text-3xl md:text-5xl text-brown-deep leading-tight">
                 アクセス
               </h2>
-              <Image src="/logo.png" alt="" width={44} height={44} className="rounded-xl mb-1 opacity-75 flex-shrink-0" aria-hidden="true" />
+              <Image src="/logo.jpg" alt="" width={44} height={44} className="rounded-xl mb-1 opacity-75 flex-shrink-0" aria-hidden="true" />
             </div>
           </AnimateIn>
 

@@ -18,7 +18,7 @@ export function MascotFloat() {
         style={{ filter: 'drop-shadow(0 8px 24px rgba(0,0,0,0.45))' }}
       >
         <Image
-          src="/logo.png"
+          src="/logo.jpg"
           alt="カルカモ マスコット"
           width={92}
           height={92}

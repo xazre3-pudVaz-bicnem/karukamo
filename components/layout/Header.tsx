@@ -30,7 +30,7 @@ export function Header() {
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2.5 group">
             <Image
-              src="/logo.png"
+              src="/logo.jpg"
               alt="カルカモ"
               width={28}
               height={28}
