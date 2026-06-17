@@ -469,7 +469,7 @@ export default function HomePage() {
                   <SteamSVG className="opacity-55" />
                 </div>
                 <div className="photo-portrait">
-                  <Image src="/LINE_ALBUM_焼きそば_260616_4.jpg" alt="美明豚焼きそば — カルカモ"
+                  <Image src="/yakisoba-main.png" alt="美明豚焼きそば — カルカモ"
                     fill className="object-cover object-center" />
                 </div>
               </div>
