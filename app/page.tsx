@@ -669,14 +669,14 @@ export default function HomePage() {
           SCENE — 利用シーン (dark)
           Decoration: 18 floating luminous dots
       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
-      <section className="section-py bg-brown-deep border-t border-brown relative overflow-hidden">
+      <section className="section-py border-t border-brand-dark relative overflow-hidden" style={{ backgroundColor: '#C8400A' }}>
 
-        {/* Floating luminous dots — 夜の港町のような幻想的な光の粒 */}
+        {/* Floating dots */}
         <div className="absolute inset-0 pointer-events-none select-none overflow-hidden" aria-hidden="true">
           {SCENE_DOTS.map((p, i) => (
             <div key={i} className="absolute rounded-full float-sway"
               style={{ left: p.l, bottom: p.b, width: `${p.s}px`, height: `${p.s}px`,
-                backgroundColor: 'rgba(255,255,255,0.18)',
+                backgroundColor: 'rgba(255,255,255,0.15)',
                 animationDelay: `${p.d}s`, animationDuration: `${p.dur}s` }} />
           ))}
         </div>
@@ -685,15 +685,15 @@ export default function HomePage() {
 
           <AnimateIn direction="up" className="mb-10 md:mb-14">
             <div className="flex items-center gap-3 mb-3">
-              <span className="block w-8 h-[2px] bg-brand flex-shrink-0" />
-              <p className="label text-ivory/40">Scene · こんなシーンに</p>
+              <span className="block w-8 h-[2px] bg-white/60 flex-shrink-0" />
+              <p className="label text-white/60">Scene · こんなシーンに</p>
             </div>
-            <h2 className="font-serif font-bold text-3xl md:text-5xl text-ivory leading-tight">
+            <h2 className="font-serif font-bold text-3xl md:text-5xl text-white leading-tight">
               こんな時に寄ってください
             </h2>
           </AnimateIn>
 
-          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-px bg-white/10">
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-px bg-black/15">
             {[
               { title: 'おさかな市場の帰りに', body: '市場でお買い物を楽しんだ後は、カルカモに立ち寄って焼きそばやたこ焼きを。港町散策をさらに楽しく。' },
               { title: 'ランチは焼きそばで', body: 'ボリューム満点の美明豚焼きそばやお好み焼きで、しっかりランチ。お食事系メニューが充実しています。' },
@@ -703,9 +703,9 @@ export default function HomePage() {
               { title: '地元のちょっとした買い物に', body: 'テイクアウト専門なので、気軽に立ち寄れます。お散歩ついでや、ちょっとしたおやつに。' },
             ].map((scene) => (
               <AnimateIn key={scene.title} direction="up">
-                <div className="bg-white/5 p-6 md:p-8 h-full">
-                  <h3 className="font-serif font-bold text-ivory text-sm mb-3 leading-snug">{scene.title}</h3>
-                  <p className="font-serif text-ivory/50 text-xs leading-loose">{scene.body}</p>
+                <div className="bg-black/10 p-6 md:p-8 h-full">
+                  <h3 className="font-serif font-bold text-white text-sm mb-3 leading-snug">{scene.title}</h3>
+                  <p className="font-serif text-white/70 text-xs leading-loose">{scene.body}</p>
                 </div>
               </AnimateIn>
             ))}
@@ -815,18 +815,18 @@ export default function HomePage() {
           INSTAGRAM — フォロー導線
           Decoration: 14 floating hearts + 10 sparkle stars
       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
-      <section className="py-20 md:py-28 bg-brown-deep border-t border-brown relative overflow-hidden">
+      <section className="py-20 md:py-28 border-t border-brand-dark relative overflow-hidden" style={{ backgroundColor: '#C8400A' }}>
 
-        {/* Hearts + sparkles — Instagramらしいかわいい演出 */}
+        {/* Hearts + sparkles */}
         <div className="absolute inset-0 pointer-events-none select-none overflow-hidden" aria-hidden="true">
           {INSTA_HEARTS.map((h, i) => (
-            <div key={i} className="absolute text-[#E88AB4]/30 heart-rise"
+            <div key={i} className="absolute text-white/20 heart-rise"
               style={{ left: h.l, bottom: h.b, animationDelay: `${h.d}s`, animationDuration: `${h.dur}s` }}>
               <HeartDot size={h.s} />
             </div>
           ))}
           {INSTA_STARS.map((s, i) => (
-            <div key={i} className="absolute text-ivory/12 twinkle"
+            <div key={i} className="absolute text-white/15 twinkle"
               style={{ left: s.l, top: s.t, animationDelay: `${s.d}s` }}>
               <StarDot size={s.s} />
             </div>
@@ -835,18 +835,18 @@ export default function HomePage() {
 
         <AnimateIn direction="up" className="text-center px-6 relative">
           <div className="flex items-center justify-center gap-4 mb-6">
-            <span className="block w-10 h-px bg-ivory/20" />
-            <p className="label text-ivory/30">Follow Us</p>
-            <span className="block w-10 h-px bg-ivory/20" />
+            <span className="block w-10 h-px bg-white/30" />
+            <p className="label text-white/60">Follow Us</p>
+            <span className="block w-10 h-px bg-white/30" />
           </div>
-          <h2 className="font-serif font-bold text-2xl md:text-4xl text-ivory mb-4">
+          <h2 className="font-serif font-bold text-2xl md:text-4xl text-white mb-4">
             Instagram で最新情報を
           </h2>
-          <p className="font-serif text-ivory/50 text-sm mb-10">
+          <p className="font-serif text-white/70 text-sm mb-10">
             営業日・最新メニュー・おすすめ情報を毎日発信中
           </p>
           <a href="https://www.instagram.com/karukamo.2384/" target="_blank" rel="noopener noreferrer"
-            className="inline-flex items-center gap-5 label text-ivory/60 hover:text-ivory transition-colors"
+            className="inline-flex items-center gap-5 label text-white/80 hover:text-white transition-colors"
             style={{ letterSpacing: '0.3em' }}>
             <span className="block w-10 h-px bg-current" />
             @karukamo.2384
