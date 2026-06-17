@@ -271,16 +271,14 @@ export default function HomePage() {
       <section className="relative overflow-hidden" style={{ height: '100svh' }}>
 
         {/* Hero image — full-bleed, fade-in reveal */}
-        <div className="absolute inset-0 hero-image-reveal">
-          <Image
-            src="/hero-yakisoba-full.png"
-            alt="那珂湊の焼きそば — カルカモ"
-            fill
-            className="object-cover"
-            style={{ objectPosition: 'center 60%' }}
-            priority
-          />
-        </div>
+        <Image
+          src="/hero-yakisoba-full.png"
+          alt="那珂湊の焼きそば — カルカモ"
+          fill
+          className="object-cover hero-image-reveal"
+          style={{ objectPosition: 'center 60%' }}
+          priority
+        />
 
         {/* Scroll indicator */}
         <div className="absolute bottom-10 inset-x-0 flex flex-col items-center gap-2 hero-scroll pointer-events-none"
