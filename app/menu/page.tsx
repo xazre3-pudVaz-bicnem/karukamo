@@ -26,8 +26,8 @@ const CATEGORY_IMAGES: Record<string, { src: string; alt: string }> = {
   yakisoba:    { src: '/LINE_ALBUM_焼きそば_260616_1.jpg',    alt: 'カルカモの美明豚焼きそば' },
   takoyaki:    { src: '/takoyaki.png',                        alt: 'カルカモのたこ焼き' },
   okonomiyaki: { src: '/LINE_ALBUM_お好み焼き_260616_1.jpg',  alt: 'カルカモのお好み焼き' },
-  crepe:       { src: '/LINE_ALBUM_クレープ_260616_1.png',    alt: 'カルカモのクレープ' },
-  taiyaki:     { src: '/food-spread.png',                     alt: 'カルカモのメニュー全体' },
+  crepe:       { src: '/crepe-closeup.png',                    alt: 'カルカモのクレープ' },
+  taiyaki:     { src: '/LINE_ALBUM_たい焼き_260616_3.jpg',    alt: 'カルカモのたい焼き' },
   sweets:      { src: '/LINE_ALBUM_アイス_260616_1.jpg',      alt: 'カルカモのアイス' },
 }
 
@@ -182,20 +182,20 @@ export default function MenuPage() {
       ))}
 
       {/* ━━━━ Instagram CTA ━━━━━━━━━━━━━━━━━━━━━━━ */}
-      <section className="py-20 md:py-28 bg-brown-deep">
+      <section className="py-20 md:py-28" style={{ backgroundColor: '#C8400A' }}>
         <AnimateIn className="text-center">
-          <p className="label text-ivory/30 mb-4">Latest Updates</p>
-          <p className="font-display font-light text-3xl md:text-5xl text-ivory mb-8 leading-none">
+          <p className="label text-white/40 mb-4">Latest Updates</p>
+          <p className="font-display font-light text-3xl md:text-5xl text-white mb-8 leading-none">
             INSTAGRAM
           </p>
-          <p className="font-serif text-ivory/50 text-sm mb-10">
+          <p className="font-serif text-white/60 text-sm mb-10">
             季節限定フレーバーや最新情報を発信中
           </p>
           <a
             href="https://www.instagram.com/karukamo.2384/"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-5 label text-ivory/60 hover:text-ivory transition-colors"
+            className="inline-flex items-center gap-5 label text-white/70 hover:text-white transition-colors"
             style={{ letterSpacing: '0.3em' }}
           >
             <span className="block w-10 h-px bg-current" />
