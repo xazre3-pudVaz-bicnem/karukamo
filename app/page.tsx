@@ -281,7 +281,6 @@ export default function HomePage() {
             className="w-full h-auto block"
             priority
           />
-          <MascotFloat />
         </div>
 
         {/* Scroll indicator */}
