@@ -270,102 +270,45 @@ export default function HomePage() {
       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
       <section className="relative overflow-hidden" style={{ height: '100svh' }}>
 
+        {/* Background: yakisoba full-bleed */}
         <div className="hero-bg absolute inset-0">
-          <Image src="/LINE_ALBUM_焼きそば_260616_1.jpg" alt="那珂湊の美明豚焼きそば — カルカモ"
-            fill className="object-cover object-center" priority />
+          <Image
+            src="/yakisoba-main.png"
+            alt="那珂湊の焼きそば — カルカモ"
+            fill
+            className="object-cover object-center"
+            priority
+          />
         </div>
 
+        {/* Gradient overlay for text readability */}
         <div className="absolute inset-0 pointer-events-none" style={{
-          background: 'linear-gradient(to bottom, rgba(10,6,2,0.62) 0%, rgba(10,6,2,0.12) 42%, rgba(10,6,2,0.75) 100%)',
+          background: 'linear-gradient(to bottom, rgba(8,4,1,0.75) 0%, rgba(8,4,1,0.06) 45%, rgba(8,4,1,0.72) 100%)',
         }} />
 
-        {/* ── Hero particles — rising dots + sparkle stars ── */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none select-none" style={{ top: '64px', bottom: '48px' }} aria-hidden="true">
-          {HERO_DOTS.map((p, i) => (
-            <div key={i} className="absolute rounded-full bg-white/30 rise"
-              style={{ left: p.l, bottom: p.b, width: `${p.s}px`, height: `${p.s}px`,
-                animationDelay: `${p.d}s`, animationDuration: `${p.dur}s` }} />
-          ))}
-          {HERO_STARS.map((s, i) => (
-            <div key={i} className="absolute text-white/20 twinkle"
-              style={{ left: s.l, top: s.t, animationDelay: `${s.d}s` }}>
-              <StarDot size={s.s} />
-            </div>
-          ))}
-        </div>
+        {/* Center: 茨城那珂湊 + カルカモ only */}
+        <div className="absolute inset-0 flex flex-col items-center justify-center text-center"
+          style={{ paddingTop: '64px', paddingBottom: '48px' }}>
 
-        {/* Ghost YAKISOBA */}
-        <div className="absolute inset-x-0 flex items-center justify-center overflow-hidden pointer-events-none select-none hero-catchphrase"
-          style={{ top: '64px', bottom: '48px' }} aria-hidden="true">
-          <span className="font-display font-light text-white whitespace-nowrap"
-            style={{ fontSize: 'clamp(7rem, 24vw, 20rem)', opacity: 0.038, letterSpacing: '-0.03em', lineHeight: 1 }}>
-            YAKISOBA
-          </span>
-        </div>
+          <p className="label text-white/50 hero-catchphrase mb-6 md:mb-10"
+            style={{ letterSpacing: '0.65em', fontSize: '0.6rem' }}>
+            茨城那珂湊
+          </p>
 
-        {/* Left vertical */}
-        <div className="absolute hero-left-vert pointer-events-none flex flex-col items-center justify-center gap-2"
-          style={{ left: '1rem', top: '72px', bottom: '48px' }}>
-          {['や', 'き', 'そ', 'ば'].map((c, i) => (
-            <span key={i} className="font-serif text-sm text-white font-bold" style={{ letterSpacing: 0 }}>{c}</span>
-          ))}
-          <div className="w-px h-5 bg-white/15 my-1" />
-          {['た', 'こ'].map((c, i) => (
-            <span key={i} className="font-serif text-xs text-white/35">{c}</span>
-          ))}
-          <div className="w-px h-4 bg-white/10 my-1" />
-          {['お', 'こ', 'の', 'み'].map((c, i) => (
-            <span key={i} className="font-serif text-xs text-white/20">{c}</span>
-          ))}
-        </div>
-
-        {/* Center content */}
-        <div className="absolute inset-x-0 flex flex-col items-center justify-center text-center px-12 md:px-20"
-          style={{ top: '64px', bottom: '48px' }}>
-          <div className="flex items-center gap-4 mb-5 hero-catchphrase">
-            <span className="block w-8 h-px bg-white/25 flex-shrink-0" />
-            <p className="label text-white/40 flex-shrink-0" style={{ letterSpacing: '0.42em', fontSize: '0.58rem' }}>
-              那珂湊 · Nakaminato
-            </p>
-            <span className="block w-8 h-px bg-white/25 flex-shrink-0" />
-          </div>
-
-          <h1 className="hero-catchphrase font-serif text-white text-center" style={{ animationDelay: '0.52s' }}>
-            <span className="block font-normal text-white/60"
-              style={{ fontSize: 'clamp(1rem, 2.8vw, 1.75rem)', letterSpacing: '0.18em', marginBottom: '0.3em' }}>
-              那珂湊で楽しむ
-            </span>
-            <span className="block font-bold leading-none"
-              style={{ fontSize: 'clamp(3.2rem, 11vw, 9rem)', textShadow: '0 4px 36px rgba(0,0,0,0.5)', marginBottom: '0.14em' }}>
-              焼きそばと
-            </span>
-            <span className="block font-bold"
-              style={{ fontSize: 'clamp(2rem, 7vw, 5.6rem)', lineHeight: 1.15, opacity: 0.86,
-                textShadow: '0 4px 36px rgba(0,0,0,0.5)', letterSpacing: '0.04em' }}>
-              食べ歩きの店
-            </span>
+          <h1 className="font-display font-light text-white hero-catchphrase leading-none"
+            style={{
+              fontSize: 'clamp(5.5rem, 20vw, 16rem)',
+              letterSpacing: '0.18em',
+              textShadow: '0 8px 80px rgba(0,0,0,0.55)',
+              animationDelay: '0.4s',
+            }}>
+            カルカモ
           </h1>
 
-          <div className="flex items-center gap-5 mt-6 hero-catchphrase" style={{ animationDelay: '0.88s' }}>
-            <span className="block w-12 h-px bg-white/18 flex-shrink-0" />
-            <p className="font-display italic text-white/28 flex-shrink-0" style={{ fontSize: '0.9rem', letterSpacing: '0.2em' }}>
-              Yakisoba Stand
-            </p>
-            <span className="block w-12 h-px bg-white/18 flex-shrink-0" />
-          </div>
-
-          <div className="hero-scroll flex flex-col items-center mt-8 md:mt-12" style={{ animationDelay: '1.6s' }}>
+          <div className="hero-scroll flex flex-col items-center mt-14 md:mt-20" style={{ animationDelay: '1.2s' }}>
             <span className="label text-white/25" style={{ fontSize: '8px', letterSpacing: '0.4em' }}>SCROLL</span>
             <div className="w-px h-10 bg-white/20 mt-2 scroll-line" />
           </div>
-        </div>
-
-        {/* Right vertical */}
-        <div className="absolute hero-right-vert pointer-events-none flex flex-col items-center justify-center gap-2"
-          style={{ right: '1rem', top: '72px', bottom: '48px' }}>
-          {['茨', '城', '·', '那', '珂', '湊'].map((c, i) => (
-            <span key={i} className="font-serif text-xs text-white/25">{c}</span>
-          ))}
         </div>
 
         <MascotFloat />
