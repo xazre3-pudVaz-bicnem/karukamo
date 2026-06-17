@@ -98,6 +98,20 @@ export default function HomePage() {
           }}
         />
 
+        {/* ── Ghost depth text — barely visible, adds cinematic depth ── */}
+        <div
+          className="absolute inset-x-0 flex items-center justify-center overflow-hidden pointer-events-none select-none hero-catchphrase"
+          style={{ top: '64px', bottom: '48px' }}
+          aria-hidden="true"
+        >
+          <span
+            className="font-display font-light text-white whitespace-nowrap"
+            style={{ fontSize: 'clamp(7rem, 24vw, 20rem)', opacity: 0.038, letterSpacing: '-0.03em', lineHeight: 1 }}
+          >
+            YAKISOBA
+          </span>
+        </div>
+
         {/* ── Left vertical text ── */}
         <div
           className="absolute hero-left-vert pointer-events-none flex flex-col items-center justify-center gap-2"
@@ -118,32 +132,67 @@ export default function HomePage() {
 
         {/* ── Center content ── */}
         <div
-          className="absolute inset-x-0 flex flex-col items-center justify-center text-center px-16 md:px-24"
+          className="absolute inset-x-0 flex flex-col items-center justify-center text-center px-12 md:px-20"
           style={{ top: '64px', bottom: '48px' }}
         >
-          <p
-            className="hero-catchphrase label text-white/45 mb-5"
-            style={{ letterSpacing: '0.45em', fontSize: '0.6rem' }}
-          >
-            那珂湊 · Nakaminato · Ibaraki
-          </p>
+          {/* Top label with flanking rules */}
+          <div className="flex items-center gap-4 mb-5 hero-catchphrase">
+            <span className="block w-8 h-px bg-white/25 flex-shrink-0" />
+            <p className="label text-white/40 flex-shrink-0" style={{ letterSpacing: '0.42em', fontSize: '0.58rem' }}>
+              那珂湊 · Nakaminato
+            </p>
+            <span className="block w-8 h-px bg-white/25 flex-shrink-0" />
+          </div>
 
+          {/* Main heading — size contrast IS the design */}
           <h1
-            className="hero-catchphrase font-serif font-bold text-white"
-            style={{
-              fontSize: 'clamp(2.8rem, 10vw, 7.5rem)',
-              lineHeight: 1.1,
-              textShadow: '0 6px 40px rgba(0,0,0,0.55)',
-              animationDelay: '0.55s',
-            }}
+            className="hero-catchphrase font-serif text-white text-center"
+            style={{ animationDelay: '0.52s' }}
           >
-            那珂湊で楽しむ<br />
-            焼きそばと<br />
-            食べ歩きの店
+            <span
+              className="block font-normal text-white/60"
+              style={{ fontSize: 'clamp(1rem, 2.8vw, 1.75rem)', letterSpacing: '0.18em', marginBottom: '0.3em' }}
+            >
+              那珂湊で楽しむ
+            </span>
+            <span
+              className="block font-bold leading-none"
+              style={{
+                fontSize: 'clamp(3.2rem, 11vw, 9rem)',
+                textShadow: '0 4px 36px rgba(0,0,0,0.5)',
+                marginBottom: '0.14em',
+              }}
+            >
+              焼きそばと
+            </span>
+            <span
+              className="block font-bold"
+              style={{
+                fontSize: 'clamp(2rem, 7vw, 5.6rem)',
+                lineHeight: 1.15,
+                opacity: 0.86,
+                textShadow: '0 4px 36px rgba(0,0,0,0.5)',
+                letterSpacing: '0.04em',
+              }}
+            >
+              食べ歩きの店
+            </span>
           </h1>
 
+          {/* Cormorant italic accent — エレガントな下部アクセント */}
           <div
-            className="hero-scroll flex flex-col items-center mt-10 md:mt-16"
+            className="flex items-center gap-5 mt-6 hero-catchphrase"
+            style={{ animationDelay: '0.88s' }}
+          >
+            <span className="block w-12 h-px bg-white/18 flex-shrink-0" />
+            <p className="font-display italic text-white/28 flex-shrink-0" style={{ fontSize: '0.9rem', letterSpacing: '0.2em' }}>
+              Yakisoba Stand
+            </p>
+            <span className="block w-12 h-px bg-white/18 flex-shrink-0" />
+          </div>
+
+          <div
+            className="hero-scroll flex flex-col items-center mt-8 md:mt-12"
             style={{ animationDelay: '1.6s' }}
           >
             <span className="label text-white/25" style={{ fontSize: '8px', letterSpacing: '0.4em' }}>SCROLL</span>
