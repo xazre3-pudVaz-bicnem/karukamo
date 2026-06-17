@@ -273,7 +273,7 @@ export default function HomePage() {
         {/* Hero image — full-bleed, fade-in reveal */}
         <div className="absolute inset-0 hero-image-reveal">
           <Image
-            src="/images/hero-yakisoba-full.png"
+            src="/hero-yakisoba-full.png"
             alt="那珂湊の焼きそば — カルカモ"
             fill
             className="object-cover"
