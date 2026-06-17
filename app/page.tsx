@@ -270,49 +270,26 @@ export default function HomePage() {
       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
       <section className="relative overflow-hidden" style={{ height: '100svh' }}>
 
-        {/* Background: yakisoba full-bleed */}
-        <div className="hero-bg absolute inset-0">
+        {/* Hero image — full-bleed, fade-in reveal */}
+        <div className="absolute inset-0 hero-image-reveal">
           <Image
-            src="/yakisoba-main.png"
+            src="/images/hero-yakisoba-full.png"
             alt="那珂湊の焼きそば — カルカモ"
             fill
-            className="object-cover object-center"
+            className="object-cover"
+            style={{ objectPosition: 'center 60%' }}
             priority
           />
         </div>
 
-        {/* Gradient overlay for text readability */}
-        <div className="absolute inset-0 pointer-events-none" style={{
-          background: 'linear-gradient(to bottom, rgba(8,4,1,0.75) 0%, rgba(8,4,1,0.06) 45%, rgba(8,4,1,0.72) 100%)',
-        }} />
-
-        {/* Center: 茨城那珂湊 + カルカモ only */}
-        <div className="absolute inset-0 flex flex-col items-center justify-center text-center"
-          style={{ paddingTop: '64px', paddingBottom: '48px' }}>
-
-          <p className="label text-white/50 hero-catchphrase mb-6 md:mb-10"
-            style={{ letterSpacing: '0.65em', fontSize: '0.6rem' }}>
-            茨城那珂湊
-          </p>
-
-          <h1 className="font-display font-light text-white hero-catchphrase leading-none"
-            style={{
-              fontSize: 'clamp(5.5rem, 20vw, 16rem)',
-              letterSpacing: '0.18em',
-              textShadow: '0 8px 80px rgba(0,0,0,0.55)',
-              animationDelay: '0.4s',
-            }}>
-            カルカモ
-          </h1>
-
-          <div className="hero-scroll flex flex-col items-center mt-14 md:mt-20" style={{ animationDelay: '1.2s' }}>
-            <span className="label text-white/25" style={{ fontSize: '8px', letterSpacing: '0.4em' }}>SCROLL</span>
-            <div className="w-px h-10 bg-white/20 mt-2 scroll-line" />
-          </div>
+        {/* Scroll indicator */}
+        <div className="absolute bottom-10 inset-x-0 flex flex-col items-center gap-2 hero-scroll pointer-events-none"
+          style={{ animationDelay: '1.0s' }}>
+          <span className="label text-white/40" style={{ fontSize: '8px', letterSpacing: '0.4em' }}>SCROLL</span>
+          <div className="w-px h-8 bg-white/30 scroll-line" />
         </div>
 
         <MascotFloat />
-        <MarqueeStrip />
       </section>
 
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
