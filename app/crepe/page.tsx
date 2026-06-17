@@ -114,7 +114,7 @@ export default function CrepePage() {
             <AnimateIn delay={0.1}>
               <div className="photo-portrait">
                 <Image
-                  src="/crepe-stand.png"
+                  src="/LINE_ALBUM_クレープ_260617_1.png"
                   alt="カルカモのクレープスタンド — ひたちなか市・那珂湊"
                   fill
                   className="object-cover object-center"
@@ -138,7 +138,7 @@ export default function CrepePage() {
             <AnimateIn>
               <div className="photo-tall">
                 <Image
-                  src="/crepe-closeup.png"
+                  src="/LINE_ALBUM_クレープ_260617_1.png"
                   alt="カルカモのクレープ クローズアップ"
                   fill
                   className="object-cover object-center"

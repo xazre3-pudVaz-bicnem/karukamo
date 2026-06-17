@@ -26,7 +26,7 @@ const CATEGORY_IMAGES: Record<string, { src: string; alt: string }> = {
   yakisoba:    { src: '/LINE_ALBUM_焼きそば_260616_1.jpg',    alt: 'カルカモの美明豚焼きそば' },
   takoyaki:    { src: '/takoyaki.png',                        alt: 'カルカモのたこ焼き' },
   okonomiyaki: { src: '/LINE_ALBUM_お好み焼き_260616_1.jpg',  alt: 'カルカモのお好み焼き' },
-  crepe:       { src: '/crepe-closeup.png',                    alt: 'カルカモのクレープ' },
+  crepe:       { src: '/LINE_ALBUM_クレープ_260617_1.png',     alt: 'カルカモのクレープ' },
   taiyaki:     { src: '/LINE_ALBUM_たい焼き_260616_3.jpg',    alt: 'カルカモのたい焼き' },
   sweets:      { src: '/LINE_ALBUM_アイス_260616_1.jpg',      alt: 'カルカモのアイス' },
 }

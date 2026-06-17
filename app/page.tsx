@@ -20,7 +20,7 @@ const MENU_IMAGES: Record<string, string> = {
   yakisoba:    '/LINE_ALBUM_焼きそば_260616_1.jpg',
   takoyaki:    '/takoyaki.png',
   okonomiyaki: '/LINE_ALBUM_お好み焼き_260616_1.jpg',
-  crepe:       '/crepe-closeup.png',
+  crepe:       '/LINE_ALBUM_クレープ_260617_1.png',
   taiyaki:     '/LINE_ALBUM_たい焼き_260616_3.jpg',
   sweets:      '/LINE_ALBUM_アイス_260616_1.jpg',
 }

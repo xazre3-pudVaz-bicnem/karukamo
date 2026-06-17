@@ -169,7 +169,7 @@ export default function TakeoutPage() {
                 en: 'Crepe',
                 name: 'クレープ',
                 desc: 'もちもち生地に生クリームとフルーツ。季節限定フレーバーも人気。',
-                img: '/LINE_ALBUM_クレープ_260616_1.png',
+                img: '/LINE_ALBUM_クレープ_260617_1.png',
               },
               {
                 href: '/sweets',
