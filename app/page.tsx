@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import { AnimateIn } from '@/components/ui/AnimateIn'
+import { MascotFloat } from '@/components/ui/MascotFloat'
 import { menuCategories } from '@/data/menu'
 
 export const revalidate = 3600
@@ -68,19 +69,6 @@ function SteamSVG({ className = '' }: { className?: string }) {
   )
 }
 
-/* ── Duck mascot SVG ── */
-function DuckSVG({ className = '' }: { className?: string }) {
-  return (
-    <svg width="64" height="50" viewBox="0 0 64 50" fill="none" className={className} aria-hidden="true">
-      <ellipse cx="26" cy="34" rx="20" ry="13" fill="#46362A" fillOpacity="0.75" />
-      <path d="M42 27 Q47 18 45 11" stroke="#46362A" strokeWidth="7" strokeLinecap="round" />
-      <circle cx="45" cy="9" r="8" fill="#46362A" fillOpacity="0.75" />
-      <path d="M51 8 L61 10 L51 13 Z" fill="#C8400A" />
-      <circle cx="48" cy="6" r="1.8" fill="white" />
-      <path d="M9 33 Q26 22 42 29" stroke="#FAF3E4" strokeWidth="1.5" fill="none" strokeOpacity="0.3" />
-    </svg>
-  )
-}
 
 export default function HomePage() {
   return (
@@ -173,6 +161,9 @@ export default function HomePage() {
           ))}
         </div>
 
+        {/* ── Floating mascot (slides in from right after hero animations) ── */}
+        <MascotFloat />
+
         {/* ── Orange marquee strip ── */}
         <MarqueeStrip />
       </section>
@@ -184,7 +175,13 @@ export default function HomePage() {
         <div className="max-w-screen-xl mx-auto px-8 sm:px-12 md:px-16">
 
           <AnimateIn direction="up" className="flex items-center gap-4 mb-10 md:mb-14">
-            <DuckSVG className="flex-shrink-0" />
+            <Image
+              src="/logo.jpg"
+              alt="カルカモ マスコット"
+              width={72}
+              height={72}
+              className="rounded-xl flex-shrink-0"
+            />
             <div>
               <p className="label text-brown-light mb-1">那珂湊のテイクアウトスタンド</p>
               <h2 className="font-serif font-bold text-2xl md:text-4xl text-brown-deep leading-snug">

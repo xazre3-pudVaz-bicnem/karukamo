@@ -4,6 +4,21 @@ import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
 
+const HEARTS = [
+  { left: '-46px', top: '-18px', size: 22, delay: 0.82 },
+  { left: '126px', top: '-32px', size: 16, delay: 0.98 },
+  { left: '-30px', top: '108px', size: 13, delay: 1.14 },
+  { left: '132px', top: '90px',  size: 19, delay: 0.92 },
+]
+
+function HeartSVG({ size }: { size: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="#E88AB4" aria-hidden="true">
+      <path d="M12 21.593c-5.63-5.539-11-10.297-11-14.402 0-3.791 3.068-5.191 5.281-5.191 1.312 0 4.151.501 5.719 4.457 1.59-3.968 4.464-4.447 5.726-4.447 2.54 0 5.274 1.621 5.274 5.181 0 4.069-5.136 8.625-11 14.402z" />
+    </svg>
+  )
+}
+
 export function LoadingScreen() {
   const [show, setShow] = useState(false)
 
@@ -12,11 +27,11 @@ export function LoadingScreen() {
       if (!sessionStorage.getItem('kd_loaded')) {
         sessionStorage.setItem('kd_loaded', '1')
         setShow(true)
-        const t = setTimeout(() => setShow(false), 1700)
+        const t = setTimeout(() => setShow(false), 2300)
         return () => clearTimeout(t)
       }
     } catch {
-      // sessionStorage unavailable (private mode etc.) — skip loading
+      // sessionStorage unavailable — skip
     }
   }, [])
 
@@ -27,53 +42,53 @@ export function LoadingScreen() {
           key="loading"
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.5, ease: 'easeInOut' }}
+          transition={{ duration: 0.65, ease: 'easeInOut' }}
           className="fixed inset-0 z-[200] flex flex-col items-center justify-center"
           style={{ backgroundColor: '#FAF3E4' }}
         >
-          {/* Duck mascot SVG */}
-          <motion.div
-            initial={{ opacity: 0, y: 6 }}
-            animate={{ opacity: 1, y: [0, -6, 0, -4, 0] }}
-            transition={{
-              opacity: { duration: 0.4, delay: 0.1 },
-              y: { duration: 1.4, delay: 0.2, ease: 'easeInOut' },
-            }}
-            className="mb-4"
-          >
-            <svg width="64" height="48" viewBox="0 0 64 48" fill="none" aria-hidden="true">
-              <ellipse cx="26" cy="33" rx="20" ry="13" fill="#46362A" fillOpacity="0.8" />
-              <path d="M42 26 Q47 17 45 11" stroke="#46362A" strokeWidth="7" strokeLinecap="round" />
-              <circle cx="45" cy="9" r="8" fill="#46362A" fillOpacity="0.8" />
-              <path d="M51 8 L60 10 L51 13 Z" fill="#C8400A" />
-              <circle cx="48" cy="6" r="1.8" fill="white" />
-              <path d="M9 32 Q26 22 42 28" stroke="#FAF3E4" strokeWidth="1.5" fill="none" strokeOpacity="0.35" />
-            </svg>
-          </motion.div>
+          {/* Mascot: spring drop from above + continuous float+wobble */}
+          <div className="relative mb-7">
+            <motion.div
+              initial={{ y: -140, scale: 0.3, rotate: -25 }}
+              animate={{ y: 0, scale: 1, rotate: 0 }}
+              transition={{ type: 'spring', stiffness: 185, damping: 13, delay: 0.05 }}
+            >
+              <motion.div
+                animate={{ y: [0, -15, 0], rotate: [-5, 5, -5] }}
+                transition={{ duration: 2.5, repeat: Infinity, ease: 'easeInOut', delay: 0.85 }}
+              >
+                <Image
+                  src="/logo.jpg"
+                  alt="カルカモ マスコット"
+                  width={164}
+                  height={164}
+                  className="rounded-2xl"
+                  priority
+                />
+              </motion.div>
+            </motion.div>
 
-          {/* Logo */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.85 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-            className="mb-3"
-          >
-            <Image
-              src="/logo.jpg"
-              alt="カルカモ"
-              width={56}
-              height={56}
-              className="rounded-sm"
-              priority
-            />
-          </motion.div>
+            {/* Hearts that pop out after mascot lands */}
+            {HEARTS.map((h, i) => (
+              <motion.div
+                key={i}
+                className="absolute pointer-events-none"
+                style={{ left: h.left, top: h.top }}
+                initial={{ scale: 0, opacity: 0, y: 12 }}
+                animate={{ scale: [0, 1.6, 1], opacity: [0, 1, 0.85], y: [12, -8, 0] }}
+                transition={{ delay: h.delay, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+              >
+                <HeartSVG size={h.size} />
+              </motion.div>
+            ))}
+          </div>
 
           {/* Store name */}
           <motion.p
-            initial={{ opacity: 0, y: 8 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-            className="font-display text-xl tracking-[0.35em] text-brown-deep mb-2"
+            transition={{ delay: 0.42, duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+            className="font-display text-2xl tracking-[0.35em] text-brown-deep mb-2"
           >
             KARUKAMO
           </motion.p>
@@ -81,7 +96,7 @@ export function LoadingScreen() {
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.55, duration: 0.5 }}
+            transition={{ delay: 0.68, duration: 0.5 }}
             className="label text-brown-light"
           >
             焼きそばと食べ歩きの店
