@@ -357,7 +357,7 @@ export default function HomePage() {
             </AnimateIn>
             <AnimateIn direction="up" delay={0.2}>
               <div className="photo-portrait">
-                <Image src="/food-spread.png" alt="カルカモのメニュー" fill className="object-cover object-center" />
+                <Image src="/LINE_ALBUM_クレープ_260617_1.png" alt="カルカモのクレープ" fill className="object-cover object-center" />
               </div>
             </AnimateIn>
           </div>
