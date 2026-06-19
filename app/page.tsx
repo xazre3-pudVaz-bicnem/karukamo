@@ -337,7 +337,6 @@ export default function HomePage() {
                 食事からスイーツまで幅広いメニューが揃っています。
               </p>
               <p className="font-serif text-brown-light text-sm leading-loose mb-8">
-                注文を受けてから丁寧に仕上げる焼きたての味が自慢。
                 那珂湊観光や市場散策のついでに立ち寄れる場所として、
                 観光客の方にも地元の方にも気軽にご利用いただけます。
               </p>
@@ -358,6 +357,9 @@ export default function HomePage() {
               <div className="photo-portrait">
                 <Image src="/LINE_ALBUM_クレープ_260617_1.png" alt="カルカモのクレープ" fill className="object-cover object-center" />
               </div>
+              <p className="font-serif text-brown-light text-xs leading-relaxed mt-3">
+                クレープは注文を受けてから丁寧に仕上げる焼きたての味。那珂湊散策のスイーツとしてお楽しみください。
+              </p>
             </AnimateIn>
           </div>
         </div>
