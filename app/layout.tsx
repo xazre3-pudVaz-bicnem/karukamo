@@ -29,7 +29,7 @@ const notoSerifJP = Noto_Serif_JP({
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? 'https://karukamo.jp'),
+  metadataBase: new URL('https://www.karukamo.jp'),
   title: {
     template: '%s | カルカモ',
     default: 'カルカモ | 那珂湊の焼きそば&食べ歩きスタンド',
@@ -39,24 +39,25 @@ export const metadata: Metadata = {
   keywords: [
     'カルカモ', '那珂湊 焼きそば', 'ひたちなか市 焼きそば', '美明豚 焼きそば',
     '那珂湊', 'ひたちなか市', 'テイクアウト', 'たこ焼き', 'お好み焼き', 'クレープ',
+    '那珂湊 テイクアウト', '那珂湊 ランチ', 'おさかな市場 テイクアウト',
   ],
   openGraph: {
     title: 'カルカモ | 那珂湊の焼きそば&食べ歩きスタンド',
     description: 'ひたちなか市・那珂湊の焼きそば＆テイクアウトスタンド。おさかな市場から歩いて5分。',
-    url: 'https://karukamo.jp',
+    url: 'https://www.karukamo.jp',
     siteName: 'カルカモ',
     locale: 'ja_JP',
     type: 'website',
   },
   twitter: { card: 'summary_large_image' },
-  alternates: { canonical: 'https://karukamo.jp' },
+  alternates: { canonical: 'https://www.karukamo.jp' },
 }
 
 const structuredData = [
   {
     '@context': 'https://schema.org',
     '@type': ['FoodEstablishment', 'LocalBusiness'],
-    '@id': 'https://karukamo.jp/#business',
+    '@id': 'https://www.karukamo.jp/#business',
     name: 'カルカモ',
     description: 'ひたちなか市・那珂湊の焼きそば＆テイクアウトスタンド。美明豚焼きそば・クレープ・たこ焼き・お好み焼きなど。那珂湊おさかな市場から徒歩5分の食べ歩きグルメスタンド。',
     address: {
@@ -73,11 +74,11 @@ const structuredData = [
       longitude: 140.5833,
     },
     hasMap: 'https://maps.google.com/?q=茨城県ひたちなか市湊本町27-3',
-    url: 'https://karukamo.jp',
+    url: 'https://www.karukamo.jp',
     sameAs: ['https://www.instagram.com/karukamo.2384/'],
     servesCuisine: ['焼きそば', 'たこ焼き', 'お好み焼き', 'クレープ', 'たい焼き', 'アイスクリーム'],
     priceRange: '¥',
-    hasMenu: 'https://karukamo.jp/menu',
+    hasMenu: 'https://www.karukamo.jp/menu',
     areaServed: [
       { '@type': 'City', name: 'ひたちなか市' },
       { '@type': 'Place', name: '那珂湊' },
@@ -87,17 +88,17 @@ const structuredData = [
   {
     '@context': 'https://schema.org',
     '@type': 'Organization',
-    '@id': 'https://karukamo.jp/#organization',
+    '@id': 'https://www.karukamo.jp/#organization',
     name: 'カルカモ',
-    url: 'https://karukamo.jp',
-    logo: 'https://karukamo.jp/logo.jpg',
+    url: 'https://www.karukamo.jp',
+    logo: 'https://www.karukamo.jp/logo.jpg',
     sameAs: ['https://www.instagram.com/karukamo.2384/'],
   },
   {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
-    '@id': 'https://karukamo.jp/#website',
-    url: 'https://karukamo.jp',
+    '@id': 'https://www.karukamo.jp/#website',
+    url: 'https://www.karukamo.jp',
     name: 'カルカモ',
     description: 'ひたちなか市・那珂湊の焼きそば＆テイクアウトスタンド',
     inLanguage: 'ja',

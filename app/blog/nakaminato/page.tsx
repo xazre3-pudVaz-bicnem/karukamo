@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   description:
     '那珂湊観光情報ブログ。おさかな市場・周辺観光スポット・食べ歩きグルメ・アクセス情報など、那珂湊（ひたちなか市）の観光に役立つ情報を発信。',
   keywords: ['那珂湊 観光', 'ひたちなか市 観光', '那珂湊 グルメ', '那珂湊 おさかな市場', '茨城 日帰り旅行'],
-  alternates: { canonical: 'https://karukamo.jp/blog/nakaminato' },
+  alternates: { canonical: 'https://www.karukamo.jp/blog/nakaminato' },
 }
 
 export default function BlogNakaminatoPage() {

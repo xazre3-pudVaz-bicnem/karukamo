@@ -18,13 +18,13 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'ひたちなか市・那珂湊のスイーツ・アイス | カルカモ',
     description: '名物ふぐもなかアイスをはじめ、豊富なアイスクリームとたい焼き。那珂湊の食べ歩きスイーツ。',
-    url: 'https://karukamo.jp/sweets',
+    url: 'https://www.karukamo.jp/sweets',
     images: [{ url: '/og-image.jpg', width: 1200, height: 630 }],
     locale: 'ja_JP',
     type: 'website',
   },
   twitter: { card: 'summary_large_image' },
-  alternates: { canonical: 'https://karukamo.jp/sweets' },
+  alternates: { canonical: 'https://www.karukamo.jp/sweets' },
 }
 
 const sweets = menuCategories.find((c) => c.id === 'sweets')!
@@ -35,8 +35,8 @@ const structuredData = [
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'ホーム', item: 'https://karukamo.jp' },
-      { '@type': 'ListItem', position: 2, name: 'スイーツ・アイス', item: 'https://karukamo.jp/sweets' },
+      { '@type': 'ListItem', position: 1, name: 'ホーム', item: 'https://www.karukamo.jp' },
+      { '@type': 'ListItem', position: 2, name: 'スイーツ・アイス', item: 'https://www.karukamo.jp/sweets' },
     ],
   },
   {

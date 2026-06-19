@@ -18,13 +18,13 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'ひたちなか市・那珂湊のテイクアウト特集 | カルカモ',
     description: '焼きそば・たこ焼き・お好み焼き・クレープ・アイスが揃う食べ歩きグルメスタンド。那珂湊観光に。',
-    url: 'https://karukamo.jp/takeout',
+    url: 'https://www.karukamo.jp/takeout',
     images: [{ url: '/og-image.jpg', width: 1200, height: 630 }],
     locale: 'ja_JP',
     type: 'website',
   },
   twitter: { card: 'summary_large_image' },
-  alternates: { canonical: 'https://karukamo.jp/takeout' },
+  alternates: { canonical: 'https://www.karukamo.jp/takeout' },
 }
 
 const structuredData = [
@@ -32,8 +32,8 @@ const structuredData = [
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'ホーム', item: 'https://karukamo.jp' },
-      { '@type': 'ListItem', position: 2, name: 'テイクアウト特集', item: 'https://karukamo.jp/takeout' },
+      { '@type': 'ListItem', position: 1, name: 'ホーム', item: 'https://www.karukamo.jp' },
+      { '@type': 'ListItem', position: 2, name: 'テイクアウト特集', item: 'https://www.karukamo.jp/takeout' },
     ],
   },
   {
@@ -49,8 +49,8 @@ const structuredData = [
       addressCountry: 'JP',
     },
     servesCuisine: ['焼きそば', 'たこ焼き', 'お好み焼き', 'クレープ', 'アイスクリーム'],
-    hasMenu: 'https://karukamo.jp/menu',
-    url: 'https://karukamo.jp',
+    hasMenu: 'https://www.karukamo.jp/menu',
+    url: 'https://www.karukamo.jp',
     sameAs: ['https://www.instagram.com/karukamo.2384/'],
   },
 ]

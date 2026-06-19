@@ -17,13 +17,13 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'ひたちなか市・那珂湊のたこ焼き | カルカモ',
     description: '外はカリッ、中はとろっ。大玉サイズでボリューム満点のたこ焼き。那珂湊のテイクアウトに。',
-    url: 'https://karukamo.jp/takoyaki',
+    url: 'https://www.karukamo.jp/takoyaki',
     images: [{ url: '/og-image.jpg', width: 1200, height: 630 }],
     locale: 'ja_JP',
     type: 'website',
   },
   twitter: { card: 'summary_large_image' },
-  alternates: { canonical: 'https://karukamo.jp/takoyaki' },
+  alternates: { canonical: 'https://www.karukamo.jp/takoyaki' },
 }
 
 const takoyaki = menuCategories.find((c) => c.id === 'takoyaki')!
@@ -33,8 +33,8 @@ const structuredData = [
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'ホーム', item: 'https://karukamo.jp' },
-      { '@type': 'ListItem', position: 2, name: 'たこ焼き', item: 'https://karukamo.jp/takoyaki' },
+      { '@type': 'ListItem', position: 1, name: 'ホーム', item: 'https://www.karukamo.jp' },
+      { '@type': 'ListItem', position: 2, name: 'たこ焼き', item: 'https://www.karukamo.jp/takoyaki' },
     ],
   },
   {

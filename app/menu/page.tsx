@@ -35,7 +35,7 @@ export const metadata: Metadata = {
   title: 'Menu | カルカモ — 那珂湊の焼きそば&テイクアウト',
   description:
     'カルカモのメニュー一覧。美明豚焼きそば・たこ焼き・お好み焼き・クレープ・アイス・たい焼き。茨城県ひたちなか市那珂湊のテイクアウトスタンド。',
-  alternates: { canonical: 'https://karukamo.jp/menu' },
+  alternates: { canonical: 'https://www.karukamo.jp/menu' },
 }
 
 export default function MenuPage() {

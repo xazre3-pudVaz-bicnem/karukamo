@@ -15,13 +15,13 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'よくある質問 | カルカモ',
     description: '営業時間・メニュー・アクセスなど50の質問に答えます。ひたちなか市・那珂湊のカルカモ。',
-    url: 'https://karukamo.jp/faq',
+    url: 'https://www.karukamo.jp/faq',
     images: [{ url: '/og-image.jpg', width: 1200, height: 630 }],
     locale: 'ja_JP',
     type: 'website',
   },
   twitter: { card: 'summary_large_image' },
-  alternates: { canonical: 'https://karukamo.jp/faq' },
+  alternates: { canonical: 'https://www.karukamo.jp/faq' },
 }
 
 const faqs = [
@@ -268,8 +268,8 @@ const breadcrumbStructuredData = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'ホーム', item: 'https://karukamo.jp' },
-    { '@type': 'ListItem', position: 2, name: 'よくある質問', item: 'https://karukamo.jp/faq' },
+    { '@type': 'ListItem', position: 1, name: 'ホーム', item: 'https://www.karukamo.jp' },
+    { '@type': 'ListItem', position: 2, name: 'よくある質問', item: 'https://www.karukamo.jp/faq' },
   ],
 }
 

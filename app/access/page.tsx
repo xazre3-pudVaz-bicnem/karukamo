@@ -15,13 +15,13 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'アクセス | カルカモ — 茨城県ひたちなか市湊本町27-3',
     description: 'カルカモへの詳しいアクセス情報。車・電車・バスでのルートと周辺スポット。',
-    url: 'https://karukamo.jp/access',
+    url: 'https://www.karukamo.jp/access',
     images: [{ url: '/og-image.jpg', width: 1200, height: 630 }],
     locale: 'ja_JP',
     type: 'website',
   },
   twitter: { card: 'summary_large_image' },
-  alternates: { canonical: 'https://karukamo.jp/access' },
+  alternates: { canonical: 'https://www.karukamo.jp/access' },
 }
 
 const structuredData = [
@@ -29,8 +29,8 @@ const structuredData = [
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'ホーム', item: 'https://karukamo.jp' },
-      { '@type': 'ListItem', position: 2, name: 'アクセス', item: 'https://karukamo.jp/access' },
+      { '@type': 'ListItem', position: 1, name: 'ホーム', item: 'https://www.karukamo.jp' },
+      { '@type': 'ListItem', position: 2, name: 'アクセス', item: 'https://www.karukamo.jp/access' },
     ],
   },
   {
@@ -52,7 +52,7 @@ const structuredData = [
       longitude: 140.5833,
     },
     hasMap: 'https://maps.google.com/?q=茨城県ひたちなか市湊本町27-3',
-    url: 'https://karukamo.jp',
+    url: 'https://www.karukamo.jp',
     sameAs: ['https://www.instagram.com/karukamo.2384/'],
     servesCuisine: ['クレープ', 'アイスクリーム', 'たこ焼き', 'お好み焼き', '焼きそば'],
     priceRange: '¥',

@@ -17,13 +17,13 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'ひたちなか市・那珂湊のクレープ | カルカモ',
     description: 'もちもち生地に生クリームとフルーツをたっぷり。那珂湊の食べ歩きに人気のクレープスタンド。',
-    url: 'https://karukamo.jp/crepe',
+    url: 'https://www.karukamo.jp/crepe',
     images: [{ url: '/og-image.jpg', width: 1200, height: 630 }],
     locale: 'ja_JP',
     type: 'website',
   },
   twitter: { card: 'summary_large_image' },
-  alternates: { canonical: 'https://karukamo.jp/crepe' },
+  alternates: { canonical: 'https://www.karukamo.jp/crepe' },
 }
 
 const crepe = menuCategories.find((c) => c.id === 'crepe')!
@@ -33,8 +33,8 @@ const structuredData = [
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'ホーム', item: 'https://karukamo.jp' },
-      { '@type': 'ListItem', position: 2, name: 'クレープ', item: 'https://karukamo.jp/crepe' },
+      { '@type': 'ListItem', position: 1, name: 'ホーム', item: 'https://www.karukamo.jp' },
+      { '@type': 'ListItem', position: 2, name: 'クレープ', item: 'https://www.karukamo.jp/crepe' },
     ],
   },
   {

@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   title: 'About | カルカモ — 那珂湊のクレープスタンド',
   description:
     '那珂湊・ひたちなか市のクレープ&テイクアウトスタンド「カルカモ」について。地域に根ざした小さなスタンドとして、クレープを中心に食べ歩きグルメを提供しています。',
-  alternates: { canonical: 'https://karukamo.jp/kodawari' },
+  alternates: { canonical: 'https://www.karukamo.jp/kodawari' },
 }
 
 const POINTS = [

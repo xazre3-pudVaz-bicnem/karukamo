@@ -86,6 +86,7 @@ export function Footer() {
                   { href: '/takeout', label: 'テイクアウト特集' },
                   { href: '/lunch', label: 'ランチ利用' },
                   { href: '/about-nakaminato', label: '那珂湊エリア' },
+                  { href: '/column', label: '専門コラム' },
                 ].map((link) => (
                   <li key={link.href}>
                     <Link href={link.href} className="text-xs hover:text-white transition-colors">

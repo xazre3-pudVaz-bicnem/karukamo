@@ -17,13 +17,13 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'ひたちなか市・那珂湊のお好み焼き | カルカモ',
     description: '豚玉・イカ玉・明太もちチーズなど4種。テイクアウトで楽しめる本格お好み焼き。',
-    url: 'https://karukamo.jp/okonomiyaki',
+    url: 'https://www.karukamo.jp/okonomiyaki',
     images: [{ url: '/og-image.jpg', width: 1200, height: 630 }],
     locale: 'ja_JP',
     type: 'website',
   },
   twitter: { card: 'summary_large_image' },
-  alternates: { canonical: 'https://karukamo.jp/okonomiyaki' },
+  alternates: { canonical: 'https://www.karukamo.jp/okonomiyaki' },
 }
 
 const okonomiyaki = menuCategories.find((c) => c.id === 'okonomiyaki')!
@@ -33,8 +33,8 @@ const structuredData = [
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'ホーム', item: 'https://karukamo.jp' },
-      { '@type': 'ListItem', position: 2, name: 'お好み焼き', item: 'https://karukamo.jp/okonomiyaki' },
+      { '@type': 'ListItem', position: 1, name: 'ホーム', item: 'https://www.karukamo.jp' },
+      { '@type': 'ListItem', position: 2, name: 'お好み焼き', item: 'https://www.karukamo.jp/okonomiyaki' },
     ],
   },
   {

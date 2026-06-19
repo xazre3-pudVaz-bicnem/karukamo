@@ -17,12 +17,12 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'お知らせ・カルカモ日記 | カルカモ',
     description: '那珂湊のカルカモから。新メニュー・営業情報・季節のたよりをお届けします。',
-    url: 'https://karukamo.jp/blog',
+    url: 'https://www.karukamo.jp/blog',
     locale: 'ja_JP',
     type: 'website',
   },
   twitter: { card: 'summary_large_image' },
-  alternates: { canonical: 'https://karukamo.jp/blog' },
+  alternates: { canonical: 'https://www.karukamo.jp/blog' },
 }
 
 export default async function BlogPage({

@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   title: 'カルカモ | 那珂湊の焼きそば&食べ歩きスタンド',
   description:
     '茨城県ひたちなか市・那珂湊の焼きそば＆テイクアウトスタンド「カルカモ」。美明豚焼きそば・たこ焼き・お好み焼き・クレープ・たい焼き・アイスなど。おさかな市場から歩いて5分。',
-  alternates: { canonical: 'https://karukamo.jp' },
+  alternates: { canonical: 'https://www.karukamo.jp' },
 }
 
 const yakisoba = menuCategories.find((c) => c.id === 'yakisoba')!

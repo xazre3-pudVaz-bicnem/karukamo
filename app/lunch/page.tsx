@@ -17,13 +17,13 @@ export const metadata: Metadata = {
   openGraph: {
     title: '那珂湊・ひたちなか市のランチ | カルカモ',
     description: 'お好み焼き・焼きそば・たこ焼きでがっつりランチ。デザートまでカルカモで完結。',
-    url: 'https://karukamo.jp/lunch',
+    url: 'https://www.karukamo.jp/lunch',
     images: [{ url: '/og-image.jpg', width: 1200, height: 630 }],
     locale: 'ja_JP',
     type: 'website',
   },
   twitter: { card: 'summary_large_image' },
-  alternates: { canonical: 'https://karukamo.jp/lunch' },
+  alternates: { canonical: 'https://www.karukamo.jp/lunch' },
 }
 
 const structuredData = [
@@ -31,8 +31,8 @@ const structuredData = [
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'ホーム', item: 'https://karukamo.jp' },
-      { '@type': 'ListItem', position: 2, name: 'ランチ利用', item: 'https://karukamo.jp/lunch' },
+      { '@type': 'ListItem', position: 1, name: 'ホーム', item: 'https://www.karukamo.jp' },
+      { '@type': 'ListItem', position: 2, name: 'ランチ利用', item: 'https://www.karukamo.jp/lunch' },
     ],
   },
 ]

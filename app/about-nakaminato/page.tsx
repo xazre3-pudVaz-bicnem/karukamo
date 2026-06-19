@@ -15,13 +15,13 @@ export const metadata: Metadata = {
   openGraph: {
     title: '那珂湊エリア観光情報 | カルカモ周辺スポット — ひたちなか市・茨城',
     description: '那珂湊おさかな市場・食べ歩きグルメ・観光スポット情報。カルカモと合わせて観光を楽しもう。',
-    url: 'https://karukamo.jp/about-nakaminato',
+    url: 'https://www.karukamo.jp/about-nakaminato',
     images: [{ url: '/og-image.jpg', width: 1200, height: 630 }],
     locale: 'ja_JP',
     type: 'website',
   },
   twitter: { card: 'summary_large_image' },
-  alternates: { canonical: 'https://karukamo.jp/about-nakaminato' },
+  alternates: { canonical: 'https://www.karukamo.jp/about-nakaminato' },
 }
 
 const structuredData = [
@@ -29,8 +29,8 @@ const structuredData = [
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'ホーム', item: 'https://karukamo.jp' },
-      { '@type': 'ListItem', position: 2, name: '那珂湊エリア', item: 'https://karukamo.jp/about-nakaminato' },
+      { '@type': 'ListItem', position: 1, name: 'ホーム', item: 'https://www.karukamo.jp' },
+      { '@type': 'ListItem', position: 2, name: '那珂湊エリア', item: 'https://www.karukamo.jp/about-nakaminato' },
     ],
   },
   {
@@ -63,7 +63,7 @@ const structuredData = [
       addressCountry: 'JP',
     },
     hasMap: 'https://maps.google.com/?q=茨城県ひたちなか市湊本町27-3',
-    url: 'https://karukamo.jp',
+    url: 'https://www.karukamo.jp',
     sameAs: ['https://www.instagram.com/karukamo.2384/'],
   },
 ]

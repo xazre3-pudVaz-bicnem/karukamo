@@ -17,13 +17,13 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'ひたちなか市・那珂湊の焼きそば | 美明豚使用 | カルカモ',
     description: '地元ブランド「美明豚」を使ったこだわりの焼きそば。那珂湊のテイクアウトに。',
-    url: 'https://karukamo.jp/yakisoba',
+    url: 'https://www.karukamo.jp/yakisoba',
     images: [{ url: '/og-image.jpg', width: 1200, height: 630 }],
     locale: 'ja_JP',
     type: 'website',
   },
   twitter: { card: 'summary_large_image' },
-  alternates: { canonical: 'https://karukamo.jp/yakisoba' },
+  alternates: { canonical: 'https://www.karukamo.jp/yakisoba' },
 }
 
 const yakisoba = menuCategories.find((c) => c.id === 'yakisoba')!
@@ -33,8 +33,8 @@ const structuredData = [
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'ホーム', item: 'https://karukamo.jp' },
-      { '@type': 'ListItem', position: 2, name: '焼きそば', item: 'https://karukamo.jp/yakisoba' },
+      { '@type': 'ListItem', position: 1, name: 'ホーム', item: 'https://www.karukamo.jp' },
+      { '@type': 'ListItem', position: 2, name: '焼きそば', item: 'https://www.karukamo.jp/yakisoba' },
     ],
   },
   {
