@@ -34,3 +34,30 @@ export function Breadcrumb({ items }: { items: BreadcrumbItem[] }) {
     </nav>
   )
 }
+
+export function BreadcrumbSchema({ items }: { items: BreadcrumbItem[] }) {
+  const base = 'https://www.karukamo.jp'
+  const allItems = [
+    { label: 'ホーム', href: base },
+    ...items.map((item) => ({
+      label: item.label,
+      href: item.href ? `${base}${item.href}` : undefined,
+    })),
+  ]
+  const data = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: allItems.map((item, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: item.label,
+      item: item.href,
+    })),
+  }
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+    />
+  )
+}
