@@ -243,3 +243,37 @@ body {
   text-align: center;
   margin-top: 0.5rem;
 }
+
+/* ── Markdown blog prose (prose-karukamo) ───────────────── */
+.prose-karukamo { font-family: var(--font-noto-serif), serif; color: #46362A; }
+.prose-karukamo h2 {
+  font-family: var(--font-noto-serif), serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #18100A;
+  margin: 2.5rem 0 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #B09265;
+  line-height: 1.5;
+}
+.prose-karukamo h3 {
+  font-family: var(--font-noto-serif), serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #18100A;
+  margin: 2rem 0 0.75rem;
+}
+.prose-karukamo p { font-size: 0.875rem; line-height: 2; margin-bottom: 1.25rem; }
+.prose-karukamo ul, .prose-karukamo ol { padding-left: 1.5rem; margin-bottom: 1.25rem; }
+.prose-karukamo li { font-size: 0.875rem; line-height: 1.9; margin-bottom: 0.25rem; }
+.prose-karukamo a { color: #C8400A; text-decoration: underline; }
+.prose-karukamo a:hover { color: #46362A; }
+.prose-karukamo strong { font-weight: 700; color: #18100A; }
+.prose-karukamo blockquote {
+  border-left: 2px solid #B09265;
+  padding-left: 1.25rem;
+  margin: 1.5rem 0;
+  color: #8A7B6A;
+  font-style: italic;
+}
+.prose-karukamo hr { border: none; border-top: 1px solid #B09265; margin: 2.5rem 0; }

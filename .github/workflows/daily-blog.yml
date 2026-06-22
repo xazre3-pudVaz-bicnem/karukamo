@@ -1,0 +1,66 @@
+name: Daily Blog Post Generation
+
+on:
+  schedule:
+    # 10:10 JST = 01:10 UTC
+    - cron: '10 1 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Generate daily blog post
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: npx tsx scripts/generate-daily-post.ts
+
+      - name: Check for new post
+        id: check
+        run: |
+          git diff --name-only | grep 'content/blog/' || echo "no_change=true" >> $GITHUB_OUTPUT
+          NEW_FILES=$(git diff --name-only HEAD -- content/blog/ 2>/dev/null || true)
+          UNTRACKED=$(git ls-files --others --exclude-standard content/blog/ 2>/dev/null || true)
+          if [ -z "$NEW_FILES" ] && [ -z "$UNTRACKED" ]; then
+            echo "no_change=true" >> $GITHUB_OUTPUT
+            echo "[blog] No new post to commit."
+          else
+            echo "no_change=false" >> $GITHUB_OUTPUT
+            echo "[blog] New file(s) detected:"
+            echo "$NEW_FILES $UNTRACKED"
+          fi
+
+      - name: Commit and push
+        if: steps.check.outputs.no_change != 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add content/blog/
+          ADDED=$(git diff --cached --name-only)
+          echo "[blog] Staging: $ADDED"
+          git commit -m "blog: auto-generate daily post $(date -u +'%Y-%m-%d')"
+          git push origin master
+          echo "[blog] Push complete."
+
+      - name: Skip (no new post)
+        if: steps.check.outputs.no_change == 'true'
+        run: echo "[blog] Nothing to commit — skipping push."
