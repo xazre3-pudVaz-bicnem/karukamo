@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { AnimateIn } from '@/components/ui/AnimateIn'
 
 export const metadata: Metadata = {
-  title: 'About | カルカモ — 那珂湊のクレープスタンド',
+  title: { absolute: 'About | カルカモ — 那珂湊のクレープスタンド' },
   description:
     '那珂湊・ひたちなか市のクレープ&テイクアウトスタンド「カルカモ」について。地域に根ざした小さなスタンドとして、クレープを中心に食べ歩きグルメを提供しています。',
   alternates: { canonical: 'https://www.karukamo.jp/kodawari' },

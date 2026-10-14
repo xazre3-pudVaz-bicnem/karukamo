@@ -7,7 +7,7 @@ import { RelatedPages } from '@/components/ui/RelatedPages'
 import { menuCategories } from '@/data/menu'
 
 export const metadata: Metadata = {
-  title: 'ひたちなか市・那珂湊のお好み焼き | カルカモ',
+  title: { absolute: 'ひたちなか市・那珂湊のお好み焼き | カルカモ' },
   description:
     'ひたちなか市・那珂湊のカルカモのお好み焼き。豚玉・イカ玉・ツナマヨ・明太もちチーズの4種類。テイクアウトで楽しめる本格お好み焼き。ランチにも食べ歩きにも。',
   keywords: [

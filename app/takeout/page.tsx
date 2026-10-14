@@ -7,7 +7,7 @@ import { RelatedPages } from '@/components/ui/RelatedPages'
 import { menuCategories } from '@/data/menu'
 
 export const metadata: Metadata = {
-  title: 'ひたちなか市・那珂湊のテイクアウトならカルカモ｜焼きそば・たこ焼き・お好み焼き',
+  title: { absolute: 'ひたちなか市・那珂湊のテイクアウトならカルカモ｜焼きそば・たこ焼き・お好み焼き' },
   description:
     'ひたちなか市・那珂湊でテイクアウトを楽しむならカルカモ。焼きそば・たこ焼き・お好み焼き・クレープ・アイスが揃う食べ歩きグルメスタンド。那珂湊観光・ドライブ・ランチにも最適。営業日はInstagramをご確認ください。',
   keywords: [

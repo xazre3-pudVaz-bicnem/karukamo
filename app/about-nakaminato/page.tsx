@@ -5,7 +5,7 @@ import { Breadcrumb } from '@/components/ui/Breadcrumb'
 import { RelatedPages } from '@/components/ui/RelatedPages'
 
 export const metadata: Metadata = {
-  title: '那珂湊エリア観光情報 | カルカモ周辺スポット — ひたちなか市・茨城',
+  title: { absolute: '那珂湊エリア観光情報 | カルカモ周辺スポット — ひたちなか市・茨城' },
   description:
     '茨城県ひたちなか市・那珂湊エリアの観光・グルメ情報。那珂湊おさかな市場・ほしいも・観光スポットが充実。カルカモの食べ歩きグルメと合わせて日帰り旅行・観光を楽しもう。',
   keywords: [

@@ -4,7 +4,7 @@ import { AnimateIn } from '@/components/ui/AnimateIn'
 import { Breadcrumb } from '@/components/ui/Breadcrumb'
 
 export const metadata: Metadata = {
-  title: '那珂湊観光 | ブログ | カルカモ — ひたちなか市・茨城',
+  title: { absolute: '那珂湊観光 | ブログ | カルカモ — ひたちなか市・茨城' },
   description:
     '那珂湊観光情報ブログ。おさかな市場・周辺観光スポット・食べ歩きグルメ・アクセス情報など、那珂湊（ひたちなか市）の観光に役立つ情報を発信。',
   keywords: ['那珂湊 観光', 'ひたちなか市 観光', '那珂湊 グルメ', '那珂湊 おさかな市場', '茨城 日帰り旅行'],

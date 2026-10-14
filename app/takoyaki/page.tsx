@@ -7,7 +7,7 @@ import { RelatedPages } from '@/components/ui/RelatedPages'
 import { menuCategories } from '@/data/menu'
 
 export const metadata: Metadata = {
-  title: 'ひたちなか市・那珂湊のたこ焼き | カルカモ',
+  title: { absolute: 'ひたちなか市・那珂湊のたこ焼き | カルカモ' },
   description:
     'ひたちなか市・那珂湊のカルカモの大玉たこ焼き。外はカリッ、中はとろっとジューシー。ソースマヨ・からしマヨの2種類。テイクアウト・食べ歩きに最適な大玉サイズ。',
   keywords: [

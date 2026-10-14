@@ -20,7 +20,7 @@ export async function generateMetadata({
   const col = getColumn(slug)
   if (!col) return {}
   return {
-    title: col.title,
+    title: col.title.includes('カルカモ') ? { absolute: col.title } : col.title,
     description: col.description,
     keywords: [col.category, '那珂湊', 'ひたちなか市', 'カルカモ', 'テイクアウト'],
     openGraph: {

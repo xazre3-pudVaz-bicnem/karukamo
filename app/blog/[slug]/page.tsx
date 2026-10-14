@@ -21,7 +21,7 @@ export async function generateMetadata({
 
   const canonical = `https://www.karukamo.jp/blog/${slug}`
   return {
-    title: post.title,
+    title: post.title.includes('カルカモ') ? { absolute: post.title } : post.title,
     description: post.description,
     keywords: ['カルカモ', '那珂湊', 'ひたちなか市', ...post.tags],
     openGraph: {

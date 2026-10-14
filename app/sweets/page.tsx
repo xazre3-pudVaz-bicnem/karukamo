@@ -7,7 +7,7 @@ import { RelatedPages } from '@/components/ui/RelatedPages'
 import { menuCategories } from '@/data/menu'
 
 export const metadata: Metadata = {
-  title: 'ひたちなか市・那珂湊のスイーツ・アイス | カルカモ',
+  title: { absolute: 'ひたちなか市・那珂湊のスイーツ・アイス | カルカモ' },
   description:
     'ひたちなか市・那珂湊のカルカモのスイーツ。名物ふぐもなかアイスをはじめ、バニラ・抹茶・ラムネなどのアイスクリーム、パリッと香ばしいたい焼きも。食べ歩き・テイクアウトに最適。',
   keywords: [

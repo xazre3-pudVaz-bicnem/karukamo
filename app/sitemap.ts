@@ -1,4 +1,5 @@
 import type { MetadataRoute } from 'next'
+import { getAllPosts } from '@/lib/blog'
 
 const COLUMN_SLUGS = [
   'nakaminato-yakisoba',
@@ -33,22 +34,9 @@ const COLUMN_SLUGS = [
   'first-visit-guide',
 ]
 
-async function getWpPosts() {
-  try {
-    const res = await fetch(
-      'https://wp.karukamo.jp/wp-json/wp/v2/posts?per_page=100&_fields=slug,modified',
-      { next: { revalidate: 3600 } }
-    )
-    if (!res.ok) return []
-    return await res.json()
-  } catch {
-    return []
-  }
-}
-
-export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+export default function sitemap(): MetadataRoute.Sitemap {
   const base = 'https://www.karukamo.jp'
-  const posts = await getWpPosts()
+  const posts = getAllPosts()
 
   const staticPages: MetadataRoute.Sitemap = [
     { url: base, priority: 1.0, changeFrequency: 'weekly' },
@@ -73,14 +61,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     })),
   ]
 
-  const blogPages: MetadataRoute.Sitemap = posts.map(
-    (post: { slug: string; modified: string }) => ({
-      url: `${base}/blog/${post.slug}`,
-      lastModified: new Date(post.modified),
-      changeFrequency: 'monthly' as const,
-      priority: 0.6,
-    })
-  )
+  const blogPages: MetadataRoute.Sitemap = posts.map((post) => ({
+    url: `${base}/blog/${post.slug}`,
+    lastModified: new Date(post.date + 'T00:00:00+09:00'),
+    changeFrequency: 'monthly' as const,
+    priority: 0.6,
+  }))
 
   return [...staticPages, ...blogPages]
 }

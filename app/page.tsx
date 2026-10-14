@@ -8,9 +8,9 @@ import { menuCategories } from '@/data/menu'
 export const revalidate = 3600
 
 export const metadata: Metadata = {
-  title: 'カルカモ | 那珂湊の焼きそば&食べ歩きスタンド',
+  title: 'カルカモ（かるかも）| 那珂湊の焼きそば&食べ歩きスタンド',
   description:
-    '茨城県ひたちなか市・那珂湊の焼きそば＆テイクアウトスタンド「カルカモ」。美明豚焼きそば・たこ焼き・お好み焼き・クレープ・たい焼き・アイスなど。おさかな市場から歩いて5分。',
+    '茨城県ひたちなか市・那珂湊の焼きそば＆テイクアウトスタンド「カルカモ（かるかも）」。美明豚焼きそば・たこ焼き・お好み焼き・クレープ・たい焼き・アイスなど。おさかな市場から歩いて5分。',
   alternates: { canonical: 'https://www.karukamo.jp' },
 }
 
@@ -269,6 +269,10 @@ export default function HomePage() {
           HERO
       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
       <section className="relative pt-16 md:pt-[72px]" style={{ backgroundColor: '#FAF3E4' }}>
+
+        {/* Hero copy is baked into the image — mirror it as real text for search engines & screen readers */}
+        <h1 className="sr-only">那珂湊焼きそばのカルカモ（かるかも）｜ひたちなか市・那珂湊の食べ歩きスタンド</h1>
+        <p className="sr-only">かるくて、うまい。カモメが運ぶ、那珂湊のごちそう。</p>
 
         {/* Hero image — full-width, auto-height, no cropping */}
         <div className="relative">

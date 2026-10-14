@@ -5,7 +5,7 @@ import { Breadcrumb } from '@/components/ui/Breadcrumb'
 import { RelatedPages } from '@/components/ui/RelatedPages'
 
 export const metadata: Metadata = {
-  title: 'よくある質問 | カルカモ — 那珂湊のクレープ&テイクアウトスタンド',
+  title: { absolute: 'よくある質問 | カルカモ — 那珂湊のクレープ&テイクアウトスタンド' },
   description:
     'カルカモに関するよくある質問。営業時間・定休日・アクセス・テイクアウト・メニューなど、お客様からよくいただく50の質問にお答えします。ひたちなか市・那珂湊のカルカモ。',
   keywords: [

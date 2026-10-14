@@ -5,7 +5,7 @@ import { Breadcrumb, BreadcrumbSchema } from '@/components/ui/Breadcrumb'
 import { getPostsPaginated } from '@/lib/blog'
 
 export const metadata: Metadata = {
-  title: 'ブログ｜那珂湊・ひたちなか市テイクアウト情報 | カルカモ',
+  title: { absolute: 'ブログ｜那珂湊・ひたちなか市テイクアウト情報 | カルカモ' },
   description:
     'カルカモのブログ。那珂湊・ひたちなか市のテイクアウト・焼きそば・食べ歩き情報をお届けします。',
   keywords: [

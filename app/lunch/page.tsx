@@ -6,7 +6,7 @@ import { Breadcrumb } from '@/components/ui/Breadcrumb'
 import { RelatedPages } from '@/components/ui/RelatedPages'
 
 export const metadata: Metadata = {
-  title: '那珂湊・ひたちなか市のランチに｜カルカモのテイクアウトグルメ',
+  title: { absolute: '那珂湊・ひたちなか市のランチに｜カルカモのテイクアウトグルメ' },
   description:
     '那珂湊・ひたちなか市でランチをお探しなら、カルカモのテイクアウトグルメがおすすめ。お好み焼き・焼きそば・たこ焼きでしっかりランチ、クレープやアイスでデザートまで完結。観光ランチ・地元ランチに。',
   keywords: [

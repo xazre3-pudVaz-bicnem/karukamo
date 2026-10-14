@@ -57,33 +57,28 @@ function getExistingSlugs(): string[] {
     .map((f) => f.replace(/\.md$/, ''))
 }
 
-function getExistingKeywords(): string[] {
-  if (!fs.existsSync(BLOG_DIR)) return []
-  const slugs = getExistingSlugs()
-  const keywords: string[] = []
-  for (const slug of slugs) {
-    const content = fs.readFileSync(path.join(BLOG_DIR, `${slug}.md`), 'utf8')
-    const m = content.match(/^title:\s*"(.+)"/m)
-    if (m) keywords.push(m[1])
-  }
-  return keywords
+// Date of the most recent post for a topic (posts are saved as `${topicSlug}-${date}.md`)
+function lastPostedDate(topic: typeof TOPIC_POOL[number], existingSlugs: string[]): string | null {
+  const prefix = `${topicSlug(topic.keyword)}-`
+  const dates = existingSlugs
+    .filter((s) => s.startsWith(prefix))
+    .map((s) => s.match(/\d{4}-\d{2}-\d{2}$/)?.[0] ?? '')
+    .sort()
+  return dates.length > 0 ? dates[dates.length - 1] : null
 }
 
-function pickTopic(existingKeywords: string[]): typeof TOPIC_POOL[number] {
-  // Avoid recently used keywords by cycling through the pool
-  const today = new Date()
-  const dayOfYear = Math.floor((today.getTime() - new Date(today.getFullYear(), 0, 0).getTime()) / 86400000)
+function pickTopic(existingSlugs: string[]): typeof TOPIC_POOL[number] {
+  const candidates = TOPIC_POOL.map((topic) => ({ topic, last: lastPostedDate(topic, existingSlugs) }))
 
-  // Prefer topics whose keyword doesn't appear in any existing title
-  const unused = TOPIC_POOL.filter(
-    (t) => !existingKeywords.some((k) => k.includes(t.keyword.split(' ')[0]))
-  )
+  // Prefer topics that have never been posted, in pool order
+  const unused = candidates.find((c) => c.last === null)
+  if (unused) return unused.topic
 
-  const pool = unused.length > 0 ? unused : TOPIC_POOL
-  return pool[dayOfYear % pool.length]
+  // Every topic has a post — reuse the one posted longest ago
+  return candidates.sort((a, b) => a.last!.localeCompare(b.last!))[0].topic
 }
 
-function generateSlug(keyword: string, date: string): string {
+function topicSlug(keyword: string): string {
   const map: Record<string, string> = {
     'ひたちなか市': 'hitachinaka',
     '那珂湊': 'nakaminato',
@@ -110,18 +105,23 @@ function generateSlug(keyword: string, date: string): string {
     'お出かけ': 'outing',
   }
 
+  // Longest keys first so 地元ランチ / アイスクリーム win over ランチ / アイス
+  const entries = Object.entries(map).sort((a, b) => b[0].length - a[0].length)
+
   let slug = keyword
-  for (const [jp, en] of Object.entries(map)) {
+  for (const [jp, en] of entries) {
     slug = slug.replace(new RegExp(jp, 'g'), en)
   }
-  slug = slug
+  return slug
     .replace(/[^\w\s-]/g, '')
     .replace(/\s+/g, '-')
     .replace(/-+/g, '-')
     .toLowerCase()
     .slice(0, 60)
+}
 
-  return `${slug}-${date}`
+function generateSlug(keyword: string, date: string): string {
+  return `${topicSlug(keyword)}-${date}`
 }
 
 async function generatePost(topic: typeof TOPIC_POOL[number], date: string): Promise<string> {
@@ -220,13 +220,12 @@ async function main() {
   }
 
   const date = getJSTDateString()
-  const existingKeywords = getExistingKeywords()
   const existingSlugs = getExistingSlugs()
 
   console.log(`[karukamo-blog] Date: ${date}`)
   console.log(`[karukamo-blog] Existing posts: ${existingSlugs.length}`)
 
-  const topic = pickTopic(existingKeywords)
+  const topic = pickTopic(existingSlugs)
   console.log(`[karukamo-blog] Topic: ${topic.keyword} (${topic.angle})`)
 
   let content: string

@@ -7,7 +7,7 @@ import { RelatedPages } from '@/components/ui/RelatedPages'
 import { menuCategories } from '@/data/menu'
 
 export const metadata: Metadata = {
-  title: 'ひたちなか市・那珂湊の焼きそば | 美明豚使用 | カルカモ',
+  title: { absolute: 'ひたちなか市・那珂湊の焼きそば | 美明豚使用 | カルカモ' },
   description:
     'ひたちなか市・那珂湊のカルカモの焼きそば。地元ブランド「美明豚」を使ったこだわりの味。美明豚焼きそば・イカ焼きそば・オム焼きそばなど。テイクアウト・食べ歩きに。',
   keywords: [

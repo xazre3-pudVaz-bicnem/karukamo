@@ -5,7 +5,7 @@ import { Breadcrumb } from '@/components/ui/Breadcrumb'
 import { RelatedPages } from '@/components/ui/RelatedPages'
 
 export const metadata: Metadata = {
-  title: 'アクセス | カルカモ — 茨城県ひたちなか市湊本町27-3（那珂湊）',
+  title: { absolute: 'アクセス | カルカモ — 茨城県ひたちなか市湊本町27-3（那珂湊）' },
   description:
     'カルカモへのアクセス詳細。住所：茨城県ひたちなか市湊本町27-3（那珂湊エリア）。車・電車・バスでのアクセス方法、駐車場情報、周辺スポットガイド。',
   keywords: [

@@ -4,7 +4,7 @@ import { columns, COLUMN_CATEGORIES } from '@/data/columns'
 import { Breadcrumb, BreadcrumbSchema } from '@/components/ui/Breadcrumb'
 
 export const metadata: Metadata = {
-  title: '那珂湊・ひたちなか市テイクアウトコラム｜カルカモ',
+  title: { absolute: '那珂湊・ひたちなか市テイクアウトコラム｜カルカモ' },
   description: '那珂湊・ひたちなか市のテイクアウト・ランチ・食べ歩き・焼きそばに関する専門コラム。カルカモの使い方や観光情報をご紹介します。',
   openGraph: {
     title: '那珂湊・ひたちなか市テイクアウトコラム｜カルカモ',

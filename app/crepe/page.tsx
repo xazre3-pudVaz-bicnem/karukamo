@@ -7,7 +7,7 @@ import { RelatedPages } from '@/components/ui/RelatedPages'
 import { menuCategories } from '@/data/menu'
 
 export const metadata: Metadata = {
-  title: 'ひたちなか市・那珂湊のクレープならカルカモ｜食べ歩きスイーツ',
+  title: { absolute: 'ひたちなか市・那珂湊のクレープならカルカモ｜食べ歩きスイーツ' },
   description:
     'ひたちなか市・那珂湊でクレープを食べ歩きするならカルカモへ。もちもち生地に生クリームとフルーツをたっぷり。季節限定フレーバーも随時登場。那珂湊観光・食べ歩き・テイクアウトに最適な一品。',
   keywords: [
